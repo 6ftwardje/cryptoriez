@@ -105,14 +105,43 @@
                         <img src="cryptoriez.png" alt="Cryptoriez" class="h-8 w-auto">
                     </a>
                 </div>
+                
+                <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-crypto-orange font-medium">Home</a>
                     <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white transition-colors duration-200">Fysieke Opleidingen</a>
                     <a href="discord.html" class="text-gray-300 hover:text-white transition-colors duration-200">Discord</a>
                 </div>
-                <a href="#call" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
+                
+                <!-- Desktop CTA Button -->
+                <a href="#call" class="hidden md:inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
                     Plan een call
                 </a>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Icon when menu is closed -->
+                    <svg id="menu-icon" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- Icon when menu is open -->
+                    <svg id="close-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 border-t border-gray-700">
+                    <a href="index.html" class="text-crypto-orange block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Fysieke Opleidingen</a>
+                    <a href="discord.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Discord</a>
+                    <a href="#call" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 mt-4">
+                        Plan een call
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -549,6 +578,7 @@
             <div class="mt-12 flex flex-col lg:flex-row gap-8">
                 <!-- Formulier -->
                 <form 
+                    id="contactForm"
                     action="https://hook.eu2.make.com/1yadxidxn3j9kakanfa0qnungr1foovy" 
                     method="POST" 
                     class="flex-1 bg-gray-900/50 p-6 rounded-xl border border-gray-700 space-y-4"
@@ -564,6 +594,25 @@
                     <div>
                         <label for="email" class="block text-sm text-gray-300 mb-1">E-mailadres</label>
                         <input type="email" name="email" id="email" required class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-crypto-orange" />
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm text-gray-300 mb-1">Telefoonnummer</label>
+                        <div class="flex">
+                            <select name="countryCode" id="countryCode" class="px-3 py-2 bg-gray-800 text-white border border-gray-600 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-crypto-orange border-r-0">
+                                <option value="+32">🇧🇪 +32 (België)</option>
+                                <option value="+31">🇳🇱 +31 (Nederland)</option>
+                                <option value="+33">🇫🇷 +33 (Frankrijk)</option>
+                                <option value="+49">🇩🇪 +49 (Duitsland)</option>
+                                <option value="+44">🇬🇧 +44 (Verenigd Koninkrijk)</option>
+                                <option value="+1">🇺🇸 +1 (VS/Canada)</option>
+                                <option value="+41">🇨🇭 +41 (Zwitserland)</option>
+                                <option value="+43">🇦🇹 +43 (Oostenrijk)</option>
+                                <option value="+34">🇪🇸 +34 (Spanje)</option>
+                                <option value="+39">🇮🇹 +39 (Italië)</option>
+                            </select>
+                            <input type="tel" name="phone" id="phone" required placeholder="123456789" class="flex-1 px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-crypto-orange" />
+                        </div>
                     </div>
 
                     <div>
@@ -624,6 +673,22 @@
       </div>
     </footer>
 
+    <!-- Popup Modal -->
+    <div id="popupModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-900 border border-gray-700 rounded-xl p-8 max-w-md mx-4 text-center">
+            <div class="mb-6">
+                <svg class="w-16 h-16 text-crypto-orange mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="text-2xl font-bold text-white mb-2">Bedankt!</h3>
+                <p class="text-gray-300">We nemen binnenkort contact met je op.</p>
+            </div>
+            <button id="closeModal" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
+                Sluiten
+            </button>
+        </div>
+    </div>
+
     <script>
         // Fade-in animation on scroll
         const observerOptions = {
@@ -641,6 +706,99 @@
 
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
+        });
+
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            mobileMenuButton.addEventListener('click', function() {
+                const isMenuOpen = mobileMenu.classList.contains('hidden');
+                
+                if (isMenuOpen) {
+                    // Open menu
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                } else {
+                    // Close menu
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            });
+
+            // Close menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            const popupModal = document.getElementById('popupModal');
+            const closeModal = document.getElementById('closeModal');
+            const phoneInput = document.getElementById('phone');
+            const countryCodeSelect = document.getElementById('countryCode');
+
+            // Alleen cijfers toestaan tijdens typen
+            phoneInput.addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Telefoonnummer validatie
+                const phoneValue = phoneInput.value.trim();
+                const countryCode = countryCodeSelect.value;
+                
+                if (!/^[0-9]+$/.test(phoneValue) || phoneValue.length < 8) {
+                    alert('Vul een geldig telefoonnummer in (enkel cijfers, minimaal 8 cijfers).');
+                    phoneInput.focus();
+                    return;
+                }
+                
+                // Formulierdata ophalen en volledig telefoonnummer samenstellen
+                const formData = new FormData(contactForm);
+                const fullPhoneNumber = countryCode + phoneValue;
+                formData.set('phone', fullPhoneNumber); // landcode + telefoonnummer
+                
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        popupModal.classList.remove('hidden');
+                        contactForm.reset();
+                    } else {
+                        alert('Er is een fout opgetreden. Probeer het later opnieuw.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Er is een fout opgetreden. Probeer het later opnieuw.');
+                });
+            });
+
+            // Close popup when clicking close button
+            closeModal.addEventListener('click', function() {
+                popupModal.classList.add('hidden');
+            });
+
+            // Close popup when clicking outside
+            popupModal.addEventListener('click', function(e) {
+                if (e.target === popupModal) {
+                    popupModal.classList.add('hidden');
+                }
+            });
         });
     </script>
 </body>
