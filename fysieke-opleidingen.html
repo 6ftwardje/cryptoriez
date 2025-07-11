@@ -6,6 +6,7 @@
     <title>Fysieke Opleidingen - Cryptoriez</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script>
         tailwind.config = {
             theme: {
@@ -35,42 +36,56 @@
             transform: translateY(0);
         }
         
-        /* Parallax effect */
+        /* Liquid glass effects */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .liquid-glass-hover:hover {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Location carousel */
+        .location-carousel {
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .location-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .location-card {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+        
+        /* Sticky CTA bar */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 40;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .sticky-cta.show {
+            transform: translateY(0);
+        }
+        
+        /* Parallax effect for hero background */
         .parallax-bg {
             transform: scale(1.1);
             filter: blur(0px);
             transition: transform 0.1s ease-out, filter 0.1s ease-out;
-        }
-        
-        /* Candlestick chart animations */
-        .candlestick-body {
-            animation: candlestickPulse 3s infinite;
-        }
-        
-        .candlestick-wick {
-            animation: wickGlow 4s infinite;
-        }
-        
-        @keyframes candlestickPulse {
-            0%, 100% { 
-                opacity: 0.6;
-                transform: scale(1);
-            }
-            50% { 
-                opacity: 1;
-                transform: scale(1.02);
-            }
-        }
-        
-        @keyframes wickGlow {
-            0%, 100% { 
-                opacity: 0.4;
-                stroke-width: 1;
-            }
-            50% { 
-                opacity: 0.8;
-                stroke-width: 1.5;
-            }
         }
     </style>
     
@@ -147,65 +162,178 @@
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
         <!-- Parallax Background Image -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg" style="background-image: url('hero.png');"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat parallax-bg" style="background-image: url('opleiding hero.jpg');"></div>
         
         <!-- Overlay for better text readability -->
-        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
         
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in relative z-10">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            <h1 class="text-2xl md:text-4xl lg:text-6xl font-bold leading-tight mb-6">
                 Leer live traden in groep
             </h1>
             <p class="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
                 Onze fysieke groepsopleidingen zijn voor mensen die willen leren van ervaren traders, in real-life settings.
             </p>
-            <a href="#call" class="inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
-                Reserveer je plek
+            <a href="#opleidingsaanpak" class="inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 liquid-glass-hover">
+                Ontdek onze fysieke opleidingen
             </a>
         </div>
     </section>
 
-    <!-- Overzicht fysieke opleidingen -->
+    <!-- Koen FTMO Highlight Section -->
     <section class="py-20 bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Image -->
+                <div class="flex-1">
+                    <img src="koenftmo.jpg" alt="Koen FTMO Success" class="w-full h-auto rounded-2xl shadow-2xl">
+                </div>
+                
+                <!-- Text Content -->
+                <div class="flex-1 space-y-6">
+                    <h2 class="text-3xl sm:text-4xl font-bold">
+                        Koen behaalde een <span class="text-crypto-orange">FTMO payout</span> na het volgen van onze opleiding!
+                    </h2>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Dankzij de technische tradingkennis van <span class="text-crypto-blue font-semibold">Rousso</span> en de intensieve persoonlijke begeleiding, wist Koen succesvol een FTMO challenge te doorlopen. Een officiële payout van een funding firm zoals FTMO is het ultieme bewijs van bekwaamheid als trader.
+                    </p>
+                    <p class="text-lg text-gray-300 font-semibold">
+                        Dit toont aan dat onze aanpak écht werkt.
+                    </p>
+                    <a href="#opleidingsaanpak" class="inline-block bg-crypto-blue hover:bg-crypto-blue/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200 liquid-glass-hover">
+                        Bekijk onze aanpak
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Carousel Section -->
+    <section class="py-20 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+                    Onze vestigingen in België
+                </h2>
+            </div>
+            
+            <!-- Location Carousel -->
+            <div class="location-carousel flex gap-6 overflow-x-auto pb-6">
+                <!-- Kapellen -->
+                <div class="location-card w-80 flex-shrink-0 relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                        <img src="kapellen.jpg" alt="Kapellen" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 liquid-glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-2xl font-bold text-white">Kapellen</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Brugge -->
+                <div class="location-card w-80 flex-shrink-0 relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                        <img src="Brugge.jpg" alt="Brugge" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 liquid-glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-2xl font-bold text-white">Brugge</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gent -->
+                <div class="location-card w-80 flex-shrink-0 relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                        <img src="Gent.jpg" alt="Gent" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 liquid-glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-2xl font-bold text-white">Gent</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Knokke -->
+                <div class="location-card w-80 flex-shrink-0 relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                        <img src="knokke.jpg" alt="Knokke" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 liquid-glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 class="text-2xl font-bold text-white">Knokke</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opleidingsaanpak Section -->
+    <section id="opleidingsaanpak" class="py-20 bg-gray-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-6">
                     Wat kun je verwachten?
                 </h2>
+                <p class="text-lg text-gray-300 max-w-4xl mx-auto mb-12">
+                    Onze opleidings- en mentorshiptrajecten kan je onderverdelen in basis en advanced. In beide trajecten wordt je van A-Z opgeleid in het gebied waarin jij als een professional wilt gaan handelen.
+                </p>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="fade-in bg-gray-900/50 rounded-xl p-6 border border-gray-700">
-                    <div class="w-12 h-12 bg-crypto-orange rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
+            
+            <!-- Training Trajectories -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                <!-- Basic Trajectory -->
+                <div class="fade-in bg-gray-900/50 rounded-2xl p-8 border border-gray-700 liquid-glass-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-crypto-orange rounded-xl flex items-center justify-center mr-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Basis Traject</h3>
+                            <p class="text-crypto-orange font-medium">Fundamentele kennis</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Praktische sessies met live charts</h3>
-                    <p class="text-gray-300">Leer direct van live marktdata en real-time trading scenarios.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 bg-crypto-orange rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <p class="text-gray-300">Begrijpen van blockchain en cryptocurrency technologie</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 bg-crypto-orange rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <p class="text-gray-300">Juiste coins leren herkennen en analyseren</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 bg-crypto-orange rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <p class="text-gray-300">Veilig investeren met oog op maximale rendementen</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="fade-in bg-gray-900/50 rounded-xl p-6 border border-gray-700">
-                    <div class="w-12 h-12 bg-crypto-blue rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
+                <!-- Advanced Trajectory -->
+                <div class="fade-in bg-gray-900/50 rounded-2xl p-8 border border-gray-700 liquid-glass-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-crypto-blue rounded-xl flex items-center justify-center mr-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Advanced Traject</h3>
+                            <p class="text-crypto-blue font-medium">Professionele ontwikkeling</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Interactieve begeleiding in kleine groep</h3>
-                    <p class="text-gray-300">Persoonlijke aandacht en directe feedback van ervaren traders.</p>
-                </div>
-                
-                <div class="fade-in bg-gray-900/50 rounded-xl p-6 border border-gray-700">
-                    <div class="w-12 h-12 bg-crypto-orange rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 bg-crypto-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <p class="text-gray-300">Theoretische kennis voor leverage trading</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 bg-crypto-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <p class="text-gray-300">Jaarlang persoonlijke opvolging en begeleiding</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 bg-crypto-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <p class="text-gray-300">Ontwikkeling tot de beste versie van jezelf</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Toegang tot extra online verdieping</h3>
-                    <p class="text-gray-300">Blijf leren met onze uitgebreide online materialen en resources.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
     <!-- Calendly Section -->
     <section id="call" class="py-20">
@@ -237,7 +365,7 @@
                     id="contactForm"
                     action="https://hook.eu2.make.com/1yadxidxn3j9kakanfa0qnungr1foovy" 
                     method="POST" 
-                    class="flex-1 bg-gray-900/50 p-6 rounded-xl border border-gray-700 space-y-4"
+                    class="flex-1 bg-gray-900/50 p-6 rounded-xl border border-gray-700 space-y-4 liquid-glass"
                 >
                     <h3 class="text-xl font-semibold text-white mb-2">Laat je gegevens achter</h3>
                     <p class="text-sm text-gray-400 mb-4">Zodat we je goed kunnen opvolgen na je call.</p>
@@ -306,41 +434,69 @@
         </div>
     </section>
 
+    <!-- Sticky CTA Bar -->
+    <div id="stickyCta" class="sticky-cta bg-gray-900/95 backdrop-blur-sm border-t border-gray-700 p-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-center sm:text-left">
+                <h3 class="text-lg font-semibold text-white">Schrijf je in voor een fysieke opleiding</h3>
+                <p class="text-sm text-gray-300">Beperkt aantal plaatsen beschikbaar</p>
+            </div>
+            <a href="#call" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 whitespace-nowrap">
+                Reserveer je plek
+            </a>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="w-full bg-black/40 backdrop-blur-md border-t border-white/10 animate-fadeInUp">
-      <div class="container mx-auto px-4 md:px-6 py-12">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-8 w-full">
-          <!-- Logo -->
-          <div class="flex-shrink-0 flex justify-center md:justify-start w-full md:w-auto">
-            <img src="cryptoriez.png" alt="Cryptoriez" class="h-12 w-auto" style="max-width:200px;" />
+    <footer class="w-full bg-black/40 backdrop-blur-md border-t border-white/10 pt-16 pb-28 sm:pb-20 text-white/90">
+      <div class="w-full px-4 md:px-6">
+        <div class="flex flex-col md:flex-row justify-between gap-12">
+
+          <!-- Contactinformatie -->
+          <div class="space-y-4 text-sm md:text-base">
+            <h3 class="text-lg font-semibold text-white">Contact</h3>
+            <div>
+              <p>Katelijnepoort Business Center</p>
+              <p>Baron Ruzettelaan 1 bus 1.1</p>
+              <p>8310 Brugge</p>
+            </div>
+            <div>
+              <p>Lindendreef 9</p>
+              <p>2950 Kapellen, Antwerpen</p>
+            </div>
+            <div>
+              <p>Zoutelaan 51</p>
+              <p>8301 Knokke-Heist</p>
+            </div>
+            <div>
+              <a href="mailto:info@cryptoriez.be" class="text-crypto-orange hover:underline">info@cryptoriez.be</a>
+            </div>
           </div>
-          <!-- Socials -->
-          <div class="flex justify-center gap-8 w-full md:w-auto">
-            <a href="https://www.instagram.com/cryptoriez/" target="_blank" class="text-white/70 hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" aria-label="Instagram">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/company/cryptoriez/" target="_blank" class="text-white/70 hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" aria-label="LinkedIn">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </a>
-            <a href="https://www.youtube.com/@Cryptoriez" target="_blank" class="text-white/70 hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" aria-label="YouTube">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
-              </svg>
-            </a>
-            <a href="https://www.cryptoriez.be" target="_blank" class="text-white/70 hover:text-white transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" aria-label="Website">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-              </svg>
-            </a>
+
+          <!-- Socials & Logo -->
+          <div class="flex flex-col items-center md:items-end justify-between w-full md:w-auto gap-6">
+            <div class="flex justify-center md:justify-end gap-6">
+              <a href="https://www.instagram.com/cryptoriez/" target="_blank" aria-label="Instagram" class="hover:text-white">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/cryptoriez/" target="_blank" aria-label="LinkedIn" class="hover:text-white">
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a href="https://www.youtube.com/@Cryptoriez" target="_blank" aria-label="YouTube" class="hover:text-white">
+                <i class="fab fa-youtube text-xl"></i>
+              </a>
+            </div>
+            <img src="cryptoriez.png" alt="Cryptoriez Logo" class="h-10 w-auto" />
           </div>
-          <!-- Contact Information -->
-          <div class="text-white/80 space-y-2 text-center md:text-right w-full md:w-auto">
-            <a href="mailto:info@cryptoriez.be" class="block hover:text-white transition-colors duration-300">info@cryptoriez.be</a>
-          </div>
+        </div>
+
+        <!-- Legal -->
+        <div class="mt-12 border-t border-white/10 pt-6 text-xs text-center text-white/60">
+          <p>&copy; 2025 Cryptoriez. Alle rechten voorbehouden.</p>
+          <p>
+            <a href="/privacy.html" class="hover:text-white underline">Privacybeleid</a> ·
+            <a href="/disclaimer.html" class="hover:text-white underline">Disclaimer</a>
+          </p>
         </div>
       </div>
     </footer>
@@ -396,6 +552,19 @@
                     closeIcon.classList.add('hidden');
                 });
             });
+        });
+
+        // Sticky CTA bar functionality
+        window.addEventListener('scroll', function() {
+            const stickyCta = document.getElementById('stickyCta');
+            const heroSection = document.querySelector('section');
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            
+            if (window.pageYOffset > heroBottom) {
+                stickyCta.classList.add('show');
+            } else {
+                stickyCta.classList.remove('show');
+            }
         });
 
         // Form submission handling
