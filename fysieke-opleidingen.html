@@ -66,20 +66,7 @@
             flex-shrink: 0;
         }
         
-        /* Sticky CTA bar */
-        .sticky-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 40;
-            transform: translateY(100%);
-            transition: transform 0.3s ease-out;
-        }
-        
-        .sticky-cta.show {
-            transform: translateY(0);
-        }
+
         
         /* Parallax effect for hero background */
         .parallax-bg {
@@ -268,7 +255,7 @@
                     Wat kun je verwachten?
                 </h2>
                 <p class="text-lg text-gray-300 max-w-4xl mx-auto mb-12">
-                    Onze opleidings- en mentorshiptrajecten kan je onderverdelen in basis en advanced. In beide trajecten wordt je van A-Z opgeleid in het gebied waarin jij als een professional wilt gaan handelen.
+                    Onze opleidings- en mentorshiptrajecten kan je onderverdelen 2 trajecten. In beide trajecten wordt je van A-Z opgeleid in het gebied waarin jij als een professional wilt gaan handelen.
                 </p>
             </div>
             
@@ -283,7 +270,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white">Basis Traject</h3>
+                            <h3 class="text-2xl font-bold text-white">Investeren in Crypto</h3>
                             <p class="text-crypto-orange font-medium">Fundamentele kennis</p>
                         </div>
                     </div>
@@ -312,22 +299,22 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white">Advanced Traject</h3>
+                            <h3 class="text-2xl font-bold text-white">Leren technisch traden</h3>
                             <p class="text-crypto-blue font-medium">Professionele ontwikkeling</p>
                         </div>
                     </div>
                     <div class="space-y-4">
                         <div class="flex items-start">
                             <div class="w-2 h-2 bg-crypto-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <p class="text-gray-300">Theoretische kennis voor leverage trading</p>
+                            <p class="text-gray-300">Leer een chart lezen</p>
                         </div>
                         <div class="flex items-start">
                             <div class="w-2 h-2 bg-crypto-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <p class="text-gray-300">Jaarlang persoonlijke opvolging en begeleiding</p>
+                            <p class="text-gray-300">Leer Technisch traden op verschillende markten</p>
                         </div>
                         <div class="flex items-start">
                             <div class="w-2 h-2 bg-crypto-blue rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <p class="text-gray-300">Ontwikkeling tot de beste versie van jezelf</p>
+                            <p class="text-gray-300">1 op 1 begeleiding</p>
                         </div>
                     </div>
                 </div>
@@ -433,7 +420,7 @@
     </section>
 
     <!-- Sticky CTA Bar -->
-    <div id="stickyCta" class="sticky-cta bg-gray-900/95 backdrop-blur-sm border-t border-gray-700 p-4">
+    <div id="stickyCta" class="fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur-sm border-t border-gray-700 p-4 z-40 transform translate-y-full transition-transform duration-300 ease-in-out">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-center sm:text-left">
                 <h3 class="text-lg font-semibold text-white">Schrijf je in voor een fysieke opleiding</h3>
@@ -446,58 +433,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="w-full bg-black/40 backdrop-blur-md border-t border-white/10 pt-16 pb-28 sm:pb-20 text-white/90">
-      <div class="w-full px-4 md:px-6">
-        <div class="flex flex-col md:flex-row justify-between gap-12">
-
-          <!-- Contactinformatie -->
-          <div class="space-y-4 text-sm md:text-base">
-            <h3 class="text-lg font-semibold text-white">Contact</h3>
-            <div>
-              <p>Katelijnepoort Business Center</p>
-              <p>Baron Ruzettelaan 1 bus 1.1</p>
-              <p>8310 Brugge</p>
-            </div>
-            <div>
-              <p>Lindendreef 9</p>
-              <p>2950 Kapellen, Antwerpen</p>
-            </div>
-            <div>
-              <p>Zoutelaan 51</p>
-              <p>8301 Knokke-Heist</p>
-            </div>
-            <div>
-              <a href="mailto:info@cryptoriez.be" class="text-crypto-orange hover:underline">info@cryptoriez.be</a>
-            </div>
-          </div>
-
-          <!-- Socials & Logo -->
-          <div class="flex flex-col items-center md:items-end justify-between w-full md:w-auto gap-6">
-            <div class="flex justify-center md:justify-end gap-6">
-              <a href="https://www.instagram.com/cryptoriez/" target="_blank" aria-label="Instagram" class="hover:text-white">
-                <i class="fab fa-instagram text-xl"></i>
-              </a>
-              <a href="https://www.linkedin.com/company/cryptoriez/" target="_blank" aria-label="LinkedIn" class="hover:text-white">
-                <i class="fab fa-linkedin text-xl"></i>
-              </a>
-              <a href="https://www.youtube.com/@Cryptoriez" target="_blank" aria-label="YouTube" class="hover:text-white">
-                <i class="fab fa-youtube text-xl"></i>
-              </a>
-            </div>
-            <img src="cryptoriez.png" alt="Cryptoriez Logo" class="h-10 w-auto" />
-          </div>
-        </div>
-
-        <!-- Legal -->
-        <div class="mt-12 border-t border-white/10 pt-6 text-xs text-center text-white/60">
-          <p>&copy; 2025 Cryptoriez. Alle rechten voorbehouden.</p>
-          <p>
-            <a href="/privacy.html" class="hover:text-white underline">Privacybeleid</a> ·
-            <a href="/disclaimer.html" class="hover:text-white underline">Disclaimer</a>
-          </p>
-        </div>
-      </div>
-    </footer>
+   
 
     <script>
         // Fade-in animation on scroll
@@ -559,9 +495,9 @@
             const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
             
             if (window.pageYOffset > heroBottom) {
-                stickyCta.classList.add('show');
+                stickyCta.style.transform = 'translateY(0)';
             } else {
-                stickyCta.classList.remove('show');
+                stickyCta.style.transform = 'translateY(100%)';
             }
         });
 
@@ -617,5 +553,56 @@
             document.getElementById('popupModal').classList.add('hidden');
         });
     </script>
+    <footer class="relative w-screen bg-black/40 backdrop-blur-md border-t border-white/10 pt-16 pb-20 text-white/90">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between gap-12">
+                <!-- Contactinformatie -->
+                <div class="space-y-4 text-sm md:text-base">
+                    <h3 class="text-lg font-semibold text-white">Contact</h3>
+                    <div>
+                        <p>Katelijnepoort Business Center</p>
+                        <p>Baron Ruzettelaan 1 bus 1.1</p>
+                        <p>8310 Brugge</p>
+                    </div>
+                    <div>
+                        <p>Lindendreef 9</p>
+                        <p>2950 Kapellen, Antwerpen</p>
+                    </div>
+                    <div>
+                        <p>Zoutelaan 51</p>
+                        <p>8301 Knokke-Heist</p>
+                    </div>
+                    <div>
+                        <a href="mailto:info@cryptoriez.be" class="text-crypto-orange hover:underline">info@cryptoriez.be</a>
+                    </div>
+                </div>
+    
+                <!-- Socials & Logo -->
+                <div class="flex flex-col items-center md:items-end justify-between w-full md:w-auto gap-6">
+                    <div class="flex justify-center md:justify-end gap-6">
+                        <a href="https://www.instagram.com/cryptoriez/" target="_blank" aria-label="Instagram" class="hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/cryptoriez/" target="_blank" aria-label="LinkedIn" class="hover:text-white">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@Cryptoriez" target="_blank" aria-label="YouTube" class="hover:text-white">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                    <img src="cryptoriez.png" alt="Cryptoriez Logo" class="h-10 w-auto" />
+                </div>
+            </div>
+    
+            <!-- Legal -->
+            <div class="mt-12 border-t border-white/10 pt-6 text-xs text-center text-white/60">
+                <p>&copy; 2025 Cryptoriez. Alle rechten voorbehouden.</p>
+                <p>
+                    <a href="/privacy.html" class="hover:text-white underline">Privacybeleid</a> ·
+                    <a href="/disclaimer.html" class="hover:text-white underline">Disclaimer</a>
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html> 
