@@ -731,7 +731,7 @@
                 <div class="fade-in relative rounded-3xl overflow-hidden group">
                     <!-- Background Image -->
                     <div class="relative h-96 md:h-[500px] w-full">
-                        <img src="glen.png" alt="Glen" class="w-full h-full object-cover">
+                        <img src="glen.jpg" alt="Glen" class="w-full h-full object-cover">
                         <!-- Gradient Overlay for better text readability -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                         
@@ -893,13 +893,106 @@
         <!-- Legal -->
         <div class="mt-12 border-t border-white/10 pt-6 text-xs text-center text-white/60">
           <p>&copy; 2025 Cryptoriez. Alle rechten voorbehouden.</p>
-          <p>
-            <a href="/privacy.html" class="hover:text-white underline">Privacybeleid</a> ·
-            <a href="/disclaimer.html" class="hover:text-white underline">Disclaimer</a>
+          <p class="space-x-4">
+            <button id="openPrivacyModal" class="text-sm underline text-gray-400 hover:text-white">Privacybeleid</button>
+            <button id="openDisclaimerModal" class="text-sm underline text-gray-400 hover:text-white">Disclaimer</button>
+            <button id="openVoorwaardenModal" class="text-sm underline text-gray-400 hover:text-white">Algemene Voorwaarden</button>
+            <button id="openCookieModal" class="text-sm underline text-gray-400 hover:text-white">Cookieverklaring</button>
           </p>
         </div>
       </div>
     </footer>
+
+    <!-- Privacy Modal -->
+    <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden">
+      <!-- Modal content -->
+      <div class="bg-[#1A1A1A] text-white max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 rounded-xl shadow-xl relative">
+        <button id="closePrivacyModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+        <h2 class="text-2xl font-semibold mb-4">Privacybeleid</h2>
+
+        <p class="mb-4">Cryptoriez, een platform beheerd door Wttrw BV (BE0800.680.956), hecht veel belang aan jouw privacy en verwerkt je gegevens in overeenstemming met de GDPR-wetgeving.</p>
+
+        <h3 class="text-lg font-semibold mt-6 mb-2">1. Welke gegevens verzamelen we?</h3>
+        <p class="mb-4">Wanneer je het intakeformulier invult, verzamelen we enkel de gegevens die je zelf invult, zoals je e-mailadres en eventueel je naam. Deze gegevens worden uitsluitend gebruikt om je te contacteren i.v.m. onze educatieve diensten.</p>
+
+        <h3 class="text-lg font-semibold mt-6 mb-2">2. Hoe worden je gegevens verwerkt?</h3>
+        <p class="mb-4">De informatie wordt via Formspree verzonden en wordt niet gedeeld met derden. We gebruiken geen trackingtools zoals Google Analytics of Facebook Pixel.</p>
+
+        <h3 class="text-lg font-semibold mt-6 mb-2">3. Hoe lang bewaren we jouw gegevens?</h3>
+        <p class="mb-4">Je gegevens worden maximaal 12 maanden bewaard of tot wanneer je verzoekt om ze te verwijderen.</p>
+
+        <h3 class="text-lg font-semibold mt-6 mb-2">4. Je rechten</h3>
+        <p class="mb-4">Je hebt recht op inzage, correctie of verwijdering van je gegevens. Je kan ons hiervoor contacteren via <a href="mailto:cryptoriez@gmail.com" class="underline text-blue-400">cryptoriez@gmail.com</a>.</p>
+
+        <h3 class="text-lg font-semibold mt-6 mb-2">5. Verantwoordelijke voor verwerking</h3>
+        <p class="mb-4">
+          Wttrw BV<br>
+          Knoksebaan 2<br>
+          8340 Damme<br>
+          België<br>
+          BE0800.680.956
+        </p>
+      </div>
+    </div>
+
+    <!-- Disclaimer Modal -->
+    <div id="disclaimerModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden">
+      <div class="bg-[#1A1A1A] text-white max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 rounded-xl shadow-xl relative">
+        <button id="closeDisclaimerModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+        <h2 class="text-2xl font-semibold mb-4">Disclaimer</h2>
+
+        <p class="mb-4">Cryptoriez is een educatief platform dat zich richt op het delen van kennis rond crypto en forex trading. Alle informatie die via deze website, cursussen of Discord gedeeld wordt, is <strong>uitsluitend bedoeld ter educatie</strong>.</p>
+
+        <p class="mb-4">Cryptoriez geeft <strong>geen beleggingsadvies</strong>. Signalen, analyses of meningen gedeeld via onze community zijn louter ter illustratie en mogen niet worden beschouwd als financieel advies.</p>
+
+        <p class="mb-4">Trading brengt aanzienlijke risico's met zich mee. Handel alleen met geld dat je bereid bent te verliezen.</p>
+
+        <p>Cryptoriez (Wttrw BV) kan op geen enkele manier aansprakelijk worden gesteld voor eventuele verliezen die voortkomen uit handelsbeslissingen gebaseerd op onze content.</p>
+      </div>
+    </div>
+
+    <!-- Algemene Voorwaarden Modal -->
+    <div id="voorwaardenModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden">
+      <div class="bg-[#1A1A1A] text-white max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 rounded-xl shadow-xl relative">
+        <button id="closeVoorwaardenModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+        <h2 class="text-2xl font-semibold mb-4">Algemene Voorwaarden</h2>
+
+        <h3 class="text-lg font-semibold mt-4 mb-2">1. Definities</h3>
+        <p class="mb-4">Cryptoriez = het educatief platform uitgebaat door Wttrw BV<br>
+        Gebruiker = elke persoon die een product aankoopt of het formulier invult<br>
+        Product = online cursus, begeleiding of Discord-toegang</p>
+
+        <h3 class="text-lg font-semibold mt-4 mb-2">2. Toepasselijkheid</h3>
+        <p class="mb-4">Deze voorwaarden gelden voor elke aankoop via de website en de toegang tot onze educatieve community.</p>
+
+        <h3 class="text-lg font-semibold mt-4 mb-2">3. Diensten & levering</h3>
+        <p class="mb-4">Na betaling via Stripe krijg je toegang tot je digitale cursus of de Discord-community. Er is geen herroepingsrecht van toepassing aangezien het digitale producten betreft met onmiddellijke toegang.</p>
+
+        <h3 class="text-lg font-semibold mt-4 mb-2">4. Aansprakelijkheid</h3>
+        <p class="mb-4">Cryptoriez biedt geen financieel advies. Zie volledige disclaimer. Gebruik van onze content is op eigen risico.</p>
+
+        <h3 class="text-lg font-semibold mt-4 mb-2">5. Betaling</h3>
+        <p class="mb-4">Alle betalingen verlopen via Stripe. Prijzen zijn inclusief btw tenzij anders vermeld.</p>
+
+        <h3 class="text-lg font-semibold mt-4 mb-2">6. Gegevensverwerking</h3>
+        <p class="mb-4">Zie onze privacyverklaring voor info over verwerking van persoonsgegevens.</p>
+
+        <h3 class="text-lg font-semibold mt-4 mb-2">7. Contact</h3>
+        <p class="mb-4">Voor vragen kan je ons bereiken via <a href="mailto:cryptoriez@gmail.com" class="underline text-blue-400">cryptoriez@gmail.com</a>.</p>
+      </div>
+    </div>
+
+    <!-- Cookieverklaring Modal -->
+    <div id="cookieModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden">
+      <div class="bg-[#1A1A1A] text-white max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 rounded-xl shadow-xl relative">
+        <button id="closeCookieModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+        <h2 class="text-2xl font-semibold mb-4">Cookieverklaring</h2>
+
+        <p class="mb-4">Deze website maakt <strong>geen gebruik van trackingcookies</strong> of externe analytische tools. Enkel functionele cookies die nodig zijn voor de werking van het formulier kunnen aanwezig zijn.</p>
+
+        <p class="mb-4">Er wordt geen persoonlijke data getrackt voor marketing, analytische of advertentiedoeleinden.</p>
+      </div>
+    </div>
 
     <!-- Popup Modal -->
     <div id="popupModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
@@ -1027,6 +1120,105 @@
             popupModal.addEventListener('click', function(e) {
                 if (e.target === popupModal) {
                     popupModal.classList.add('hidden');
+                }
+            });
+
+            // Privacy Modal functionality
+            const privacyModal = document.getElementById('privacyModal');
+            const openPrivacyBtn = document.getElementById('openPrivacyModal');
+            const closePrivacyBtn = document.getElementById('closePrivacyModal');
+
+            openPrivacyBtn.addEventListener('click', () => {
+                privacyModal.classList.remove('hidden');
+            });
+
+            closePrivacyBtn.addEventListener('click', () => {
+                privacyModal.classList.add('hidden');
+            });
+
+            // Close privacy modal when clicking outside
+            privacyModal.addEventListener('click', (e) => {
+                if (e.target === privacyModal) {
+                    privacyModal.classList.add('hidden');
+                }
+            });
+
+            // Close privacy modal with Escape key
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !privacyModal.classList.contains('hidden')) {
+                    privacyModal.classList.add('hidden');
+                }
+            });
+
+            // Disclaimer Modal functionality
+            const disclaimerModal = document.getElementById('disclaimerModal');
+            const openDisclaimerBtn = document.getElementById('openDisclaimerModal');
+            const closeDisclaimerBtn = document.getElementById('closeDisclaimerModal');
+
+            openDisclaimerBtn.addEventListener('click', () => {
+                disclaimerModal.classList.remove('hidden');
+            });
+
+            closeDisclaimerBtn.addEventListener('click', () => {
+                disclaimerModal.classList.add('hidden');
+            });
+
+            disclaimerModal.addEventListener('click', (e) => {
+                if (e.target === disclaimerModal) {
+                    disclaimerModal.classList.add('hidden');
+                }
+            });
+
+            // Algemene Voorwaarden Modal functionality
+            const voorwaardenModal = document.getElementById('voorwaardenModal');
+            const openVoorwaardenBtn = document.getElementById('openVoorwaardenModal');
+            const closeVoorwaardenBtn = document.getElementById('closeVoorwaardenModal');
+
+            openVoorwaardenBtn.addEventListener('click', () => {
+                voorwaardenModal.classList.remove('hidden');
+            });
+
+            closeVoorwaardenBtn.addEventListener('click', () => {
+                voorwaardenModal.classList.add('hidden');
+            });
+
+            voorwaardenModal.addEventListener('click', (e) => {
+                if (e.target === voorwaardenModal) {
+                    voorwaardenModal.classList.add('hidden');
+                }
+            });
+
+            // Cookie Modal functionality
+            const cookieModal = document.getElementById('cookieModal');
+            const openCookieBtn = document.getElementById('openCookieModal');
+            const closeCookieBtn = document.getElementById('closeCookieModal');
+
+            openCookieBtn.addEventListener('click', () => {
+                cookieModal.classList.remove('hidden');
+            });
+
+            closeCookieBtn.addEventListener('click', () => {
+                cookieModal.classList.add('hidden');
+            });
+
+            cookieModal.addEventListener('click', (e) => {
+                if (e.target === cookieModal) {
+                    cookieModal.classList.add('hidden');
+                }
+            });
+
+            // Enhanced Escape key handling for all modals
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (!privacyModal.classList.contains('hidden')) {
+                        privacyModal.classList.add('hidden');
+                    } else if (!disclaimerModal.classList.contains('hidden')) {
+                        disclaimerModal.classList.add('hidden');
+                    } else if (!voorwaardenModal.classList.contains('hidden')) {
+                        voorwaardenModal.classList.add('hidden');
+                    } else if (!cookieModal.classList.contains('hidden')) {
+                        cookieModal.classList.add('hidden');
+                    }
                 }
             });
         });

@@ -20,7 +20,7 @@
           <p>8301 Knokke-Heist</p>
         </div>
         <div>
-          <a href="mailto:info@cryptoriez.be" class="text-crypto-orange hover:underline">info@cryptoriez.be</a>
+          <a href="mailto:cryptoriez@gmail.com" class="text-crypto-orange hover:underline">cryptoriez@gmail.com</a>
         </div>
       </div>
 
@@ -45,9 +45,59 @@
     <div class="mt-12 border-t border-white/10 pt-6 text-xs text-center text-white/60">
       <p>&copy; 2025 Cryptoriez. Alle rechten voorbehouden.</p>
       <p>
-        <a href="/privacy.html" class="hover:text-white underline">Privacybeleid</a> ·
+        <button id="openPrivacyModal" class="text-sm underline text-gray-400 hover:text-white">Privacybeleid</button> ·
         <a href="/disclaimer.html" class="hover:text-white underline">Disclaimer</a>
       </p>
     </div>
   </div>
-</footer> 
+</footer>
+
+<!-- Privacy Modal -->
+<div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden">
+  <!-- Modal content -->
+  <div class="bg-[#1A1A1A] text-white max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 rounded-xl shadow-xl relative">
+    <button id="closePrivacyModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+    <h2 class="text-2xl font-semibold mb-4">Privacybeleid</h2>
+
+    <p class="mb-4">Cryptoriez, een platform beheerd door Wttrw BV (BE0800.680.956), hecht veel belang aan jouw privacy en verwerkt je gegevens in overeenstemming met de GDPR-wetgeving.</p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2">1. Welke gegevens verzamelen we?</h3>
+    <p class="mb-4">Wanneer je het intakeformulier invult, verzamelen we enkel de gegevens die je zelf invult, zoals je e-mailadres en eventueel je naam. Deze gegevens worden uitsluitend gebruikt om je te contacteren i.v.m. onze educatieve diensten.</p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2">2. Hoe worden je gegevens verwerkt?</h3>
+    <p class="mb-4">De informatie wordt via Formspree verzonden en wordt niet gedeeld met derden. We gebruiken geen trackingtools zoals Google Analytics of Facebook Pixel.</p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2">3. Hoe lang bewaren we jouw gegevens?</h3>
+    <p class="mb-4">Je gegevens worden maximaal 12 maanden bewaard of tot wanneer je verzoekt om ze te verwijderen.</p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2">4. Je rechten</h3>
+    <p class="mb-4">Je hebt recht op inzage, correctie of verwijdering van je gegevens. Je kan ons hiervoor contacteren via <a href="mailto:cryptoriez@gmail.com" class="underline text-blue-400">cryptoriez@gmail.com</a>.</p>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2">5. Verantwoordelijke voor verwerking</h3>
+    <p class="mb-4">
+      Wttrw BV<br>
+      Knoksebaan 2<br>
+      8340 Damme<br>
+      België<br>
+      BE0800.680.956
+    </p>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('privacyModal');
+  const openBtn = document.getElementById('openPrivacyModal');
+  const closeBtn = document.getElementById('closePrivacyModal');
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') modal.classList.add('hidden');
+  });
+</script> 
