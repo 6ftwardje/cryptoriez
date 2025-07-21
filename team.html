@@ -117,7 +117,7 @@
                 </div>
                 
                 <!-- Desktop CTA Button -->
-                <a href="#call" class="hidden md:inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
+                <a href="javascript:void(0)" id="openFormModal" class="hidden md:inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
                     Plan een call
                 </a>
                 
@@ -141,7 +141,7 @@
                     <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Opleidingen</a>
                     <a href="discord.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Discord</a>
                     <a href="team.html" class="text-crypto-orange block px-3 py-2 rounded-md text-base font-medium">Team</a>
-                    <a href="#call" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 mt-4">
+                    <a href="javascript:void(0)" id="openFormModalMobile" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 mt-4">
                         Plan een call
                     </a>
                 </div>
@@ -336,7 +336,7 @@
             <p class="text-xl text-gray-300 mb-8">
                 Plan een kennismakingsgesprek om te ontdekken hoe je ons team kan aanvullen.
             </p>
-            <button id="openFormModal" class="inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
+            <button id="openFormModalBottom" class="inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200">
                 Plan je kennismaking
             </button>
         </div>
@@ -647,6 +647,8 @@
 
             // Form modal functionality
             const openFormModal = document.getElementById('openFormModal');
+            const openFormModalMobile = document.getElementById('openFormModalMobile');
+            const openFormModalBottom = document.getElementById('openFormModalBottom');
             const formModal = document.getElementById('formModal');
             const closeFormModal = document.getElementById('closeFormModal');
             const contactForm = document.getElementById('contactForm');
@@ -655,11 +657,14 @@
             const phoneInput = document.getElementById('phone');
             const countryCodeSelect = document.getElementById('countryCode');
 
-            // Open form modal
-            openFormModal.addEventListener('click', function() {
+            // Open form modal (desktop & mobile)
+            function openForm() {
                 formModal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            });
+            }
+            if (openFormModal) openFormModal.addEventListener('click', openForm);
+            if (openFormModalMobile) openFormModalMobile.addEventListener('click', openForm);
+            if (openFormModalBottom) openFormModalBottom.addEventListener('click', openForm);
 
             // Close form modal
             closeFormModal.addEventListener('click', function() {
