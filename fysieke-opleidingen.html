@@ -401,7 +401,7 @@
                 <!-- Formulier -->
                 <form 
                     id="contactForm"
-                    action="https://hook.eu2.make.com/1yadxidxn3j9kakanfa0qnungr1foovy" 
+                    action="https://formspree.io/f/mjkogjeo" 
                     method="POST" 
                     class="flex-1 bg-gray-900/50 p-6 rounded-xl border border-gray-700 space-y-4 liquid-glass"
                 >
@@ -568,35 +568,36 @@
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Telefoonnummer validatie
+            // Phone validation
             const phoneValue = phoneInput.value.trim();
             const countryCode = countryCodeSelect.value;
-            
             if (!/^[0-9]+$/.test(phoneValue) || phoneValue.length < 8) {
                 alert('Vul een geldig telefoonnummer in (enkel cijfers, minimaal 8 cijfers).');
                 phoneInput.focus();
                 return;
             }
-            
-            // Formulierdata ophalen en volledig telefoonnummer samenstellen
-            const formData = new FormData(contactForm);
+            // Update phone field with full number before submission
             const fullPhoneNumber = countryCode + phoneValue;
-            formData.set('phone', fullPhoneNumber); // landcode + telefoonnummer
-            
+            phoneInput.value = fullPhoneNumber;
+            // Prepare form data
+            const formData = new FormData(contactForm);
             fetch(contactForm.action, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: { 'Accept': 'application/json' }
             })
             .then(response => {
                 if (response.ok) {
-                    popupModal.classList.remove('hidden');
-                    contactForm.reset();
+                    contactForm.style.display = 'none';
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'p-6 bg-green-700/80 text-white rounded-xl text-center mt-6';
+                    successMsg.innerHTML = '<h3 class="text-2xl font-bold mb-2">Bedankt!</h3><p>Je aanvraag is goed ontvangen. Je krijgt binnen de 24 uur een antwoord.</p>';
+                    contactForm.parentNode.insertBefore(successMsg, contactForm.nextSibling);
                 } else {
                     alert('Er is een fout opgetreden. Probeer het later opnieuw.');
                 }
             })
-            .catch(error => {
-                console.error('Error:', error);
+            .catch(() => {
                 alert('Er is een fout opgetreden. Probeer het later opnieuw.');
             });
         });
