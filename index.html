@@ -836,8 +836,18 @@
                     </div>
 
                     <div>
-                        <label for="goal" class="block text-sm text-gray-300 mb-1">Wat wil je bereiken met trading?</label>
-                        <textarea name="goal" id="goal" rows="3" class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-crypto-orange"></textarea>
+                        <label for="goal" class="block text-sm text-gray-300 mb-1">
+                            Wat wil je bereiken met trading? <span class="text-crypto-orange">*</span>
+                        </label>
+                        <textarea 
+                            name="goal" 
+                            id="goal" 
+                            rows="3" 
+                            required 
+                            placeholder="Vertel ons waarom je wilt beginnen met trading en wat je doelen zijn..."
+                            class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-crypto-orange"
+                        ></textarea>
+                        <p class="text-xs text-gray-400 mt-1">Dit helpt ons om je beter te begeleiden tijdens het kennismakingsgesprek.</p>
                     </div>
 
                     <button type="submit" class="w-full bg-crypto-orange hover:bg-crypto-orange/90 text-white font-semibold py-3 rounded-lg transition-colors duration-200">
