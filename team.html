@@ -672,25 +672,57 @@
                 contactForm.appendChild(contextInput);
                 // Prepare form data
                 const formData = new FormData(contactForm);
-                fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        contactForm.style.display = 'none';
-                        const successMsg = document.createElement('div');
-                        successMsg.className = 'p-6 bg-green-700/80 text-white rounded-xl text-center mt-6';
-                        successMsg.innerHTML = '<h3 class="text-2xl font-bold mb-2">Bedankt!</h3><p>Je aanvraag is goed ontvangen. Je krijgt binnen de 24 uur een antwoord.</p>';
-                        contactForm.parentNode.insertBefore(successMsg, contactForm.nextSibling);
-                    } else {
+                
+                // Create webhook payload for Make.com
+                const webhookData = {
+                    naam: formData.get('name') || '',
+                    email: formData.get('email') || '',
+                    phone: fullPhoneNumber,
+                    message: formData.get('goal') || '',
+                    source: 'team.html',
+                    context: 'team_kennismaking',
+                    timestamp: new Date().toISOString()
+                };
+
+                // Send to both Formspree and Make.com webhook
+                const promises = [
+                    // Send to Formspree (backup)
+                    fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    }),
+                    // Send to Make.com webhook
+                    fetch('https://hook.eu2.make.com/7wwqjfpwge57ardc3vci1pqxma719fve', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(webhookData)
+                    })
+                ];
+
+                // Handle responses
+                Promise.allSettled(promises)
+                    .then(results => {
+                        // Check if at least one submission was successful
+                        const hasSuccess = results.some(result => 
+                            result.status === 'fulfilled' && result.value.ok
+                        );
+                        
+                        if (hasSuccess) {
+                            contactForm.style.display = 'none';
+                            const successMsg = document.createElement('div');
+                            successMsg.className = 'p-6 bg-green-700/80 text-white rounded-xl text-center mt-6';
+                            successMsg.innerHTML = '<h3 class="text-2xl font-bold mb-2">Bedankt!</h3><p>Je aanvraag is goed ontvangen. Je krijgt binnen de 24 uur een antwoord.</p>';
+                            contactForm.parentNode.insertBefore(successMsg, contactForm.nextSibling);
+                        } else {
+                            alert('Er is een fout opgetreden. Probeer het later opnieuw.');
+                        }
+                    })
+                    .catch(() => {
                         alert('Er is een fout opgetreden. Probeer het later opnieuw.');
-                    }
-                })
-                .catch(() => {
-                    alert('Er is een fout opgetreden. Probeer het later opnieuw.');
-                });
+                    });
             });
 
             // Close success popup
