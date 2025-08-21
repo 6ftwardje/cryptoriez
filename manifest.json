@@ -1,0 +1,27 @@
+{
+  "name": "Cryptoriez - Crypto en Trading Opleidingen",
+  "short_name": "Cryptoriez",
+  "description": "Leer zelfstandig traden in crypto en forex met fysieke opleidingen in België. 24/7 Discord community en professionele begeleiding.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#f88226",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "cryptoriez.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "cryptoriez.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "finance", "business"],
+  "lang": "nl-BE",
+  "dir": "ltr"
+}
