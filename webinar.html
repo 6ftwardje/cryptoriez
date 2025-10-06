@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Gratis Webinar - Cryptoriez</title>
+    <meta name="title" content="Gratis Webinar - Cryptoriez">
+    <meta name="description" content="Ontdek hoe je in de komende bull market het meeste winst kan maken met een bewezen strategie. Gratis webinar op 28 oktober om 20:00.">
+    <meta name="keywords" content="crypto webinar, bull market strategie, gratis crypto training, trading webinar, cryptocurrency winst">
+    <meta name="author" content="Cryptoriez">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cryptoriez.be/webinar">
+    <meta property="og:title" content="Gratis Webinar - Cryptoriez">
+    <meta property="og:description" content="Ontdek hoe je in de komende bull market het meeste winst kan maken met een bewezen strategie. Gratis webinar op 28 oktober om 20:00.">
+    <meta property="og:image" content="https://cryptoriez.be/hero.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cryptoriez.be/webinar">
+    <meta property="twitter:title" content="Gratis Webinar - Cryptoriez">
+    <meta property="twitter:description" content="Ontdek hoe je in de komende bull market het meeste winst kan maken met een bewezen strategie. Gratis webinar op 28 oktober om 20:00.">
+    <meta property="twitter:image" content="https://cryptoriez.be/hero.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="cryptoriez.png">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11184032010"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-11184032010');
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'crypto-orange': '#f88226',
+                        'crypto-blue': '#4670db',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, 
+                rgba(248, 130, 38, 0.3) 0%, 
+                rgba(17, 24, 39, 0.95) 25%, 
+                rgba(70, 112, 219, 0.2) 50%, 
+                rgba(17, 24, 39, 0.95) 75%, 
+                rgba(248, 130, 38, 0.2) 100%);
+        }
+        
+        /* Countdown timer styles */
+        .countdown-box {
+            background: rgba(248, 130, 38, 0.1);
+            border: 2px solid rgba(248, 130, 38, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-box:hover {
+            border-color: rgba(248, 130, 38, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        /* Glow effect */
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(248, 130, 38, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glow-effect:hover {
+            box-shadow: 0 0 30px rgba(248, 130, 38, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        /* Modal styles */
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+        }
+        
+        /* Form input styles */
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(248, 130, 38, 0.5);
+            outline: none;
+        }
+        
+        /* Benefit card styles */
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(248, 130, 38, 0.3);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-inter">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html">
+                        <img src="cryptoriez.png" alt="Cryptoriez" class="h-8 w-auto">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white transition-colors duration-200">Opleidingen</a>
+                    <a href="discord.html" class="text-gray-300 hover:text-white transition-colors duration-200">Discord</a>
+                    <a href="team.html" class="text-gray-300 hover:text-white transition-colors duration-200">Team</a>
+                    <a href="webinar.html" class="text-crypto-orange font-medium">Webinar</a>
+                </div>
+                
+                <!-- Desktop CTA Button -->
+                <a href="#inschrijven" class="hidden md:inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
+                    Schrijf je in
+                </a>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                    <span class="sr-only">Open main menu</span>
+                    <svg id="menu-icon" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 border-t border-gray-700">
+                    <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Opleidingen</a>
+                    <a href="discord.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Discord</a>
+                    <a href="team.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Team</a>
+                    <a href="webinar.html" class="text-crypto-orange block px-3 py-2 rounded-md text-base font-medium">Webinar</a>
+                    <a href="#inschrijven" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 mt-4">
+                        Schrijf je in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+        <!-- Background with gradient overlay -->
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0 bg-[url('hero.png')] bg-cover bg-center opacity-10"></div>
+        
+        <!-- Animated particles/elements -->
+        <div class="absolute top-20 left-10 w-32 h-32 bg-crypto-orange/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-crypto-blue/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+            <!-- Badge -->
+            <div class="inline-block mb-6">
+                <span class="bg-crypto-orange/20 text-crypto-orange px-4 py-2 rounded-full text-sm font-semibold border border-crypto-orange/30">
+                    <i class="fas fa-calendar-alt mr-2"></i>Gratis Online Webinar
+                </span>
+            </div>
+            
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                Ontdek de Strategie om <span class="text-crypto-orange">Explosieve Winst</span> te Maken in de Komende Bull Market
+            </h1>
+            
+            <!-- Subheadline -->
+            <p class="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 font-light">
+                28 oktober 2025 om 20:00 – Schrijf je gratis in
+            </p>
+            
+            <!-- Countdown Timer -->
+            <div id="countdown" class="flex flex-wrap justify-center gap-4 mb-10 max-w-2xl mx-auto">
+                <div class="countdown-box rounded-xl p-4 sm:p-6 min-w-[80px] sm:min-w-[100px]">
+                    <div id="days" class="text-3xl sm:text-4xl md:text-5xl font-bold text-crypto-orange">00</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Dagen</div>
+                </div>
+                <div class="countdown-box rounded-xl p-4 sm:p-6 min-w-[80px] sm:min-w-[100px]">
+                    <div id="hours" class="text-3xl sm:text-4xl md:text-5xl font-bold text-crypto-orange">00</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Uren</div>
+                </div>
+                <div class="countdown-box rounded-xl p-4 sm:p-6 min-w-[80px] sm:min-w-[100px]">
+                    <div id="minutes" class="text-3xl sm:text-4xl md:text-5xl font-bold text-crypto-orange">00</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Minuten</div>
+                </div>
+                <div class="countdown-box rounded-xl p-4 sm:p-6 min-w-[80px] sm:min-w-[100px]">
+                    <div id="seconds" class="text-3xl sm:text-4xl md:text-5xl font-bold text-crypto-orange">00</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Seconden</div>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <a href="#inschrijven" class="inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white text-lg font-semibold px-10 py-4 rounded-xl glow-effect">
+                <i class="fas fa-rocket mr-2"></i>Reserveer je gratis plek nu
+            </a>
+            
+            <!-- Trust indicators -->
+            <div class="mt-12 flex flex-wrap justify-center items-center gap-6 text-sm text-gray-400">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-users text-crypto-orange"></i>
+                    <span>500+ deelnemers verwacht</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-clock text-crypto-orange"></i>
+                    <span>90 minuten vol waarde</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-crypto-orange"></i>
+                    <span>100% Gratis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn Section -->
+    <section class="py-20 bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                    Wat je meeneemt uit dit <span class="text-crypto-orange">webinar</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Ontdek de strategieën die onze studenten gebruiken om succesvol te zijn in crypto trading
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="benefit-card rounded-2xl p-8 fade-in">
+                    <div class="w-16 h-16 bg-crypto-orange/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-3xl text-crypto-orange"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Maximale Winst in de Bull Market</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Leer hoe je de beste kansen identificeert en benut tijdens een bull market. Ontdek welke crypto's het meeste potentieel hebben en wanneer je moet instappen.
+                    </p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="benefit-card rounded-2xl p-8 fade-in" style="animation-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-crypto-blue/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-crypto-blue"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">De Bewezen Strategie</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Krijg inzicht in de exacte strategie die onze studenten gebruiken. Van technische analyse tot risicobeheer – alles wat je nodig hebt om zelfstandig te traden.
+                    </p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="benefit-card rounded-2xl p-8 fade-in" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-crypto-orange/20 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-gift text-3xl text-crypto-orange"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Waarom Gratis?</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        We willen zoveel mogelijk mensen helpen de juiste kennis te krijgen. Dit webinar is onze manier om waarde te geven en je kennis te laten maken met onze aanpak.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Team Note -->
+            <div class="mt-16 text-center fade-in">
+                <p class="text-lg text-gray-400">
+                    Gehost door het Cryptoriez team – <a href="team.html" class="text-crypto-orange hover:underline font-medium">leer meer over ons</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section id="inschrijven" class="py-20 relative overflow-hidden">
+        <!-- Background effects -->
+        <div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900"></div>
+        <div class="absolute top-0 left-1/4 w-64 h-64 bg-crypto-orange/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-crypto-blue/5 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                    Schrijf je <span class="text-crypto-orange">gratis</span> in
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Vul je gegevens in en ontvang direct je toegangslink
+                </p>
+            </div>
+            
+            <!-- Form -->
+            <form id="webinar-form" action="https://formspree.io/f/mjkogjeo" method="POST" class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 sm:p-10 border border-gray-700 fade-in">
+                <div class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">
+                            Volledige naam *
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            class="form-input w-full px-4 py-3 rounded-lg text-white"
+                            placeholder="Je volledige naam"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+                            E-mailadres *
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            class="form-input w-full px-4 py-3 rounded-lg text-white"
+                            placeholder="je@email.com"
+                        >
+                    </div>
+                    
+                    <!-- Hidden field for form type -->
+                    <input type="hidden" name="_subject" value="Nieuwe Webinar Inschrijving">
+                    <input type="hidden" name="webinar_date" value="28 oktober 2025 - 20:00">
+                    
+                    <button 
+                        type="submit" 
+                        class="w-full bg-crypto-orange hover:bg-crypto-orange/90 text-white font-semibold py-4 rounded-xl transition-all duration-200 glow-effect"
+                    >
+                        <i class="fas fa-paper-plane mr-2"></i>Bevestig mijn gratis plek
+                    </button>
+                    
+                    <p class="text-xs text-gray-500 text-center mt-4">
+                        Door je in te schrijven ga je akkoord met ons <button type="button" id="openPrivacyModalForm" class="underline hover:text-white">privacybeleid</button>.
+                    </p>
+                </div>
+            </form>
+            
+            <!-- Additional info -->
+            <div class="mt-8 text-center text-sm text-gray-400 space-y-2">
+                <p><i class="fas fa-envelope text-crypto-orange mr-2"></i>Je ontvangt direct een bevestigingsmail</p>
+                <p><i class="fas fa-calendar-check text-crypto-orange mr-2"></i>Een dag voor het webinar krijg je een herinnering</p>
+                <p><i class="fas fa-lock text-crypto-orange mr-2"></i>Je gegevens worden nooit gedeeld</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/70 modal-backdrop z-50 flex items-center justify-center hidden">
+        <div class="bg-gray-800 max-w-md w-full mx-4 rounded-2xl p-8 border border-gray-700 relative">
+            <button id="closeSuccessModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="text-center">
+                <div class="w-20 h-20 bg-crypto-orange/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check text-4xl text-crypto-orange"></i>
+                </div>
+                
+                <h3 class="text-2xl font-bold mb-4">Bedankt voor je inschrijving!</h3>
+                
+                <p class="text-gray-400 mb-6">
+                    Je ontvangt zo meteen een mail met alle details en de webinarlink voor 28 oktober om 20:00.
+                </p>
+                
+                <p class="text-sm text-gray-500 mb-6">
+                    Check ook je spam folder als je geen mail ziet binnen 5 minuten.
+                </p>
+                
+                <button id="closeSuccessModalBtn" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200">
+                    Sluiten
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Component -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('2025-10-28T20:00:00+02:00'); // CET timezone
+            const now = new Date();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('countdown').innerHTML = '<div class="text-2xl font-bold text-crypto-orange">Het webinar is begonnen!</div>';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Form submission handling
+        const form = document.getElementById('webinar-form');
+        const successModal = document.getElementById('successModal');
+        const closeSuccessModal = document.getElementById('closeSuccessModal');
+        const closeSuccessModalBtn = document.getElementById('closeSuccessModalBtn');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success modal
+                    successModal.classList.remove('hidden');
+                    form.reset();
+                    
+                    // Track conversion with Google Analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-11184032010',
+                            'event_category': 'Webinar',
+                            'event_label': 'Registration'
+                        });
+                    }
+                } else {
+                    alert('Er is iets misgegaan. Probeer het later opnieuw.');
+                }
+            } catch (error) {
+                alert('Er is iets misgegaan. Probeer het later opnieuw.');
+            }
+        });
+
+        closeSuccessModal.addEventListener('click', () => {
+            successModal.classList.add('hidden');
+        });
+
+        closeSuccessModalBtn.addEventListener('click', () => {
+            successModal.classList.add('hidden');
+        });
+
+        // Close modal on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                successModal.classList.add('hidden');
+            }
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Load footer component
+        fetch('footer-component.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+</body>
+</html>
+
+
