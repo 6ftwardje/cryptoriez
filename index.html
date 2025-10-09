@@ -192,9 +192,48 @@
             }
         }
         
-
-
+        /* Intro Video Section Styles */
+        .video-intro-container {
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
         
+        .video-intro-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 640px) {
+            .video-intro-container:hover {
+                transform: none;
+            }
+        }
+        
+        /* Mobile Pancake Menu Styles */
+        .fade-in-menu {
+            animation: fadeInMenu 0.4s ease-out;
+        }
+        
+        @keyframes fadeInMenu {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Prevent body scroll when menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        /* Menu icon rotation */
+        #menu-icon.rotate {
+            transform: rotate(90deg);
+        }
 
     </style>
     
@@ -232,9 +271,9 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
                     <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Bekijk onze fysieke opleidingen">Opleidingen</a>
+                    <a href="testimonials.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Bekijk student testimonials">Testimonials</a>
                     <a href="discord.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Leer meer over onze Discord community">Discord</a>
                     <a href="team.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Ontmoet ons team">Team</a>
-                    <a href="webinar.html" class="text-crypto-orange hover:text-white font-medium transition-colors duration-200" aria-label="Gratis webinar">Webinar</a>
                 </div>
                 
                 <!-- Desktop CTA Button -->
@@ -243,36 +282,56 @@
                 </a>
                 
                 <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Open hoofdmenu" aria-expanded="false" aria-controls="mobile-menu">
+                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white transition-all duration-300" aria-label="Open hoofdmenu" aria-expanded="false" aria-controls="mobile-menu">
                     <span class="sr-only">Open hoofdmenu</span>
-                    <!-- Icon when menu is closed -->
-                    <svg id="menu-icon" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <svg id="menu-icon" class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    <!-- Icon when menu is open -->
-                    <svg id="close-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
-            
-            <!-- Mobile Navigation Menu -->
-            <div id="mobile-menu" class="hidden md:hidden" aria-labelledby="mobile-menu-button">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 border-t border-gray-700">
-                    <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200" aria-label="Bekijk onze fysieke opleidingen">Opleidingen</a>
-                    <a href="discord.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200" aria-label="Leer meer over onze Discord community">Discord</a>
-                    <a href="team.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200" aria-label="Ontmoet ons team">Team</a>
-                    <a href="webinar.html" class="text-crypto-orange hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200" aria-label="Gratis webinar">Webinar</a>
-
-                    <a href="#call" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 mt-4" aria-label="Plan een gratis kennismakingscall">
-                        Plan een call
-                    </a>
-                </div>
-            </div>
         </div>
     </nav>
-
     </header>
+
+    <!-- Mobile Pancake Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden" aria-hidden="true"></div>
+
+    <!-- Mobile Pancake Menu -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-gray-900/80 backdrop-blur-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-2xl" aria-labelledby="mobile-menu-button">
+        <!-- Gradient Border -->
+        <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(248, 130, 38, 0.1) 0%, rgba(70, 112, 219, 0.1) 100%); border-left: 2px solid; border-image: linear-gradient(180deg, #f88226, #4670db) 1;"></div>
+        
+        <div class="relative h-full flex flex-col p-6">
+            <!-- Logo at top -->
+            <div class="mb-8 fade-in-menu">
+                <img src="cryptoriez.png" alt="Cryptoriez Logo" class="h-10 w-auto">
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="flex-1 space-y-2">
+                <a href="fysieke-opleidingen.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk onze fysieke opleidingen">
+                    <span class="text-lg font-medium">Opleidingen</span>
+                </a>
+                <a href="testimonials.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk student testimonials">
+                    <span class="text-lg font-medium">Testimonials</span>
+                </a>
+                <a href="discord.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Leer meer over onze Discord community">
+                    <span class="text-lg font-medium">Discord</span>
+                </a>
+                <a href="team.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Ontmoet ons team">
+                    <span class="text-lg font-medium">Team</span>
+                </a>
+            </nav>
+            
+            <!-- CTA Button at bottom -->
+            <div class="mt-auto pt-6 border-t border-gray-700/50">
+                <a href="#call" class="block w-full bg-crypto-orange hover:bg-crypto-orange/90 text-white text-center px-6 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" aria-label="Plan een gratis kennismakingscall">
+                    Plan een call
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <main>
@@ -315,14 +374,66 @@
             </ul>
             <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-2">
               <a href="#call" class="bg-crypto-orange hover:bg-orange-500 text-white px-6 sm:px-10 py-3 sm:py-5 rounded-lg text-lg sm:text-xl font-bold shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-crypto-orange focus:ring-offset-2" aria-label="Reserveer je plek in de Cryptoriez opleiding">
-                Reserveer je plek
+                Reserveer je plaats
               </a>
               <a href="discord.html#wordlid" class="flex items-center justify-center gap-2 bg-white text-crypto-blue px-6 sm:px-8 py-3 sm:py-5 rounded-lg text-base sm:text-lg font-semibold shadow border border-crypto-blue/20 hover:bg-gray-100 hover:border-crypto-blue transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-crypto-blue focus:ring-offset-2" aria-label="Bekijk Discord prijzen en word lid van de Cryptoriez Discord community">
                 <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/></svg>
-                Bekijk Discord prijzen
+                Join Premium Discord
               </a>
             </div>
-            <p class="text-sm text-gray-200 mt-4">beperkt aantal plekken beschikbaar! Al 50+ studenten gingen je voor.</p>
+            <p class="text-sm text-gray-200 mt-4">Beperkt aantal plaatsen beschikbaar! Al 100+ studenten gingen je voor.</p>
+        </div>
+    </section>
+
+    <!-- Wat is Cryptoriez Video Section -->
+    <section class="py-20 bg-gray-800/50 relative overflow-hidden" aria-labelledby="intro-video-heading">
+        <div class="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-gray-800/50"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 fade-in">
+                <h2 id="intro-video-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
+                    Wat is <span class="text-crypto-orange">Cryptoriez</span>?
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Ontdek in 90 seconden hoe wij jou helpen om zelfstandig te leren traden en financiële vrijheid op te bouwen
+                </p>
+            </div>
+            
+            <!-- Video Container -->
+            <div class="max-w-4xl mx-auto">
+                <div class="video-intro-container relative rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50 bg-gray-900/50 backdrop-blur-sm">
+                    <!-- Vimeo Video Player -->
+                    <div style="padding:56.25% 0 0 0;position:relative;">
+                        <iframe 
+                            src="https://player.vimeo.com/video/1125697893?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                            frameborder="0" 
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                            title="Wat is Cryptoriez - Introductie video"
+                            aria-label="Introductie video over Cryptoriez">
+                        </iframe>
+                    </div>
+                    
+                    <!-- Video Gradient Border Effect -->
+                    <div class="absolute inset-0 pointer-events-none rounded-2xl" style="background: linear-gradient(45deg, rgba(248, 130, 38, 0.1) 0%, rgba(70, 112, 219, 0.1) 100%);"></div>
+                </div>
+                
+                <!-- Video Stats/Benefits -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                    <div class="text-center p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-700/50 fade-in">
+                        <div class="text-3xl font-bold text-crypto-orange mb-2">1:30</div>
+                        <div class="text-sm text-gray-300">Korte maar krachtige uitleg</div>
+                    </div>
+                    <div class="text-center p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-700/50 fade-in">
+                        <div class="text-3xl font-bold text-crypto-orange mb-2">12 weken</div>
+                        <div class="text-sm text-gray-300">Van beginner naar trader</div>
+                    </div>
+                    <div class="text-center p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-700/50 fade-in">
+                        <div class="text-3xl font-bold text-crypto-orange mb-2">100+</div>
+                        <div class="text-sm text-gray-300">Studenten gingen je voor</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -612,257 +723,8 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-20 bg-gray-800/50 relative overflow-hidden" aria-labelledby="testimonials-heading">
-        <!-- Animated SVG Background -->
-        <div class="absolute inset-0 pointer-events-none opacity-10">
-            <svg class="w-full h-full" viewBox="0 0 730 320" preserveAspectRatio="xMidYMid slice">
-
-                
-                <!-- Candlestick wicks -->
-                <g id="Layer_4">
-                    <line fill="none" stroke="#333333" x1="52.5" y1="186.667" x2="52.5" y2="145" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="64.5" y1="167.999" x2="64.5" y2="197.333" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="76.5" y1="167.999" x2="76.5" y2="197.333" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="88.5" y1="211" x2="88.5" y2="243.746" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="124.5" y1="190.25" x2="124.5" y2="245.807" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="172.5" y1="87" x2="172.5" y2="132.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="208.5" y1="157.25" x2="208.5" y2="192.666" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="220.5" y1="168.959" x2="220.5" y2="208.125" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="244.5" y1="201.655" x2="244.5" y2="238.167" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="280.5" y1="136.07" x2="280.5" y2="176.256" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="292.5" y1="164.052" x2="292.5" y2="204.238" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="376.5" y1="144" x2="376.5" y2="192.001" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="388.5" y1="165.166" x2="388.5" y2="195.875" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="400.5" y1="147.167" x2="400.5" y2="184.937" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="304.5" y1="145.944" x2="304.5" y2="219.911" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="328.5" y1="130.352" x2="328.5" y2="194.875" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="352.5" y1="75.75" x2="352.5" y2="125" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="340.5" y1="105.778" x2="340.5" y2="185.096" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="364.5" y1="93.75" x2="364.5" y2="184.145" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="316.5" y1="137.267" x2="316.5" y2="199.986" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="256.5" y1="201.655" x2="256.5" y2="257.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="268.5" y1="222.75" x2="268.5" y2="284.167" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="232.5" y1="188.542" x2="232.5" y2="224.167" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="184.5" y1="70.066" x2="184.5" y2="109.75" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="196.5" y1="84.205" x2="196.5" y2="176.499" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="148.5" y1="137.592" x2="148.5" y2="255.749" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="160.5" y1="119.671" x2="160.5" y2="196.671" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="112.5" y1="241.5" x2="112.5" y2="268" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="136.5" y1="214.88" x2="136.5" y2="245.807" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="100.5" y1="239.377" x2="100.5" y2="272.123" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="412.5" y1="166.052" x2="412.5" y2="205.667" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="424.5" y1="182.563" x2="424.5" y2="205.667" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="436.5" y1="203.167" x2="436.5" y2="166.052" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="448.5" y1="180.521" x2="448.5" y2="205.667" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="460.5" y1="158.027" x2="460.5" y2="223.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="472.5" y1="203.167" x2="472.5" y2="163.75" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="484.5" y1="238.833" x2="484.5" y2="176.132" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="496.5" y1="264.5" x2="496.5" y2="220.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="508.5" y1="254.833" x2="508.5" y2="286.833" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="520.5" y1="284.963" x2="520.5" y2="220.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="532.5" y1="246.166" x2="532.5" y2="220.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="544.5" y1="275.265" x2="544.5" y2="235.166" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="556.5" y1="281.963" x2="556.5" y2="250.117" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="568.5" y1="238.833" x2="568.5" y2="194.115" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="580.5" y1="193.094" x2="580.5" y2="231.499" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="592.5" y1="230.13" x2="592.5" y2="176.132" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="604.5" y1="194.875" x2="604.5" y2="231.499" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="616.5" y1="205.667" x2="616.5" y2="151.833" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="628.5" y1="156.25" x2="628.5" y2="114.39" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="640.5" y1="120.166" x2="640.5" y2="155.25" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="652.5" y1="131.253" x2="652.5" y2="199.576" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="664.5" y1="113.39" x2="664.5" y2="88.498" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="676.5" y1="64.165" x2="676.5" y2="128.043" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="688.5" y1="48.832" x2="688.5" y2="92.165" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="700.5" y1="32.832" x2="700.5" y2="73.832" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="712.5" y1="55.02" x2="712.5" y2="108.498" class="candlestick-wick"/>
-                </g>
-                
-                <!-- Candlestick bodies -->
-                <g id="Layer_1">
-                    <rect x="49" y="153.332" fill="#ED454A" width="7" height="29.334" class="candlestick-body"/>
-                    <rect x="61" y="170.332" fill="#8CC63F" width="7" height="12.334" class="candlestick-body"/>
-                    <rect x="73" y="174.25" fill="#ED454A" width="7" height="51.916" class="candlestick-body"/>
-                    <rect x="193" y="90.5" fill="#ED454A" width="7" height="79.832" class="candlestick-body"/>
-                    <rect x="97" y="227.373" fill="#ED454A" width="7" height="39.127" class="candlestick-body"/>
-                    <rect x="109" y="248.5" fill="#8CC63F" width="7" height="14.5" class="candlestick-body"/>
-                    <rect x="121" y="224.617" fill="#8CC63F" width="7" height="9.633" class="candlestick-body"/>
-                    <rect x="133" y="217.75" fill="#ED454A" width="7" height="14.439" class="candlestick-body"/>
-                    <rect x="217" y="174.25" fill="#ED454A" width="7" height="22" class="candlestick-body"/>
-                    <rect x="277" y="149" fill="#ED454A" width="7" height="22" class="candlestick-body"/>
-                    <rect x="325" y="145.25" fill="#ED454A" width="7" height="7.583" class="candlestick-body"/>
-                    <rect x="385" y="169.458" fill="#ED454A" width="7" height="7.583" class="candlestick-body"/>
-                    <rect x="409" y="168.416" fill="#ED454A" width="7" height="26.459" class="candlestick-body"/>
-                    <rect x="433" y="184.145" fill="#ED454A" width="7" height="9.355" class="candlestick-body"/>
-                    <rect x="457" y="186.652" fill="#ED454A" width="7" height="8.223" class="candlestick-body"/>
-                    <rect x="553" y="269.697" fill="#ED454A" width="7" height="8.223" class="candlestick-body"/>
-                    <rect x="637" y="124.833" fill="#ED454A" width="7" height="6.42" class="candlestick-body"/>
-                    <rect x="709" y="62.728" fill="#ED454A" width="7" height="16.771" class="candlestick-body"/>
-                    <rect x="529" y="226.858" fill="#ED454A" width="7" height="11.975" class="candlestick-body"/>
-                    <rect x="481" y="201.655" fill="#ED454A" width="7" height="25.284" class="candlestick-body"/>
-                    <rect x="493" y="227.548" fill="#ED454A" width="7" height="31.767" class="candlestick-body"/>
-                    <rect x="541" y="243.432" fill="#ED454A" width="7" height="28.068" class="candlestick-body"/>
-                    <rect x="589" y="200.263" fill="#ED454A" width="7" height="26.596" class="candlestick-body"/>
-                    <rect x="649" y="135.404" fill="#ED454A" width="7" height="60.471" class="candlestick-body"/>
-                    <rect x="601" y="197.931" fill="#8CC63F" width="7" height="26.596" class="candlestick-body"/>
-                    <rect x="613" y="160" fill="#8CC63F" width="7" height="39.95" class="candlestick-body"/>
-                    <rect x="625" y="121.5" fill="#8CC63F" width="7" height="32" class="candlestick-body"/>
-                    <rect x="661" y="96.5" fill="#8CC63F" width="7" height="57" class="candlestick-body"/>
-                    <rect x="673" y="71.043" fill="#8CC63F" width="7" height="31.79" class="candlestick-body"/>
-                    <rect x="697" y="39.167" fill="#8CC63F" width="7" height="31.876" class="candlestick-body"/>
-                    <rect x="685" y="60.833" fill="#8CC63F" width="7" height="10.21" class="candlestick-body"/>
-                    <rect x="505" y="257.433" fill="#ED454A" width="7" height="24.53" class="candlestick-body"/>
-                    <rect x="517" y="224.97" fill="#8CC63F" width="7" height="50.295" class="candlestick-body"/>
-                    <rect x="565" y="199.986" fill="#8CC63F" width="7" height="32.859" class="candlestick-body"/>
-                    <rect x="577" y="195.986" fill="#8CC63F" width="7" height="7.181" class="candlestick-body"/>
-                    <rect x="469" y="195.875" fill="#ED454A" width="7" height="4.111" class="candlestick-body"/>
-                    <rect x="349" y="105.778" fill="#ED454A" width="7" height="10.722" class="candlestick-body"/>
-                    <rect x="361" y="111.139" fill="#ED454A" width="7" height="69.611" class="candlestick-body"/>
-                    <rect x="337" y="113.39" fill="#8CC63F" width="7" height="45.36" class="candlestick-body"/>
-                    <rect x="289" y="168" fill="#ED454A" width="7" height="25.5" class="candlestick-body"/>
-                    <rect x="313" y="142.574" fill="#8CC63F" width="7" height="45.593" class="candlestick-body"/>
-                    <rect x="301" y="191.5" fill="#ED454A" width="7" height="1.166" class="candlestick-body"/>
-                    <rect x="373" y="168.416" fill="#8CC63F" width="7" height="1.166" class="candlestick-body"/>
-                    <rect x="397" y="176.132" fill="#8CC63F" width="7" height="2.263" class="candlestick-body"/>
-                    <rect x="421" y="184.145" fill="#8CC63F" width="7" height="7.186" class="candlestick-body"/>
-                    <rect x="445" y="182.563" fill="#8CC63F" width="7" height="9.852" class="candlestick-body"/>
-                    <rect x="229" y="193.5" fill="#ED454A" width="7" height="29.25" class="candlestick-body"/>
-                    <rect x="241" y="208.125" fill="#8CC63F" width="7" height="19.248" class="candlestick-body"/>
-                    <rect x="253" y="208.125" fill="#ED454A" width="7" height="16.845" class="candlestick-body"/>
-                    <rect x="265" y="232.189" fill="#ED454A" width="7" height="30.811" class="candlestick-body"/>
-                    <rect x="145" y="164.5" fill="#8CC63F" width="7" height="71.75" class="candlestick-body"/>
-                    <rect x="157" y="124.833" fill="#8CC63F" width="7" height="46.926" class="candlestick-body"/>
-                    <rect x="169" y="98.167" fill="#8CC63F" width="7" height="15.223" class="candlestick-body"/>
-                    <rect x="181" y="92.816" fill="#8CC63F" width="7" height="3.299" class="candlestick-body"/>
-                    <rect x="85" y="224.617" fill="#ED454A" width="7" height="5.513" class="candlestick-body"/>
-                    <rect x="205" y="168.999" fill="#ED454A" width="7" height="2.667" class="candlestick-body"/>
-                </g>
-                </svg>
-                
-                <!-- Candlestick wicks -->
-                <g id="Layer_4_2">
-                    <line fill="none" stroke="#333333" x1="52.5" y1="186.667" x2="52.5" y2="145" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="64.5" y1="167.999" x2="64.5" y2="197.333" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="76.5" y1="167.999" x2="76.5" y2="197.333" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="88.5" y1="211" x2="88.5" y2="243.746" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="124.5" y1="190.25" x2="124.5" y2="245.807" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="172.5" y1="87" x2="172.5" y2="132.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="208.5" y1="157.25" x2="208.5" y2="192.666" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="220.5" y1="168.959" x2="220.5" y2="208.125" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="244.5" y1="201.655" x2="244.5" y2="238.167" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="280.5" y1="136.07" x2="280.5" y2="176.256" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="292.5" y1="164.052" x2="292.5" y2="204.238" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="376.5" y1="144" x2="376.5" y2="192.001" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="388.5" y1="165.166" x2="388.5" y2="195.875" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="400.5" y1="147.167" x2="400.5" y2="184.937" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="304.5" y1="145.944" x2="304.5" y2="219.911" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="328.5" y1="130.352" x2="328.5" y2="194.875" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="352.5" y1="75.75" x2="352.5" y2="125" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="340.5" y1="105.778" x2="340.5" y2="185.096" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="364.5" y1="93.75" x2="364.5" y2="184.145" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="316.5" y1="137.267" x2="316.5" y2="199.986" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="256.5" y1="201.655" x2="256.5" y2="257.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="268.5" y1="222.75" x2="268.5" y2="284.167" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="232.5" y1="188.542" x2="232.5" y2="224.167" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="184.5" y1="70.066" x2="184.5" y2="109.75" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="196.5" y1="84.205" x2="196.5" y2="176.499" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="148.5" y1="137.592" x2="148.5" y2="255.749" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="160.5" y1="119.671" x2="160.5" y2="196.671" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="112.5" y1="241.5" x2="112.5" y2="268" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="136.5" y1="214.88" x2="136.5" y2="245.807" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="100.5" y1="239.377" x2="100.5" y2="272.123" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="412.5" y1="166.052" x2="412.5" y2="205.667" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="424.5" y1="182.563" x2="424.5" y2="205.667" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="436.5" y1="203.167" x2="436.5" y2="166.052" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="448.5" y1="180.521" x2="448.5" y2="205.667" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="460.5" y1="158.027" x2="460.5" y2="223.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="472.5" y1="203.167" x2="472.5" y2="163.75" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="484.5" y1="238.833" x2="484.5" y2="176.132" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="496.5" y1="264.5" x2="496.5" y2="220.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="508.5" y1="254.833" x2="508.5" y2="286.833" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="520.5" y1="284.963" x2="520.5" y2="220.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="532.5" y1="246.166" x2="532.5" y2="220.5" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="544.5" y1="275.265" x2="544.5" y2="235.166" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="556.5" y1="281.963" x2="556.5" y2="250.117" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="568.5" y1="238.833" x2="568.5" y2="194.115" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="580.5" y1="193.094" x2="580.5" y2="231.499" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="592.5" y1="230.13" x2="592.5" y2="176.132" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="604.5" y1="194.875" x2="604.5" y2="231.499" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="616.5" y1="205.667" x2="616.5" y2="151.833" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="628.5" y1="156.25" x2="628.5" y2="114.39" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="640.5" y1="120.166" x2="640.5" y2="155.25" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="652.5" y1="131.253" x2="652.5" y2="199.576" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="664.5" y1="113.39" x2="664.5" y2="88.498" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="676.5" y1="64.165" x2="676.5" y2="128.043" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="688.5" y1="48.832" x2="688.5" y2="92.165" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="700.5" y1="32.832" x2="700.5" y2="73.832" class="candlestick-wick"/>
-                    <line fill="none" stroke="#333333" x1="712.5" y1="55.02" x2="712.5" y2="108.498" class="candlestick-wick"/>
-                </g>
-                
-                <!-- Candlestick bodies -->
-                <g id="Layer_1_2">
-                    <rect x="49" y="153.332" fill="#ED454A" width="7" height="29.334" class="candlestick-body"/>
-                    <rect x="61" y="170.332" fill="#8CC63F" width="7" height="12.334" class="candlestick-body"/>
-                    <rect x="73" y="174.25" fill="#ED454A" width="7" height="51.916" class="candlestick-body"/>
-                    <rect x="193" y="90.5" fill="#ED454A" width="7" height="79.832" class="candlestick-body"/>
-                    <rect x="97" y="227.373" fill="#ED454A" width="7" height="39.127" class="candlestick-body"/>
-                    <rect x="109" y="248.5" fill="#8CC63F" width="7" height="14.5" class="candlestick-body"/>
-                    <rect x="121" y="224.617" fill="#8CC63F" width="7" height="9.633" class="candlestick-body"/>
-                    <rect x="133" y="217.75" fill="#ED454A" width="7" height="14.439" class="candlestick-body"/>
-                    <rect x="217" y="174.25" fill="#ED454A" width="7" height="22" class="candlestick-body"/>
-                    <rect x="277" y="149" fill="#ED454A" width="7" height="22" class="candlestick-body"/>
-                    <rect x="325" y="145.25" fill="#ED454A" width="7" height="7.583" class="candlestick-body"/>
-                    <rect x="385" y="169.458" fill="#ED454A" width="7" height="7.583" class="candlestick-body"/>
-                    <rect x="409" y="168.416" fill="#ED454A" width="7" height="26.459" class="candlestick-body"/>
-                    <rect x="433" y="184.145" fill="#ED454A" width="7" height="9.355" class="candlestick-body"/>
-                    <rect x="457" y="186.652" fill="#ED454A" width="7" height="8.223" class="candlestick-body"/>
-                    <rect x="553" y="269.697" fill="#ED454A" width="7" height="8.223" class="candlestick-body"/>
-                    <rect x="637" y="124.833" fill="#ED454A" width="7" height="6.42" class="candlestick-body"/>
-                    <rect x="709" y="62.728" fill="#ED454A" width="7" height="16.771" class="candlestick-body"/>
-                    <rect x="529" y="226.858" fill="#ED454A" width="7" height="11.975" class="candlestick-body"/>
-                    <rect x="481" y="201.655" fill="#ED454A" width="7" height="25.284" class="candlestick-body"/>
-                    <rect x="493" y="227.548" fill="#ED454A" width="7" height="31.767" class="candlestick-body"/>
-                    <rect x="541" y="243.432" fill="#ED454A" width="7" height="28.068" class="candlestick-body"/>
-                    <rect x="589" y="200.263" fill="#ED454A" width="7" height="26.596" class="candlestick-body"/>
-                    <rect x="649" y="135.404" fill="#ED454A" width="7" height="60.471" class="candlestick-body"/>
-                    <rect x="601" y="197.931" fill="#8CC63F" width="7" height="26.596" class="candlestick-body"/>
-                    <rect x="613" y="160" fill="#8CC63F" width="7" height="39.95" class="candlestick-body"/>
-                    <rect x="625" y="121.5" fill="#8CC63F" width="7" height="32" class="candlestick-body"/>
-                    <rect x="661" y="96.5" fill="#8CC63F" width="7" height="57" class="candlestick-body"/>
-                    <rect x="673" y="71.043" fill="#8CC63F" width="7" height="31.79" class="candlestick-body"/>
-                    <rect x="697" y="39.167" fill="#8CC63F" width="7" height="31.876" class="candlestick-body"/>
-                    <rect x="685" y="60.833" fill="#8CC63F" width="7" height="10.21" class="candlestick-body"/>
-                    <rect x="505" y="257.433" fill="#ED454A" width="7" height="24.53" class="candlestick-body"/>
-                    <rect x="517" y="224.97" fill="#8CC63F" width="7" height="50.295" class="candlestick-body"/>
-                    <rect x="565" y="199.986" fill="#8CC63F" width="7" height="32.859" class="candlestick-body"/>
-                    <rect x="577" y="195.986" fill="#8CC63F" width="7" height="7.181" class="candlestick-body"/>
-                    <rect x="469" y="195.875" fill="#ED454A" width="7" height="4.111" class="candlestick-body"/>
-                    <rect x="349" y="105.778" fill="#ED454A" width="7" height="10.722" class="candlestick-body"/>
-                    <rect x="361" y="111.139" fill="#ED454A" width="7" height="69.611" class="candlestick-body"/>
-                    <rect x="337" y="113.39" fill="#8CC63F" width="7" height="45.36" class="candlestick-body"/>
-                    <rect x="289" y="168" fill="#ED454A" width="7" height="25.5" class="candlestick-body"/>
-                    <rect x="313" y="142.574" fill="#8CC63F" width="7" height="45.593" class="candlestick-body"/>
-                    <rect x="301" y="191.5" fill="#ED454A" width="7" height="1.166" class="candlestick-body"/>
-                    <rect x="373" y="168.416" fill="#8CC63F" width="7" height="1.166" class="candlestick-body"/>
-                    <rect x="397" y="176.132" fill="#8CC63F" width="7" height="2.263" class="candlestick-body"/>
-                    <rect x="421" y="184.145" fill="#8CC63F" width="7" height="7.186" class="candlestick-body"/>
-                    <rect x="445" y="182.563" fill="#8CC63F" width="7" height="9.852" class="candlestick-body"/>
-                    <rect x="229" y="193.5" fill="#ED454A" width="7" height="29.25" class="candlestick-body"/>
-                    <rect x="241" y="208.125" fill="#8CC63F" width="7" height="19.248" class="candlestick-body"/>
-                    <rect x="253" y="208.125" fill="#ED454A" width="7" height="16.845" class="candlestick-body"/>
-                    <rect x="265" y="232.189" fill="#ED454A" width="7" height="30.811" class="candlestick-body"/>
-                    <rect x="145" y="164.5" fill="#8CC63F" width="7" height="71.75" class="candlestick-body"/>
-                    <rect x="157" y="124.833" fill="#8CC63F" width="7" height="46.926" class="candlestick-body"/>
-                    <rect x="169" y="98.167" fill="#8CC63F" width="7" height="15.223" class="candlestick-body"/>
-                    <rect x="181" y="92.816" fill="#8CC63F" width="7" height="3.299" class="candlestick-body"/>
-                    <rect x="85" y="224.617" fill="#ED454A" width="7" height="5.513" class="candlestick-body"/>
-                    <rect x="205" y="168.999" fill="#ED454A" width="7" height="2.667" class="candlestick-body"/>
-                </g>
-                </svg>
-            </div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section class="py-20 bg-gray-800" aria-labelledby="testimonials-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
                 <div class="inline-flex items-center gap-2 bg-crypto-orange/10 text-crypto-orange px-4 py-2 rounded-full text-sm font-medium mb-6 border border-crypto-orange/20">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -877,7 +739,9 @@
                     Echte ervaringen van studenten die de fysieke opleiding hebben gevolgd.
                 </p>
             </div>
-            <div class="max-w-5xl mx-auto">
+
+            <!-- Glen's Featured Testimonial -->
+            <div class="max-w-5xl mx-auto mb-20">
                 <div class="fade-in relative rounded-3xl overflow-hidden group">
                     <!-- Background Image -->
                     <div class="relative h-96 md:h-[500px] w-full">
@@ -910,9 +774,202 @@
                         </div>
                     </div>
                 </div>
+                
+            </div>
+
+            <!-- Google Reviews Subsection -->
+            <div class="fade-in">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl sm:text-3xl font-bold mb-4 text-white">Wat zeggen onze studenten op Google?</h3>
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto">Echte reviews van echte studenten</p>
+                    <div class="flex items-center justify-center mt-6 space-x-2">
+                        <div class="flex text-crypto-orange">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        </div>
+                        <span class="text-white font-semibold text-lg">4.8/5 op Google</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <!-- Review 1 - Gans Timmerman -->
+                    <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                                G
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Gans Timmerman</h4>
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-crypto-orange">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                    </div>
+                                    <span class="text-gray-400 text-sm">8 maanden geleden</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "Ik ben al een tijdje lid van de Cryptoriez Discord-groep, en ik kan met zekerheid zeggen dat dit één van de beste beslissingen is geweest voor mijn crypto-reis!"
+                        </p>
+                    </div>
+
+                    <!-- Review 2 - Wessel Tax -->
+                    <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                                W
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Wessel Tax</h4>
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-crypto-orange">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                    </div>
+                                    <span class="text-gray-400 text-sm">8 maanden geleden</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "De afgelopen zes maanden heb ik een helder beeld gekregen van de waarde die Cryptoriez voor mij heeft in het begrijpen van de cryptowereld."
+                        </p>
+                    </div>
+
+                    <!-- Review 3 - Dean Van Droogenbroeck -->
+                    <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-br from-green-600 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                                D
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Dean Van Droogenbroeck</h4>
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-crypto-orange">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                    </div>
+                                    <span class="text-gray-400 text-sm">8 maanden geleden</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "Cryptoriez is zonder twijfel een van de beste groepen als het gaat om crypto-analyse. Wat deze community zo bijzonder maakt, is de constante focus op kwaliteit."
+                        </p>
+                    </div>
+
+                    <!-- Review 4 - Tommy Roggeman -->
+                    <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                                T
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Tommy Roggeman</h4>
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-crypto-orange">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                    </div>
+                                    <span class="text-gray-400 text-sm">8 maanden geleden</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "Cryptoriez is een echte aanrader om bij te leren over de financiële markten en vooral voor cryptocurrencies...je kunt hier heel gemakkelijk lid worden van een Discord."
+                        </p>
+                    </div>
+
+                    <!-- Review 5 - alexander boey -->
+                    <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                                a
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">alexander boey</h4>
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-crypto-orange">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                    </div>
+                                    <span class="text-gray-400 text-sm">8 maanden geleden</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "Ik ben zeer dankbaar om Cryptoriez te leren kennen! 🤝"
+                        </p>
+                    </div>
+
+                    <!-- Review 6 - Serie berie -->
+                    <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 fade-in">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+                                S
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Serie berie</h4>
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex text-crypto-orange">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                    </div>
+                                    <span class="text-gray-400 text-sm">10 maanden geleden</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            "De Discord is in één woord geweldig. Als je op zoek bent naar een goede community, waar je van A tot Z begeleiding krijgt en zekerheid hebt met je stappen in de crypto wereld."
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="text-center mt-12 fade-in">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="testimonials.html#glen-testimonial" class="inline-flex items-center bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            Bekijk de testimonialvideo van Glen
+                        </a>
+                        <a href="https://www.google.com/search?q=cryptoriez+reviews" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            Bekijk alle testimonials op Google
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
 
     <!-- Calendly Section -->
     <section id="call" class="py-20" aria-labelledby="call-heading">
@@ -1227,39 +1284,62 @@
             observer.observe(el);
         });
 
-        // Mobile menu functionality
+        // Modern Pancake Mobile Menu Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
             const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const body = document.body;
 
+            // Open menu
+            function openMenu() {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenuOverlay.classList.add('opacity-100');
+                menuIcon.classList.add('rotate');
+                body.classList.add('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+            }
+
+            // Close menu
+            function closeMenu() {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenuOverlay.classList.remove('opacity-100');
+                menuIcon.classList.remove('rotate');
+                body.classList.remove('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+            }
+
+            // Toggle menu on button click
             mobileMenuButton.addEventListener('click', function() {
-                const isMenuOpen = mobileMenu.classList.contains('hidden');
-                
+                const isMenuOpen = mobileMenu.classList.contains('translate-x-0');
                 if (isMenuOpen) {
-                    // Open menu
-                    mobileMenu.classList.remove('hidden');
-                    menuIcon.classList.add('hidden');
-                    closeIcon.classList.remove('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'true');
+                    closeMenu();
                 } else {
-                    // Close menu
-                    mobileMenu.classList.add('hidden');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    openMenu();
                 }
             });
+
+            // Close menu when clicking overlay
+            mobileMenuOverlay.addEventListener('click', closeMenu);
 
             // Close menu when clicking on a link
             const mobileMenuLinks = mobileMenu.querySelectorAll('a');
             mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.add('hidden');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                });
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Close menu with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('translate-x-0')) {
+                    closeMenu();
+                }
             });
 
             // Form submission handling
@@ -1511,6 +1591,10 @@
             }
           }
         });
+
     </script>
+    
+    <!-- Vimeo Player API -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html> 

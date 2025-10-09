@@ -103,6 +103,30 @@
                 transform: scale(1.05);
             }
         }
+        
+        /* Mobile Pancake Menu Styles */
+        .fade-in-menu {
+            animation: fadeInMenu 0.4s ease-out;
+        }
+        
+        @keyframes fadeInMenu {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        #menu-icon.rotate {
+            transform: rotate(90deg);
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white font-inter">
@@ -119,9 +143,9 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
                     <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white transition-colors duration-200">Opleidingen</a>
+                    <a href="testimonials.html" class="text-gray-300 hover:text-white transition-colors duration-200">Testimonials</a>
                     <a href="discord.html" class="text-crypto-orange font-medium">Discord</a>
                     <a href="team.html" class="text-gray-300 hover:text-white transition-colors duration-200">Team</a>
-                    <a href="webinar.html" class="text-crypto-orange hover:text-white font-medium transition-colors duration-200">Webinar</a>
                 </div>
                 
                 <!-- Desktop CTA Button -->
@@ -130,41 +154,100 @@
                 </a>
                 
                 <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                    <span class="sr-only">Open main menu</span>
-                    <!-- Icon when menu is closed -->
-                    <svg id="menu-icon" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white transition-all duration-300" aria-label="Open hoofdmenu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="sr-only">Open hoofdmenu</span>
+                    <svg id="menu-icon" class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <!-- Icon when menu is open -->
-                    <svg id="close-icon" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
                 </button>
-            </div>
-            
-            <!-- Mobile Navigation Menu -->
-            <div id="mobile-menu" class="hidden md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900/95 border-t border-gray-700">
-                    <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Opleidingen</a>
-                    <a href="discord.html" class="text-crypto-orange block px-3 py-2 rounded-md text-base font-medium">Discord</a>
-                    <a href="team.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Team</a>
-                    <a href="webinar.html" class="text-crypto-orange hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Webinar</a>
-                    <a href="#wordlid" class="bg-crypto-orange hover:bg-crypto-orange/90 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 mt-4">
-                        Word lid
-                    </a>
-                </div>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Pancake Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden" aria-hidden="true"></div>
+
+    <!-- Mobile Pancake Menu -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-gray-900/80 backdrop-blur-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-2xl" aria-labelledby="mobile-menu-button">
+        <!-- Gradient Border -->
+        <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(248, 130, 38, 0.1) 0%, rgba(70, 112, 219, 0.1) 100%); border-left: 2px solid; border-image: linear-gradient(180deg, #f88226, #4670db) 1;"></div>
+        
+        <div class="relative h-full flex flex-col p-6">
+            <!-- Logo at top -->
+            <div class="mb-8 fade-in-menu">
+                <img src="cryptoriez.png" alt="Cryptoriez Logo" class="h-10 w-auto">
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="flex-1 space-y-2">
+                <a href="fysieke-opleidingen.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk onze fysieke opleidingen">
+                    <span class="text-lg font-medium">Opleidingen</span>
+                </a>
+                <a href="testimonials.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk student testimonials">
+                    <span class="text-lg font-medium">Testimonials</span>
+                </a>
+                <a href="discord.html" class="group block px-4 py-3 rounded-lg text-[#5865F2] border border-[#5865F2]/50 bg-[#5865F2]/5 transition-all duration-300" aria-label="Leer meer over onze Discord community">
+                    <span class="text-lg font-medium">Discord</span>
+                </a>
+                <a href="team.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Ontmoet ons team">
+                    <span class="text-lg font-medium">Team</span>
+                </a>
+            </nav>
+            
+            <!-- CTA Button at bottom -->
+            <div class="mt-auto pt-6 border-t border-gray-700/50">
+                <a href="#wordlid" class="block w-full bg-crypto-orange hover:bg-crypto-orange/90 text-white text-center px-6 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" aria-label="Word lid van Discord">
+                    Word lid
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="relative pt-32 pb-16 overflow-hidden">
-        <!-- Professional Discord-inspired background gradient -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#5865F2]/30 via-[#7289DA]/15 to-[#23272A]"></div>
+        <!-- Supabase Background Image -->
+        <!-- 
+            PERFECTE AFMETINGEN:
+            Desktop: 1920x1080px (landscape) - Minimum 1920px breedte voor high-res displays
+            Mobile: 1080x1920px (portrait) - Voor mobiele devices
+            
+            Of gebruik één universal image: 2400x1350px
+            Format: WebP voor beste compressie, fallback naar JPG
+        -->
+        <div class="absolute inset-0 z-0">
+            <!-- Desktop background image -->
+            <picture>
+                <source 
+                    media="(min-width: 768px)" 
+                    srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/sign/Cryptoriez/discord%20website%20bg.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MGRiNGFlMi1mMDRjLTRjYjMtOTVlYi1lZGQzNTlmOGExM2MiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDcnlwdG9yaWV6L2Rpc2NvcmQgd2Vic2l0ZSBiZy5qcGciLCJpYXQiOjE3NjAwMTA5ODksImV4cCI6MTc5MTU0Njk4OX0.gzzqY8BLv696d0MUgtw1MDaeTIAVpCGTwOgwnIc_rNg"
+                    type="image/webp">
+                <source 
+                    media="(min-width: 768px)" 
+                    srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/sign/Cryptoriez/discord%20website%20bg.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MGRiNGFlMi1mMDRjLTRjYjMtOTVlYi1lZGQzNTlmOGExM2MiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDcnlwdG9yaWV6L2Rpc2NvcmQgd2Vic2l0ZSBiZy5qcGciLCJpYXQiOjE3NjAwMTA5ODksImV4cCI6MTc5MTU0Njk4OX0.gzzqY8BLv696d0MUgtw1MDaeTIAVpCGTwOgwnIc_rNg">
+                
+                <!-- Mobile background image -->
+                <source 
+                    media="(max-width: 767px)" 
+                    srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/sign/Cryptoriez/discord%20website%20bg.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MGRiNGFlMi1mMDRjLTRjYjMtOTVlYi1lZGQzNTlmOGExM2MiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDcnlwdG9yaWV6L2Rpc2NvcmQgd2Vic2l0ZSBiZy5qcGciLCJpYXQiOjE3NjAwMTA5ODksImV4cCI6MTc5MTU0Njk4OX0.gzzqY8BLv696d0MUgtw1MDaeTIAVpCGTwOgwnIc_rNg"
+                    type="image/webp">
+                <source 
+                    media="(max-width: 767px)" 
+                    srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/sign/Cryptoriez/discord%20website%20bg.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MGRiNGFlMi1mMDRjLTRjYjMtOTVlYi1lZGQzNTlmOGExM2MiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDcnlwdG9yaWV6L2Rpc2NvcmQgd2Vic2l0ZSBiZy5qcGciLCJpYXQiOjE3NjAwMTA5ODksImV4cCI6MTc5MTU0Njk4OX0.gzzqY8BLv696d0MUgtw1MDaeTIAVpCGTwOgwnIc_rNg">
+                
+                <!-- Fallback image -->
+                <img 
+                    src="https://your-supabase-url.supabase.co/storage/v1/object/public/images/discord-hero-desktop.jpg" 
+                    alt="Discord Community Background" 
+                    class="w-full h-full object-cover"
+                    loading="eager">
+            </picture>
+        </div>
+        
+        <!-- Professional Discord-inspired background gradient overlay -->
+        <div class="absolute inset-0 z-[1] bg-gradient-to-br from-[#5865F2]/30 via-[#7289DA]/15 to-[#23272A]"></div>
         
         <!-- Enhanced Discord-style background elements -->
-        <div class="absolute inset-0">
+        <div class="absolute inset-0 z-[2]">
             <!-- Primary Discord blue orbs -->
             <div class="absolute top-1/4 right-1/4 w-40 h-40 bg-[#5865F2]/15 rounded-full blur-3xl animate-pulse"></div>
             <div class="absolute bottom-1/4 left-1/4 w-48 h-48 bg-[#404EED]/12 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
@@ -206,7 +289,119 @@
         </div>
     </section>
 
-   
+    <!-- Community Testimonials Video Section -->
+    <section class="py-20 bg-gray-900/50 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
+                    Wat <span class="text-[#5865F2]">Discord leden</span> zeggen
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Ontdek wat onze community leden delen over hun ervaring in de Cryptoriez Discord
+                </p>
+            </div>
+            
+            <!-- Video and Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+                <!-- Video Container (Portrait 9:16) -->
+                <div class="fade-in">
+                    <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50 mx-auto" style="max-width: 450px;">
+                        <!-- Portrait Video Player -->
+                        <div style="padding:177.78% 0 0 0;position:relative;">
+                            <video 
+                                id="discord-testimonial-video"
+                                class="absolute top-0 left-0 w-full h-full object-cover"
+                                controls
+                                preload="metadata"
+                                playsinline
+                                poster="https://your-supabase-url.supabase.co/storage/v1/object/public/images/discord-testimonials-thumbnail.jpg"
+                                aria-label="Discord community testimonials video compilatie"
+                            >
+                                <source src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/sign/Cryptoriez/discord.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MGRiNGFlMi1mMDRjLTRjYjMtOTVlYi1lZGQzNTlmOGExM2MiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDcnlwdG9yaWV6L2Rpc2NvcmQubXA0IiwiaWF0IjoxNzYwMDA5Mzc5LCJleHAiOjE3OTE1NDUzNzl9.Vmy7-7P6u0YwJYLu4drMsgSVWHbn7hrpxLe48DVX_eE" type="video/mp4">
+                                Je browser ondersteunt geen video afspelen.
+                            </video>
+                            
+                            <!-- Play Button Overlay -->
+                            <div id="discord-video-overlay" class="absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity duration-300 cursor-pointer">
+                                <div class="w-20 h-20 sm:w-24 sm:h-24 bg-[#5865F2] rounded-full flex items-center justify-center shadow-2xl hover:bg-[#4752C4] hover:scale-110 transition-all duration-300">
+                                    <svg class="w-10 h-10 sm:w-12 sm:h-12 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gradient Border Effect (only visible when not playing) -->
+                        <div id="discord-video-gradient" class="absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300" style="background: linear-gradient(45deg, rgba(88, 101, 242, 0.15) 0%, rgba(114, 137, 218, 0.15) 100%);"></div>
+                    </div>
+                </div>
+                
+                <!-- Content Side -->
+                <div class="space-y-6 fade-in">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">
+                            Échte reviews van échte leden
+                        </h3>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Deze video compilatie toont spontane reacties en ervaringen van leden die dagelijks actief zijn in onze Discord community.
+                        </p>
+                    </div>
+                    
+                    <!-- Feature Highlights -->
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
+                            <div class="w-10 h-10 bg-[#5865F2]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-[#5865F2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Actieve Community</h4>
+                                <p class="text-gray-400 text-sm">Dagelijkse interactie en support van ervaren traders</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
+                            <div class="w-10 h-10 bg-[#5865F2]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-[#5865F2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Bewezen Resultaten</h4>
+                                <p class="text-gray-400 text-sm">Leden delen hun successen en learnings</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
+                            <div class="w-10 h-10 bg-[#5865F2]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-[#5865F2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Live Analyses</h4>
+                                <p class="text-gray-400 text-sm">Real-time markt updates en trade setups</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div class="pt-4">
+                        <a href="testimonials.html" class="inline-flex items-center gap-2 bg-crypto-orange hover:bg-crypto-orange/90 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                            Bekijk alle testimonial videos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Statistieken sectie -->
     <section class="py-20 relative overflow-hidden">
@@ -404,121 +599,125 @@
         </div>
     </section>
 
- <!-- Solana Voorspelling Case Study -->
- <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
-    <!-- Background gradient elements -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-20 left-10 w-32 h-32 bg-crypto-orange rounded-full blur-3xl"></div>
-        <div class="absolute bottom-20 right-10 w-40 h-40 bg-crypto-blue rounded-full blur-3xl"></div>
-        <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-crypto-orange rounded-full blur-2xl"></div>
-    </div>
-    
-    <div class="max-w-4xl mx-auto px-4 relative z-10">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center gap-2 bg-crypto-orange/10 text-crypto-orange px-4 py-2 rounded-full text-sm font-medium mb-4 border border-crypto-orange/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-                Exclusieve Analyse
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-bold mb-3">Solana Voorspelling: Alleen in Discord</h2>
-            <p class="text-gray-300">Rousso's voorspelling voor de komende maanden, exclusief gedeeld met Discord leden.</p>
-        </div>
+    <!-- Rousso Toont de Discord Section -->
+    <section class="py-20 bg-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900"></div>
         
-        <!-- Main Content Grid -->
-        <div class="grid lg:grid-cols-2 gap-8 items-start">
-            <!-- Video Section -->
-            <div class="order-2 lg:order-1">
-                <div class="liquid-glass rounded-2xl p-6 border border-gray-700/50">
-                    <div class="rounded-xl overflow-hidden shadow-2xl">
-                        <video controls playsinline class="w-full max-w-full">
-                            <source src="solana_voorspelling_.mp4" type="video/mp4">
-            Je browser ondersteunt deze video niet.
-        </video>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <p class="text-sm text-gray-400">Bekijk de volledige analyse</p>
-                    </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12 fade-in">
+                <div class="inline-flex items-center gap-2 bg-[#5865F2]/10 text-[#5865F2] px-4 py-2 rounded-full text-sm font-medium mb-6 border border-[#5865F2]/20">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                    </svg>
+                    Exclusieve Content
                 </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
+                    Rousso geeft je een <span class="text-[#5865F2]">kijkje</span> in de Discord
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Ontdek wat je dagelijks kunt verwachten: live analyses, trade setups en directe begeleiding
+                </p>
             </div>
             
-            <!-- Content Section -->
-            <div class="order-1 lg:order-2 space-y-6">
-                <!-- Discord Exclusiviteit -->
-                <div class="liquid-glass rounded-xl p-4 border border-gray-700/50">
-                    <h3 class="text-lg font-semibold mb-3 text-crypto-orange">Discord Exclusiviteit</h3>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="text-center">
-                            <div class="text-xl font-bold text-white">24/7</div>
-                            <div class="text-xs text-gray-400">Real-time toegang</div>
+            <!-- Video and Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+                <!-- Video Container (Portrait 9:16) -->
+                <div class="fade-in">
+                    <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50 mx-auto" style="max-width: 450px;">
+                        <!-- Portrait Video Player -->
+                        <div style="padding:177.78% 0 0 0;position:relative;">
+                            <video 
+                                id="discord-walkthrough-video"
+                                class="absolute top-0 left-0 w-full h-full object-cover"
+                                controls
+                                preload="metadata"
+                                playsinline
+                                poster="https://your-supabase-url.supabase.co/storage/v1/object/public/images/discord-walkthrough-thumbnail.jpg"
+                                aria-label="Rousso toont de Discord community walkthrough"
+                            >
+                                <source src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/sign/Cryptoriez/discord%20walkthrough.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MGRiNGFlMi1mMDRjLTRjYjMtOTVlYi1lZGQzNTlmOGExM2MiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDcnlwdG9yaWV6L2Rpc2NvcmQgd2Fsa3Rocm91Z2gubXA0IiwiaWF0IjoxNzYwMDEzMjA2LCJleHAiOjE3OTE1NDkyMDZ9._GgDNE9Cgi070Tp81XxRhk_cmSuz-gHHyPcgrYTDcbQ" type="video/mp4">
+                                Je browser ondersteunt geen video afspelen.
+                            </video>
+                            
+                            <!-- Play Button Overlay -->
+                            <div id="discord-walkthrough-overlay" class="absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity duration-300 cursor-pointer">
+                                <div class="w-20 h-20 sm:w-24 sm:h-24 bg-[#5865F2] rounded-full flex items-center justify-center shadow-2xl hover:bg-[#4752C4] hover:scale-110 transition-all duration-300">
+                                    <svg class="w-10 h-10 sm:w-12 sm:h-12 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-xl font-bold text-white">Exclusief</div>
-                            <div class="text-xs text-gray-400">Alleen voor leden</div>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-400 text-center mt-2">Eerst gedeeld in Discord</p>
-                </div>
-                
-                <!-- De Analyse -->
-                <div class="liquid-glass rounded-xl p-4 border border-gray-700/50">
-                    <h3 class="text-lg font-semibold mb-3 text-crypto-orange">De Analyse</h3>
-                    <div class="space-y-2 text-gray-300 text-sm">
-                        <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-crypto-orange rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p><strong>Toen prijs zich rond $187 bevond:</strong> Gecalled voor een daling richting $128</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-crypto-orange rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p><strong>Geduld:</strong> Daarom uitdrukkelijk geduld uitgeoefend en gewacht tot prijs tot onze buy zone kwam</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-crypto-orange rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p><strong>Entry:</strong> Ingekocht op $128, wat achteraf de locale bodem bleek te zijn</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-crypto-orange rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p><strong>Winst:</strong> Door niet in te geven aan FOMO en te wachten op betere prijzen staan we nu al 59% in de winst</p>
-                        </div>
+                        
+                        <!-- Gradient Border Effect (only visible when not playing) -->
+                        <div id="discord-walkthrough-gradient" class="absolute inset-0 pointer-events-none rounded-2xl transition-opacity duration-300" style="background: linear-gradient(45deg, rgba(88, 101, 242, 0.15) 0%, rgba(114, 137, 218, 0.15) 100%);"></div>
                     </div>
                 </div>
                 
-                <!-- Discord Voordelen -->
-                <div class="liquid-glass rounded-xl p-4 border border-gray-700/50">
-                    <h3 class="text-lg font-semibold mb-3 text-crypto-orange">Discord Voordelen</h3>
-                    <div class="space-y-2 text-gray-300 text-sm">
-                        <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-crypto-blue rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p><strong>Real-time:</strong> Volledige market-breakdowns direct bij release</p>
+                <!-- Content Side -->
+                <div class="space-y-6 fade-in">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">
+                            Een kijkje achter de schermen
+                        </h3>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Rousso neemt je mee door onze Discord en laat zien welke analyses, tools en begeleiding je als lid dagelijks ontvangt.
+                        </p>
+                    </div>
+                    
+                    <!-- Feature Highlights -->
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
+                            <div class="w-10 h-10 bg-[#5865F2]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-[#5865F2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Live Markt Analyses</h4>
+                                <p class="text-gray-400 text-sm">Dagelijkse technische analyses en trade setups van Rousso</p>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-crypto-blue rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p><strong>Exclusief:</strong> Alleen voor Discord leden</p>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
+                            <div class="w-10 h-10 bg-[#5865F2]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-[#5865F2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Directe Begeleiding</h4>
+                                <p class="text-gray-400 text-sm">Stel je vragen rechtstreeks aan Rousso en het team</p>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-crypto-blue rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p><strong>Direct contact:</strong> Persoonlijke vragen aan Rousso</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-crypto-blue rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p><strong>Community:</strong> Leer van andere traders</p>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
+                            <div class="w-10 h-10 bg-[#5865F2]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-[#5865F2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Exclusieve Tools</h4>
+                                <p class="text-gray-400 text-sm">Toegang tot premium indicators en trading resources</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- CTA -->
-                <div class="liquid-glass rounded-xl p-4 border border-gray-700/50 text-center">
-                    <h3 class="text-lg font-semibold mb-2">Word Discord Lid</h3>
-                    <p class="text-gray-300 mb-3 text-sm">Krijg als eerste toegang tot Rousso's analyses.</p>
-                    <a href="https://buy.stripe.com/6oEaHRf4Pb2m5vqcMP" class="inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200 glow-effect text-sm">
-                        Start nu
-                    </a>
+                    
+                    <!-- CTA Button -->
+                    <div class="pt-4">
+                        <a href="#wordlid" class="inline-flex items-center gap-2 bg-crypto-orange hover:bg-crypto-orange/90 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                            </svg>
+                            Word Discord lid
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Studenten Resultaten Sectie -->
     <section class="py-20 bg-gray-800/50 relative overflow-hidden">
@@ -1115,37 +1314,62 @@
             }
         });
 
-        // Mobile menu functionality
+        // Modern Pancake Mobile Menu Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
             const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const body = document.body;
 
+            // Open menu
+            function openMenu() {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenuOverlay.classList.add('opacity-100');
+                menuIcon.classList.add('rotate');
+                body.classList.add('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+            }
+
+            // Close menu
+            function closeMenu() {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenuOverlay.classList.remove('opacity-100');
+                menuIcon.classList.remove('rotate');
+                body.classList.remove('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+            }
+
+            // Toggle menu on button click
             mobileMenuButton.addEventListener('click', function() {
-                const isMenuOpen = mobileMenu.classList.contains('hidden');
-                
+                const isMenuOpen = mobileMenu.classList.contains('translate-x-0');
                 if (isMenuOpen) {
-                    // Open menu
-                    mobileMenu.classList.remove('hidden');
-                    menuIcon.classList.add('hidden');
-                    closeIcon.classList.remove('hidden');
+                    closeMenu();
                 } else {
-                    // Close menu
-                    mobileMenu.classList.add('hidden');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
+                    openMenu();
                 }
             });
+
+            // Close menu when clicking overlay
+            mobileMenuOverlay.addEventListener('click', closeMenu);
 
             // Close menu when clicking on a link
             const mobileMenuLinks = mobileMenu.querySelectorAll('a');
             mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.add('hidden');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                });
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Close menu with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('translate-x-0')) {
+                    closeMenu();
+                }
             });
 
             // Contact form functionality
@@ -1348,6 +1572,170 @@
                     }
                 }
             });
+
+            // Discord Testimonial Video Player Controls
+            const discordVideo = document.getElementById('discord-testimonial-video');
+            const discordVideoOverlay = document.getElementById('discord-video-overlay');
+            const discordVideoGradient = document.getElementById('discord-video-gradient');
+            let discordVideoHasPlayed = false;
+
+            if (discordVideo && discordVideoOverlay) {
+                // Intersection Observer for auto-play when scrolled into view
+                const discordVideoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !discordVideoHasPlayed) {
+                            // Video is in view, try to play with sound
+                            const playPromise = discordVideo.play();
+                            
+                            if (playPromise !== undefined) {
+                                playPromise.then(() => {
+                                    // Video started playing successfully
+                                    discordVideoHasPlayed = true;
+                                }).catch(error => {
+                                    // Autoplay with sound blocked by browser
+                                    console.log('Discord video autoplay was prevented:', error);
+                                    // Keep the overlay visible so user can click to play
+                                });
+                            }
+                        } else if (!entry.isIntersecting && !discordVideo.paused) {
+                            // Video scrolled out of view and is playing, pause it
+                            discordVideo.pause();
+                        }
+                    });
+                }, {
+                    threshold: 0.3, // Trigger when 30% of video is visible
+                    rootMargin: '0px'
+                });
+
+                discordVideoObserver.observe(discordVideo);
+
+                // Click overlay to play video
+                discordVideoOverlay.addEventListener('click', () => {
+                    discordVideo.play();
+                    discordVideoOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        discordVideoOverlay.style.display = 'none';
+                    }, 300);
+                    discordVideoHasPlayed = true;
+                });
+
+                // Hide overlay and gradient when video starts playing
+                discordVideo.addEventListener('play', () => {
+                    discordVideoOverlay.style.opacity = '0';
+                    if (discordVideoGradient) {
+                        discordVideoGradient.style.opacity = '0';
+                    }
+                    setTimeout(() => {
+                        discordVideoOverlay.style.display = 'none';
+                    }, 300);
+                });
+
+                // Show overlay and gradient if video is paused (but not ended)
+                discordVideo.addEventListener('pause', () => {
+                    if (!discordVideo.ended) {
+                        discordVideoOverlay.style.display = 'flex';
+                        if (discordVideoGradient) {
+                            discordVideoGradient.style.opacity = '1';
+                        }
+                        setTimeout(() => {
+                            discordVideoOverlay.style.opacity = '1';
+                        }, 10);
+                    }
+                });
+
+                // When video ends, show replay button and gradient
+                discordVideo.addEventListener('ended', () => {
+                    discordVideoOverlay.style.display = 'flex';
+                    if (discordVideoGradient) {
+                        discordVideoGradient.style.opacity = '1';
+                    }
+                    setTimeout(() => {
+                        discordVideoOverlay.style.opacity = '1';
+                    }, 10);
+                });
+            }
+
+            // Discord Walkthrough Video Player Controls
+            const walkthroughVideo = document.getElementById('discord-walkthrough-video');
+            const walkthroughVideoOverlay = document.getElementById('discord-walkthrough-overlay');
+            const walkthroughVideoGradient = document.getElementById('discord-walkthrough-gradient');
+            let walkthroughVideoHasPlayed = false;
+
+            if (walkthroughVideo && walkthroughVideoOverlay) {
+                // Intersection Observer for auto-play when scrolled into view
+                const walkthroughVideoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !walkthroughVideoHasPlayed) {
+                            // Video is in view, try to play with sound
+                            const playPromise = walkthroughVideo.play();
+                            
+                            if (playPromise !== undefined) {
+                                playPromise.then(() => {
+                                    // Video started playing successfully
+                                    walkthroughVideoHasPlayed = true;
+                                }).catch(error => {
+                                    // Autoplay with sound blocked by browser
+                                    console.log('Walkthrough video autoplay was prevented:', error);
+                                    // Keep the overlay visible so user can click to play
+                                });
+                            }
+                        } else if (!entry.isIntersecting && !walkthroughVideo.paused) {
+                            // Video scrolled out of view and is playing, pause it
+                            walkthroughVideo.pause();
+                        }
+                    });
+                }, {
+                    threshold: 0.3, // Trigger when 30% of video is visible
+                    rootMargin: '0px'
+                });
+
+                walkthroughVideoObserver.observe(walkthroughVideo);
+
+                // Click overlay to play video
+                walkthroughVideoOverlay.addEventListener('click', () => {
+                    walkthroughVideo.play();
+                    walkthroughVideoOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        walkthroughVideoOverlay.style.display = 'none';
+                    }, 300);
+                    walkthroughVideoHasPlayed = true;
+                });
+
+                // Hide overlay and gradient when video starts playing
+                walkthroughVideo.addEventListener('play', () => {
+                    walkthroughVideoOverlay.style.opacity = '0';
+                    if (walkthroughVideoGradient) {
+                        walkthroughVideoGradient.style.opacity = '0';
+                    }
+                    setTimeout(() => {
+                        walkthroughVideoOverlay.style.display = 'none';
+                    }, 300);
+                });
+
+                // Show overlay and gradient if video is paused (but not ended)
+                walkthroughVideo.addEventListener('pause', () => {
+                    if (!walkthroughVideo.ended) {
+                        walkthroughVideoOverlay.style.display = 'flex';
+                        if (walkthroughVideoGradient) {
+                            walkthroughVideoGradient.style.opacity = '1';
+                        }
+                        setTimeout(() => {
+                            walkthroughVideoOverlay.style.opacity = '1';
+                        }, 10);
+                    }
+                });
+
+                // When video ends, show replay button and gradient
+                walkthroughVideo.addEventListener('ended', () => {
+                    walkthroughVideoOverlay.style.display = 'flex';
+                    if (walkthroughVideoGradient) {
+                        walkthroughVideoGradient.style.opacity = '1';
+                    }
+                    setTimeout(() => {
+                        walkthroughVideoOverlay.style.opacity = '1';
+                    }, 10);
+                });
+            }
 
         });
     </script>
