@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bedankt voor je betaling - Cryptoriez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="cryptoriez.png">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11184032010"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-11184032010');
+    </script>
+    
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+      ttq.load('D3NQ08JC77UD89P2EPVG');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'crypto-orange': '#f88226',
+                        'crypto-blue': '#4670db',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Liquid glass effect */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Success gradient background */
+        .success-gradient {
+            background: linear-gradient(135deg, 
+                rgba(248, 130, 38, 0.3) 0%, 
+                rgba(70, 112, 219, 0.2) 25%, 
+                rgba(17, 24, 39, 0.9) 50%, 
+                rgba(248, 130, 38, 0.2) 75%, 
+                rgba(70, 112, 219, 0.3) 100%);
+        }
+        
+        /* Glow effect for CTA */
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(248, 130, 38, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glow-effect:hover {
+            box-shadow: 0 0 25px rgba(248, 130, 38, 0.4);
+        }
+        
+        /* Success checkmark animation */
+        .checkmark {
+            animation: checkmarkPop 0.6s ease-out 0.3s both;
+        }
+        
+        @keyframes checkmarkPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Backdrop blur for mobile menu */
+        .menu-backdrop {
+            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white font-inter min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html">
+                        <img src="cryptoriez.png" alt="Cryptoriez" class="h-8 w-auto">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white transition-colors duration-200">Opleidingen</a>
+                    <a href="testimonials.html" class="text-gray-300 hover:text-white transition-colors duration-200">Testimonials</a>
+                    <a href="discord.html" class="text-gray-300 hover:text-white transition-colors duration-200">Discord</a>
+                    <a href="team.html" class="text-gray-300 hover:text-white transition-colors duration-200">Team</a>
+                </div>
+                
+                <!-- Desktop CTA Button -->
+                <a href="discord.html" class="hidden md:inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200">
+                    Word lid
+                </a>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-gray-300 hover:text-white" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed inset-0 z-40 md:hidden" id="mobile-menu">
+            <div class="menu-backdrop fixed inset-0" id="menu-backdrop"></div>
+            <div class="relative flex flex-col w-64 h-full bg-gray-900 border-r border-gray-800">
+                <!-- Mobile menu header -->
+                <div class="flex items-center justify-between p-4 border-b border-gray-800">
+                    <img src="cryptoriez.png" alt="Cryptoriez" class="h-8 w-auto">
+                    <button class="text-gray-300 hover:text-white" id="close-mobile-menu">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu navigation -->
+                <nav class="flex-1 space-y-2 p-4">
+                    <a href="fysieke-opleidingen.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk onze fysieke opleidingen">
+                        <span class="text-lg font-medium">Opleidingen</span>
+                    </a>
+                    <a href="testimonials.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk student testimonials">
+                        <span class="text-lg font-medium">Testimonials</span>
+                    </a>
+                    <a href="discord.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Leer meer over onze Discord community">
+                        <span class="text-lg font-medium">Discord</span>
+                    </a>
+                    <a href="team.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Ontmoet ons team">
+                        <span class="text-lg font-medium">Team</span>
+                    </a>
+                </nav>
+                
+                <!-- CTA Button at bottom -->
+                <div class="mt-auto pt-6 border-t border-gray-700/50 p-4">
+                    <a href="discord.html" class="block w-full bg-crypto-orange hover:bg-crypto-orange/90 text-white text-center px-6 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" aria-label="Word lid van Discord">
+                        Word lid
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16 min-h-screen success-gradient">
+        <!-- Success Section -->
+        <section class="min-h-screen flex items-center justify-center px-4 py-16">
+            <div class="max-w-2xl mx-auto text-center">
+                <!-- Success Card -->
+                <div class="liquid-glass rounded-2xl p-8 md:p-12 shadow-2xl">
+                    <!-- Checkmark Icon -->
+                    <div class="mb-8">
+                        <div class="checkmark w-20 h-20 mx-auto bg-crypto-orange rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-3xl text-white"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Title -->
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                        Bedankt voor je betaling!
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+                        Je inschrijving is bevestigd. Binnen enkele minuten ontvang je een e-mail met je persoonlijke Discord-toegang.
+                    </p>
+                    
+                    <!-- CTA Button -->
+                    <div class="mb-8">
+                        <a href="https://discord.gg/YdcS5uJE" target="_blank" class="inline-block bg-crypto-orange hover:bg-crypto-orange/90 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl glow-effect">
+                            <i class="fab fa-discord mr-2"></i>
+                            Join de Discord
+                        </a>
+                    </div>
+                    
+                    <!-- Additional Info -->
+                    <div class="space-y-4 text-sm text-gray-400">
+                        <p>
+                            Vragen? Mail ons via 
+                            <a href="mailto:info@cryptoriez.be" class="text-crypto-orange hover:underline">info@cryptoriez.be</a>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Additional Info Card -->
+                <div class="mt-8 liquid-glass rounded-xl p-6">
+                    <h3 class="text-lg font-semibold mb-4 text-white">Wat gebeurt er nu?</h3>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-300">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-crypto-blue/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-envelope text-crypto-blue"></i>
+                            </div>
+                            <p><strong>1. E-mail ontvangen</strong><br>Binnen enkele minuten</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-crypto-orange/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fab fa-discord text-crypto-orange"></i>
+                            </div>
+                            <p><strong>2. Discord joinen</strong><br>Via de link in je e-mail</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-crypto-blue/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-rocket text-crypto-blue"></i>
+                            </div>
+                            <p><strong>3. Starten met traden</strong><br>Met onze community</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-black/40 backdrop-blur-md border-t border-white/10 pt-16 pb-28 sm:pb-20 text-white/90">
+      <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="flex flex-col md:flex-row justify-between gap-12">
+
+          <!-- Contactinformatie -->
+          <div class="space-y-4 text-sm md:text-base">
+            <h3 class="text-lg font-semibold text-white">Contact</h3>
+            <div>
+              <p>Katelijnepoort Business Center</p>
+              <p>Baron Ruzettelaan 1 bus 1.1</p>
+              <p>8310 Brugge</p>
+            </div>
+            <div>
+              <p>Lindendreef 9</p>
+              <p>2950 Kapellen, Antwerpen</p>
+            </div>
+            <div>
+              <p>Zoutelaan 51</p>
+              <p>8301 Knokke-Heist</p>
+            </div>
+            <div>
+              <p>Oudenaardse steenweg 36</p>
+              <p>9000 Gent</p>
+            </div>
+            <div>
+              <a href="mailto:info@cryptoriez.be" class="text-crypto-orange hover:underline">info@cryptoriez.be</a>
+            </div>
+          </div>
+
+          <!-- Socials & Logo -->
+          <div class="flex flex-col items-center md:items-end justify-between w-full md:w-auto gap-6">
+            <img src="cryptoriez.png" alt="Cryptoriez" class="h-12 w-auto opacity-80">
+            
+            <div class="flex space-x-4">
+              <a href="https://www.instagram.com/cryptoriez/" target="_blank" class="text-gray-400 hover:text-crypto-orange transition-colors duration-200" aria-label="Instagram">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/cryptoriez/" target="_blank" class="text-gray-400 hover:text-crypto-orange transition-colors duration-200" aria-label="LinkedIn">
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a href="https://discord.gg/YdcS5uJE" target="_blank" class="text-gray-400 hover:text-[#5865F2] transition-colors duration-200" aria-label="Discord">
+                <i class="fab fa-discord text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom section -->
+        <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+            <a href="#" class="hover:text-white transition-colors duration-200">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors duration-200">Terms of Service</a>
+            <a href="#" class="hover:text-white transition-colors duration-200">Cookie Policy</a>
+          </div>
+          <p>&copy; 2024 Cryptoriez. Alle rechten voorbehouden.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const menuBackdrop = document.getElementById('menu-backdrop');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenuFunc() {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+        menuBackdrop.addEventListener('click', closeMobileMenuFunc);
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenuFunc();
+            }
+        });
+
+        // Fade in animation for content
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
