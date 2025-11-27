@@ -12,18 +12,6 @@
           <p>8310 Brugge</p>
         </div>
         <div>
-          <p>Lindendreef 9</p>
-          <p>2950 Kapellen, Antwerpen</p>
-        </div>
-        <div>
-          <p>Zoutelaan 51</p>
-          <p>8301 Knokke-Heist</p>
-        </div>
-        <div>
-          <p>Oudenaardse steenweg 36</p>
-          <p>9000 Gent</p>
-        </div>
-        <div>
           <a href="mailto:cryptoriez@gmail.com" class="text-crypto-orange hover:underline">cryptoriez@gmail.com</a>
         </div>
       </div>
@@ -41,7 +29,7 @@
             <i class="fab fa-youtube text-xl"></i>
           </a>
         </div>
-        <img src="cryptoriez.png" alt="Cryptoriez Logo" class="h-10 w-auto" />
+        <img src="cryptoriez.png" alt="Cryptoriez Logo" class="h-10 w-auto" fetchpriority="high" />
       </div>
     </div>
 
@@ -51,18 +39,18 @@
       <p>&copy; 2025 Cryptoriez. Alle rechten voorbehouden.</p>
       <p>
         <button id="openPrivacyModal" class="text-sm underline text-gray-400 hover:text-white">Privacybeleid</button> ·
-        <a href="/disclaimer.html" class="hover:text-white underline">Disclaimer</a>
+        <button id="openDisclaimerModal" class="text-sm underline text-gray-400 hover:text-white">Disclaimer</button>
       </p>
     </div>
   </div>
 </footer>
 
 <!-- Privacy Modal -->
-<div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden">
+<div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden" role="dialog" aria-labelledby="privacy-heading" aria-modal="true">
   <!-- Modal content -->
   <div class="bg-[#1A1A1A] text-white max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 rounded-xl shadow-xl relative">
-    <button id="closePrivacyModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
-    <h2 class="text-2xl font-semibold mb-4">Privacybeleid</h2>
+    <button id="closePrivacyModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold" aria-label="Sluit privacybeleid">&times;</button>
+    <h2 id="privacy-heading" class="text-2xl font-semibold mb-4">Privacybeleid</h2>
 
     <p class="mb-4">Cryptoriez, een platform beheerd door Wttrw BV (BE0800.680.956), hecht veel belang aan jouw privacy en verwerkt je gegevens in overeenstemming met de GDPR-wetgeving.</p>
 
@@ -89,20 +77,91 @@
   </div>
 </div>
 
+<!-- Disclaimer Modal -->
+<div id="disclaimerModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden" role="dialog" aria-labelledby="disclaimer-heading" aria-modal="true">
+  <div class="bg-[#1A1A1A] text-white max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 rounded-xl shadow-xl relative">
+    <button id="closeDisclaimerModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold" aria-label="Sluit disclaimer">&times;</button>
+    <h2 id="disclaimer-heading" class="text-2xl font-semibold mb-4">Financiële Disclaimer</h2>
+
+    <p class="mb-4">Cryptoriez is een <strong>educatief platform</strong> dat zich richt op het delen van kennis rond crypto en forex trading. Alle informatie die via deze website, cursussen, Het Trade Platform of Discord gedeeld wordt, is <strong>uitsluitend bedoeld ter educatie</strong>.</p>
+
+    <p class="mb-4"><strong>Cryptoriez geeft geen beleggingsadvies</strong>. Signalen, analyses, strategieën of meningen gedeeld via onze community, Het Trade Platform of andere kanalen zijn louter ter illustratie en mogen niet worden beschouwd als financieel advies, beleggingsaanbeveling of garantie voor winst.</p>
+
+    <p class="mb-4"><strong>Trading brengt aanzienlijke risico's met zich mee.</strong> Je kunt al je geïnvesteerde kapitaal verliezen. Handel alleen met geld dat je volledig bereid bent te verliezen. De resultaten uit het verleden zijn geen garantie voor toekomstige resultaten.</p>
+
+    <p class="mb-4">Met betrekking tot de Black Friday deal en Het Trade Platform: De lifetime toegang die je verkrijgt geeft je toegang tot educatieve content en tools. Dit garandeert geen winstgevende trading resultaten. Alle trading beslissingen die je neemt zijn volledig op eigen verantwoordelijkheid.</p>
+
+    <p class="mb-4"><strong>Cryptoriez (Wttrw BV) kan op geen enkele manier aansprakelijk worden gesteld</strong> voor eventuele verliezen, financiële schade of andere gevolgen die voortkomen uit handelsbeslissingen, gebruik van Het Trade Platform, of beslissingen gebaseerd op onze content, signalen of analyses.</p>
+
+    <p class="mb-4">Door gebruik te maken van onze diensten, Het Trade Platform of door deel te nemen aan onze community, erken je dat je deze disclaimer hebt gelezen, begrepen en ermee akkoord gaat.</p>
+
+    <p class="text-sm text-gray-400 mt-6">
+      Wttrw BV (BE0800.680.956)<br>
+      Katelijnepoort Business Center<br>
+      Baron Ruzettelaan 1 bus 1.1<br>
+      8310 Brugge, België
+    </p>
+  </div>
+</div>
+
 <script>
-  const modal = document.getElementById('privacyModal');
-  const openBtn = document.getElementById('openPrivacyModal');
-  const closeBtn = document.getElementById('closePrivacyModal');
+  // Privacy Modal
+  const privacyModal = document.getElementById('privacyModal');
+  const openPrivacyBtn = document.getElementById('openPrivacyModal');
+  const closePrivacyBtn = document.getElementById('closePrivacyModal');
 
-  openBtn.addEventListener('click', () => {
-    modal.classList.remove('hidden');
-  });
+  if (openPrivacyBtn && privacyModal) {
+    openPrivacyBtn.addEventListener('click', () => {
+      privacyModal.classList.remove('hidden');
+    });
 
-  closeBtn.addEventListener('click', () => {
-    modal.classList.add('hidden');
-  });
+    if (closePrivacyBtn) {
+      closePrivacyBtn.addEventListener('click', () => {
+        privacyModal.classList.add('hidden');
+      });
+    }
 
+    // Close privacy modal when clicking outside
+    privacyModal.addEventListener('click', (e) => {
+      if (e.target === privacyModal) {
+        privacyModal.classList.add('hidden');
+      }
+    });
+  }
+
+  // Disclaimer Modal
+  const disclaimerModal = document.getElementById('disclaimerModal');
+  const openDisclaimerBtn = document.getElementById('openDisclaimerModal');
+  const closeDisclaimerBtn = document.getElementById('closeDisclaimerModal');
+
+  if (openDisclaimerBtn && disclaimerModal) {
+    openDisclaimerBtn.addEventListener('click', () => {
+      disclaimerModal.classList.remove('hidden');
+    });
+
+    if (closeDisclaimerBtn) {
+      closeDisclaimerBtn.addEventListener('click', () => {
+        disclaimerModal.classList.add('hidden');
+      });
+    }
+
+    // Close disclaimer modal when clicking outside
+    disclaimerModal.addEventListener('click', (e) => {
+      if (e.target === disclaimerModal) {
+        disclaimerModal.classList.add('hidden');
+      }
+    });
+  }
+
+  // Close modals with Escape key
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') modal.classList.add('hidden');
+    if (e.key === 'Escape') {
+      if (privacyModal && !privacyModal.classList.contains('hidden')) {
+        privacyModal.classList.add('hidden');
+      }
+      if (disclaimerModal && !disclaimerModal.classList.contains('hidden')) {
+        disclaimerModal.classList.add('hidden');
+      }
+    }
   });
 </script> 
