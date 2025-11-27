@@ -162,6 +162,22 @@
             border-color: rgba(248, 130, 38, 0.3);
             transform: translateY(-5px);
         }
+        
+        /* Professional countdown bar fade-in animation */
+        @keyframes countdownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .timer-banner {
+            animation: countdownFadeIn 0.4s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white font-inter">
@@ -171,7 +187,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
                     <a href="index.html">
-                        <img src="cryptoriez.png" alt="Cryptoriez" class="h-8 w-auto">
+                        <img src="cryptoriez.png" alt="Cryptoriez" class="h-8 w-auto" fetchpriority="high">
                     </a>
                 </div>
                 
@@ -215,8 +231,22 @@
         </div>
     </nav>
 
+    <!-- Sticky Countdown Timer Banner -->
+    <a href="blackfriday.html" class="fixed top-16 left-0 right-0 bg-gray-900/70 backdrop-blur-sm border-b border-white/10 z-40 timer-banner block hover:bg-gray-900/80 transition-colors duration-200" style="background: linear-gradient(to right, rgba(248, 130, 38, 0.05), rgba(70, 112, 219, 0.08), rgba(248, 130, 38, 0.05)), rgba(17, 24, 39, 0.7); cursor: pointer;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <div class="text-center sm:text-left">
+                    <p class="text-white/80 text-sm sm:text-base font-medium">Deal verloopt over:</p>
+                </div>
+                <div id="countdown-timer" class="text-3xl sm:text-4xl font-bold font-mono tracking-wide text-crypto-orange">
+                    60:00
+                </div>
+            </div>
+        </div>
+    </a>
+
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center pt-32 sm:pt-36 overflow-hidden">
         <!-- Background with gradient overlay -->
         <div class="absolute inset-0 hero-gradient"></div>
         <div class="absolute inset-0 bg-[url('hero.png')] bg-cover bg-center opacity-10"></div>
@@ -568,6 +598,127 @@
                 document.getElementById('footer-container').innerHTML = data;
             })
             .catch(error => console.error('Error loading footer:', error));
+        
+        // Countdown Timer - Aftellen naar zaterdag 00:00 Brusselse tijd
+        function getNextSaturdayMidnight() {
+            const now = new Date();
+            
+            // Haal huidige tijd componenten in Brusselse tijdzone
+            const brusselsFormatter = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'Europe/Brussels',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+                hour: 'numeric',
+                hour12: false
+            });
+            
+            const parts = brusselsFormatter.formatToParts(now);
+            const year = parseInt(parts.find(p => p.type === 'year').value);
+            const month = parseInt(parts.find(p => p.type === 'month').value) - 1;
+            const day = parseInt(parts.find(p => p.type === 'day').value);
+            const hour = parseInt(parts.find(p => p.type === 'hour').value);
+            const weekday = parts.find(p => p.type === 'weekday').value.toLowerCase();
+            
+            // Bepaal huidige dag van de week (0 = zondag, 6 = zaterdag)
+            const dayMap = { 'sunday': 0, 'monday': 1, 'tuesday': 2, 'wednesday': 3, 'thursday': 4, 'friday': 5, 'saturday': 6 };
+            const currentDay = dayMap[weekday] || 0;
+            
+            // Bereken dagen tot volgende zaterdag 00:00
+            let daysUntilSaturday;
+            if (currentDay === 6 && hour === 0) {
+                daysUntilSaturday = 7; // Precies zaterdag 00:00, gebruik volgende zaterdag
+            } else if (currentDay < 6) {
+                daysUntilSaturday = 6 - currentDay; // Voor zaterdag
+            } else if (currentDay === 6) {
+                daysUntilSaturday = 0; // Vandaag zaterdag, maar nog niet 00:00
+            } else {
+                daysUntilSaturday = 7 - currentDay + 6; // Na zaterdag (dit zou niet moeten voorkomen, maar voor volledigheid)
+            }
+            
+            // Bereken target zaterdag datum
+            const targetDay = day + daysUntilSaturday;
+            
+            // Maak een Date object voor zaterdag 00:00:00 in Brusselse tijd
+            const targetBrusselsStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(targetDay).padStart(2, '0')}T00:00:00`;
+            
+            // Parse als UTC en pas offset toe
+            const localTime = new Date();
+            const brusselsTimeStr = localTime.toLocaleString('en-US', { timeZone: 'Europe/Brussels' });
+            const utcTimeStr = localTime.toLocaleString('en-US', { timeZone: 'UTC' });
+            const offset = new Date(brusselsTimeStr).getTime() - new Date(utcTimeStr).getTime();
+            
+            const targetUTC = new Date(targetBrusselsStr + 'Z');
+            const targetBrussels = new Date(targetUTC.getTime() - offset);
+            
+            return targetBrussels;
+        }
+        
+        function getTimeRemaining() {
+            const now = new Date();
+            const target = getNextSaturdayMidnight();
+            
+            const difference = target - now;
+            
+            if (difference <= 0) {
+                return { total: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
+            }
+            
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            return {
+                total: difference,
+                days: days,
+                hours: hours,
+                minutes: minutes,
+                seconds: seconds
+            };
+        }
+        
+        const timerElement = document.getElementById('countdown-timer');
+        const timerBanner = document.querySelector('.timer-banner');
+        
+        function updateTimer() {
+            const time = getTimeRemaining();
+            
+            if (time.total <= 0) {
+                // Deal is verlopen
+                if (timerElement) {
+                    timerElement.textContent = '00:00:00';
+                }
+                
+                if (timerBanner) {
+                    timerBanner.classList.remove('timer-banner');
+                    timerBanner.classList.add('bg-gray-800/50');
+                    const bannerText = timerBanner.querySelector('p');
+                    if (bannerText) {
+                        bannerText.textContent = 'Deze deal is verlopen.';
+                    }
+                }
+                
+                return;
+            }
+            
+            // Toon tijd in formaat: DD:HH:MM:SS of HH:MM:SS als dagen = 0
+            let timeString;
+            if (time.days > 0) {
+                timeString = `${time.days.toString().padStart(2, '0')}:${time.hours.toString().padStart(2, '0')}:${time.minutes.toString().padStart(2, '0')}:${time.seconds.toString().padStart(2, '0')}`;
+            } else {
+                timeString = `${time.hours.toString().padStart(2, '0')}:${time.minutes.toString().padStart(2, '0')}:${time.seconds.toString().padStart(2, '0')}`;
+            }
+            
+            if (timerElement) {
+                timerElement.textContent = timeString;
+            }
+        }
+        
+        // Update timer every second
+        updateTimer();
+        setInterval(updateTimer, 1000);
     </script>
 </body>
 </html>
