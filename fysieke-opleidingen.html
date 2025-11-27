@@ -895,56 +895,56 @@
             document.getElementById('popupModal').classList.add('hidden');
         });
         
-        // Countdown Timer - Aftellen naar zaterdag 00:00 Brusselse tijd
-        function getNextSaturdayMidnight() {
+        // Countdown Timer - Aftellen naar 28 november 20:00 Brusselse tijd
+        function getTargetDateTime() {
             const now = new Date();
             
-            // Haal huidige tijd componenten in Brusselse tijdzone
+            // Haal huidige datum en tijd in Brusselse tijdzone
             const brusselsFormatter = new Intl.DateTimeFormat('en-US', {
                 timeZone: 'Europe/Brussels',
-                weekday: 'long',
                 year: 'numeric',
                 month: 'numeric',
                 day: 'numeric',
                 hour: 'numeric',
+                minute: 'numeric',
                 hour12: false
             });
             
             const parts = brusselsFormatter.formatToParts(now);
-            const year = parseInt(parts.find(p => p.type === 'year').value);
-            const month = parseInt(parts.find(p => p.type === 'month').value) - 1;
-            const day = parseInt(parts.find(p => p.type === 'day').value);
-            const hour = parseInt(parts.find(p => p.type === 'hour').value);
-            const weekday = parts.find(p => p.type === 'weekday').value.toLowerCase();
+            const currentYear = parseInt(parts.find(p => p.type === 'year').value);
+            const currentMonth = parseInt(parts.find(p => p.type === 'month').value);
+            const currentDay = parseInt(parts.find(p => p.type === 'day').value);
+            const currentHour = parseInt(parts.find(p => p.type === 'hour').value);
             
-            // Bepaal huidige dag van de week (0 = zondag, 6 = zaterdag)
-            const dayMap = { 'sunday': 0, 'monday': 1, 'tuesday': 2, 'wednesday': 3, 'thursday': 4, 'friday': 5, 'saturday': 6 };
-            const currentDay = dayMap[weekday] || 0;
+            // Target: 28 november om 20:00 Brusselse tijd
+            let targetYear = currentYear;
             
-            // Bereken dagen tot volgende zaterdag 00:00
-            let daysUntilSaturday;
-            if (currentDay === 6 && hour === 0) {
-                daysUntilSaturday = 7; // Precies zaterdag 00:00, gebruik volgende zaterdag
-            } else if (currentDay < 6) {
-                daysUntilSaturday = 6 - currentDay; // Voor zaterdag
-            } else if (currentDay === 6) {
-                daysUntilSaturday = 0; // Vandaag zaterdag, maar nog niet 00:00
+            // Als vandaag 28 november is en het is voor 20:00, tel naar vandaag 20:00
+            // Anders, tel naar 28 november 20:00, of volgend jaar als we al voorbij 28 november zijn
+            if (currentMonth === 11 && currentDay === 28 && currentHour < 20) {
+                targetYear = currentYear;
+            } else if (currentMonth === 11 && currentDay < 28) {
+                targetYear = currentYear;
+            } else if (currentMonth === 11 && currentDay === 28 && currentHour >= 20) {
+                targetYear = currentYear + 1;
+            } else if (currentMonth === 11 && currentDay > 28) {
+                targetYear = currentYear + 1;
+            } else if (currentMonth > 11) {
+                targetYear = currentYear + 1;
             } else {
-                daysUntilSaturday = 7 - currentDay + 6; // Na zaterdag (dit zou niet moeten voorkomen, maar voor volledigheid)
+                targetYear = currentYear;
             }
             
-            // Bereken target zaterdag datum
-            const targetDay = day + daysUntilSaturday;
+            // Maak target datum string
+            const targetBrusselsStr = `${targetYear}-11-28T20:00:00`;
             
-            // Maak een Date object voor zaterdag 00:00:00 in Brusselse tijd
-            const targetBrusselsStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(targetDay).padStart(2, '0')}T00:00:00`;
-            
-            // Parse als UTC en pas offset toe
+            // Bereken offset tussen lokale tijd en Brusselse tijd
             const localTime = new Date();
             const brusselsTimeStr = localTime.toLocaleString('en-US', { timeZone: 'Europe/Brussels' });
             const utcTimeStr = localTime.toLocaleString('en-US', { timeZone: 'UTC' });
             const offset = new Date(brusselsTimeStr).getTime() - new Date(utcTimeStr).getTime();
             
+            // Parse als UTC en pas offset toe
             const targetUTC = new Date(targetBrusselsStr + 'Z');
             const targetBrussels = new Date(targetUTC.getTime() - offset);
             
@@ -953,7 +953,7 @@
         
         function getTimeRemaining() {
             const now = new Date();
-            const target = getNextSaturdayMidnight();
+            const target = getTargetDateTime();
             
             const difference = target - now;
             
