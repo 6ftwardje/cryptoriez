@@ -470,8 +470,8 @@
     </nav>
     </header>
 
-    <!-- Sticky Countdown Timer Banner -->
-    <div class="fixed top-16 left-0 right-0 bg-gray-900/70 backdrop-blur-sm border-b border-white/10 z-40 timer-banner" style="background: linear-gradient(to right, rgba(248, 130, 38, 0.05), rgba(70, 112, 219, 0.08), rgba(248, 130, 38, 0.05)), rgba(17, 24, 39, 0.7);">
+    <!-- Sticky Countdown Timer Banner - Hidden -->
+    <div class="fixed top-16 left-0 right-0 bg-gray-900/70 backdrop-blur-sm border-b border-white/10 z-40 timer-banner" style="display: none;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <div class="text-center sm:text-left">
@@ -542,9 +542,14 @@
                 <h1 class="text-3xl sm:text-4xl font-bold text-center mb-2 text-white">
                     Black Friday Deal
                 </h1>
-                <p class="text-center text-crypto-orange font-semibold text-lg sm:text-xl mb-8">
-                    Eenmalige deal - Mis deze kans niet!
+                <p class="text-center text-red-400 font-semibold text-lg sm:text-xl mb-8">
+                    Deze deal is niet meer beschikbaar
                 </p>
+                <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4 mb-8">
+                    <p class="text-center text-red-300 text-sm sm:text-base">
+                        Helaas is deze Black Friday deal verlopen. De pagina blijft beschikbaar voor informatie over Het Trade Platform.
+                    </p>
+                </div>
                 
                 <!-- Pricing -->
                 <div class="text-center mb-8">
@@ -596,10 +601,10 @@
                     </div>
                 </div>
                 
-                <!-- CTA Button -->
+                <!-- CTA Button - Disabled -->
                 <div class="mb-4">
-                    <a id="cta-button" href="https://buy.stripe.com/6oUeVdeQi29D4gx6ZE4ko0g" class="block w-full bg-crypto-orange hover:bg-crypto-orange/90 text-white text-center px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl pulse-hover transform hover:scale-105">
-                        Claim deze deal
+                    <a id="cta-button" href="#" class="block w-full bg-gray-600 text-gray-400 text-center px-8 py-4 rounded-lg font-semibold text-lg cursor-not-allowed opacity-60" onclick="return false;">
+                        Deze deal is niet meer beschikbaar
                     </a>
                 </div>
                 
@@ -915,10 +920,10 @@
             <!-- CTA-blok -->
             <div class="text-center">
                 <p class="text-white/90 text-lg sm:text-xl mb-6 max-w-3xl mx-auto leading-relaxed">
-                    Met deze Black Friday deal krijg je lifetime toegang tot Het Trade Platform.
+                    Helaas is deze Black Friday deal niet meer beschikbaar. Bekijk onze andere aanbiedingen op de hoofdpagina.
                 </p>
-                <a href="https://buy.stripe.com/6oUeVdeQi29D4gx6ZE4ko0g" class="inline-block bg-tp-blue hover:bg-tp-blue/90 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-lg font-semibold text-lg sm:text-xl transition-colors duration-200">
-                    Claim deze deal
+                <a href="index.html#call" class="inline-block bg-tp-blue hover:bg-tp-blue/90 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-lg font-semibold text-lg sm:text-xl transition-colors duration-200">
+                    Neem contact op
                 </a>
             </div>
         </div>
