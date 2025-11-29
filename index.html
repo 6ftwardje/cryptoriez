@@ -147,6 +147,7 @@
                     colors: {
                         'crypto-orange': '#f88226',
                         'crypto-blue': '#4670db',
+                        'tp-blue': '#5e6bff',
                     }
                 }
             }
@@ -249,49 +250,6 @@
             transform: rotate(90deg);
         }
         
-        /* Professional countdown bar fade-in animation */
-        @keyframes countdownFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-4px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .timer-banner {
-            animation: countdownFadeIn 0.4s ease-out forwards;
-        }
-        
-        /* Black Friday Popup Styles */
-        @keyframes popupIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-        
-        .animate-popup-in {
-            animation: popupIn 0.3s ease-out forwards;
-        }
-        
-        #blackfriday-popup {
-            backdrop-filter: blur(4px);
-        }
-        
-        @media (max-width: 640px) {
-            #blackfriday-popup .max-w-md {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-        }
-
     </style>
     
     <script>
@@ -328,6 +286,7 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
                     <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Bekijk onze fysieke opleidingen">Opleidingen</a>
+                    <a href="trade-platform.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Bekijk Het Trade Platform">Trade Platform</a>
                     <a href="testimonials.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Bekijk student testimonials">Testimonials</a>
                     <a href="discord.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Leer meer over onze Discord community">Discord</a>
                     <a href="team.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Ontmoet ons team">Team</a>
@@ -350,20 +309,6 @@
     </nav>
     </header>
 
-    <!-- Sticky Countdown Timer Banner - Hidden -->
-    <a href="blackfriday.html" class="fixed top-16 left-0 right-0 bg-gray-900/70 backdrop-blur-sm border-b border-white/10 z-40 timer-banner block hover:bg-gray-900/80 transition-colors duration-200" style="display: none;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <div class="text-center sm:text-left">
-                    <p class="text-white/80 text-sm sm:text-base font-medium">Deal verloopt over:</p>
-                </div>
-                <div id="countdown-timer" class="text-3xl sm:text-4xl font-bold font-mono tracking-wide text-crypto-orange">
-                    60:00
-                </div>
-            </div>
-        </div>
-    </a>
-
     <!-- Mobile Pancake Menu Overlay -->
     <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden" aria-hidden="true"></div>
 
@@ -382,6 +327,9 @@
             <nav class="flex-1 space-y-2">
                 <a href="fysieke-opleidingen.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk onze fysieke opleidingen">
                     <span class="text-lg font-medium">Opleidingen</span>
+                </a>
+                <a href="trade-platform.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk Het Trade Platform">
+                    <span class="text-lg font-medium">Trade Platform</span>
                 </a>
                 <a href="testimonials.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk student testimonials">
                     <span class="text-lg font-medium">Testimonials</span>
@@ -520,7 +468,7 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" role="list">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
                 <!-- Fysieke Opleidingen -->
                 <div class="group relative" role="listitem">
                     <div class="absolute inset-0 bg-gradient-to-br from-crypto-orange/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
@@ -533,6 +481,26 @@
                         <h3 class="text-xl font-semibold mb-3 group-hover:text-crypto-orange transition-colors duration-300">Fysieke Opleidingen</h3>
                         <p class="text-gray-300 mb-4 text-sm">Leer correct investeren in crypto en zelfstandig traden met professionele begeleiding.</p>
                         <a href="fysieke-opleidingen.html" class="inline-flex items-center text-crypto-orange hover:text-crypto-orange/80 font-medium text-sm transition-colors duration-200" aria-label="Ontdek meer over onze fysieke opleidingen">
+                            Ontdek meer
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Trade Platform -->
+                <div class="group relative" role="listitem">
+                    <div class="absolute inset-0 bg-gradient-to-br from-tp-blue/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                    <div class="relative bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-tp-blue/30 transition-all duration-300 group-hover:scale-105">
+                        <div class="w-16 h-16 bg-gradient-to-br from-tp-blue to-tp-blue/80 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 group-hover:text-tp-blue transition-colors duration-300">Het Trade Platform</h3>
+                        <p class="text-gray-300 mb-4 text-sm">De complete leeromgeving voor traders die technisch willen excelleren. Lifetime toegang voor €1999.</p>
+                        <a href="trade-platform.html" class="inline-flex items-center text-tp-blue hover:text-tp-blue/80 font-medium text-sm transition-colors duration-200" aria-label="Ontdek Het Trade Platform">
                             Ontdek meer
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1326,41 +1294,6 @@
       </div>
     </div>
 
-    <!-- Black Friday Popup Notification -->
-    <div id="blackfriday-popup" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[60] hidden" role="dialog" aria-labelledby="blackfriday-popup-heading" aria-modal="true">
-        <div class="bg-gray-900 border border-crypto-orange/30 rounded-2xl p-6 sm:p-8 max-w-md mx-4 shadow-2xl relative animate-popup-in">
-            <button id="close-blackfriday-popup" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200" aria-label="Sluit Black Friday popup">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            
-            <div class="text-center">
-                <div class="mb-4">
-                    <span class="inline-block bg-crypto-orange/20 text-crypto-orange px-4 py-2 rounded-full text-sm font-semibold border border-crypto-orange/30">
-                        Black Friday Deal
-                    </span>
-                </div>
-                
-                <h3 id="blackfriday-popup-heading" class="text-2xl sm:text-3xl font-bold text-white mb-3">
-                    Exclusieve Black Friday Deal
-                </h3>
-                
-                <p class="text-gray-300 mb-6 text-sm sm:text-base">
-                    Lifetime access tot Het Trade Platform voor slechts <span class="text-crypto-orange font-bold">€797</span> (normaal €1999)
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="blackfriday.html" class="flex-1 bg-crypto-orange hover:bg-crypto-orange/90 text-white text-center px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
-                        Bekijk de deal
-                    </a>
-                    <button id="dismiss-blackfriday-popup" class="px-6 py-3 text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-                        Later bekijken
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Popup Modal -->
     <div id="popupModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" role="dialog" aria-labelledby="popup-heading" aria-modal="true">
@@ -1705,182 +1638,6 @@
           }
         });
         
-        // Countdown Timer - Aftellen naar 28 november 23:59 Brusselse tijd
-        function getTargetDateTime() {
-            const now = new Date();
-            
-            // Haal huidige datum en tijd in Brusselse tijdzone
-            const brusselsFormatter = new Intl.DateTimeFormat('en-US', {
-                timeZone: 'Europe/Brussels',
-                year: 'numeric',
-                month: 'numeric',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric',
-                hour12: false
-            });
-            
-            const parts = brusselsFormatter.formatToParts(now);
-            const currentYear = parseInt(parts.find(p => p.type === 'year').value);
-            const currentMonth = parseInt(parts.find(p => p.type === 'month').value);
-            const currentDay = parseInt(parts.find(p => p.type === 'day').value);
-            const currentHour = parseInt(parts.find(p => p.type === 'hour').value);
-            
-            // Target: 28 november om 23:59 Brusselse tijd
-            let targetYear = currentYear;
-            
-            // Als vandaag 28 november is en het is voor 23:59, tel naar vandaag 23:59
-            // Anders, tel naar 28 november 23:59, of volgend jaar als we al voorbij 28 november zijn
-            if (currentMonth === 11 && currentDay === 28 && (currentHour < 23 || (currentHour === 23 && parseInt(parts.find(p => p.type === 'minute').value) < 59))) {
-                targetYear = currentYear;
-            } else if (currentMonth === 11 && currentDay < 28) {
-                targetYear = currentYear;
-            } else if (currentMonth === 11 && currentDay === 28) {
-                targetYear = currentYear + 1;
-            } else if (currentMonth === 11 && currentDay > 28) {
-                targetYear = currentYear + 1;
-            } else if (currentMonth > 11) {
-                targetYear = currentYear + 1;
-            } else {
-                targetYear = currentYear;
-            }
-            
-            // Maak target datum string
-            const targetBrusselsStr = `${targetYear}-11-28T23:59:00`;
-            
-            // Bereken offset tussen lokale tijd en Brusselse tijd
-            const localTime = new Date();
-            const brusselsTimeStr = localTime.toLocaleString('en-US', { timeZone: 'Europe/Brussels' });
-            const utcTimeStr = localTime.toLocaleString('en-US', { timeZone: 'UTC' });
-            const offset = new Date(brusselsTimeStr).getTime() - new Date(utcTimeStr).getTime();
-            
-            // Parse als UTC en pas offset toe
-            const targetUTC = new Date(targetBrusselsStr + 'Z');
-            const targetBrussels = new Date(targetUTC.getTime() - offset);
-            
-            return targetBrussels;
-        }
-        
-        function getTimeRemaining() {
-            const now = new Date();
-            const target = getTargetDateTime();
-            
-            const difference = target - now;
-            
-            if (difference <= 0) {
-                return { total: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
-            }
-            
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-            
-            return {
-                total: difference,
-                days: days,
-                hours: hours,
-                minutes: minutes,
-                seconds: seconds
-            };
-        }
-        
-        const timerElement = document.getElementById('countdown-timer');
-        const timerBanner = document.querySelector('.timer-banner');
-        
-        function updateTimer() {
-            const time = getTimeRemaining();
-            
-            if (time.total <= 0) {
-                // Deal is verlopen
-                if (timerElement) {
-                    timerElement.textContent = '00:00:00';
-                }
-                
-                if (timerBanner) {
-                    timerBanner.classList.remove('timer-banner');
-                    timerBanner.classList.add('bg-gray-800/50');
-                    const bannerText = timerBanner.querySelector('p');
-                    if (bannerText) {
-                        bannerText.textContent = 'Deze deal is verlopen.';
-                    }
-                }
-                
-                return;
-            }
-            
-            // Toon tijd in formaat: DD:HH:MM:SS of HH:MM:SS als dagen = 0
-            let timeString;
-            if (time.days > 0) {
-                timeString = `${time.days.toString().padStart(2, '0')}:${time.hours.toString().padStart(2, '0')}:${time.minutes.toString().padStart(2, '0')}:${time.seconds.toString().padStart(2, '0')}`;
-            } else {
-                timeString = `${time.hours.toString().padStart(2, '0')}:${time.minutes.toString().padStart(2, '0')}:${time.seconds.toString().padStart(2, '0')}`;
-            }
-            
-            if (timerElement) {
-                timerElement.textContent = timeString;
-            }
-        }
-        
-        // Update timer every second
-        updateTimer();
-        setInterval(updateTimer, 1000);
-        
-        // Black Friday Popup Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const blackfridayPopup = document.getElementById('blackfriday-popup');
-            const closeBlackfridayPopup = document.getElementById('close-blackfriday-popup');
-            const dismissBlackfridayPopup = document.getElementById('dismiss-blackfriday-popup');
-            
-            // Check if popup was already dismissed
-            const popupDismissed = localStorage.getItem('blackfriday_popup_dismissed');
-            
-            if (!popupDismissed && blackfridayPopup) {
-                // Show popup immediately
-                blackfridayPopup.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            }
-            
-            // Close popup function
-            function closePopup() {
-                if (blackfridayPopup) {
-                    blackfridayPopup.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }
-            }
-            
-            // Save dismissal to localStorage
-            function dismissPopup() {
-                localStorage.setItem('blackfriday_popup_dismissed', 'true');
-                closePopup();
-            }
-            
-            // Close button
-            if (closeBlackfridayPopup) {
-                closeBlackfridayPopup.addEventListener('click', dismissPopup);
-            }
-            
-            // Dismiss button
-            if (dismissBlackfridayPopup) {
-                dismissBlackfridayPopup.addEventListener('click', dismissPopup);
-            }
-            
-            // Close on background click
-            if (blackfridayPopup) {
-                blackfridayPopup.addEventListener('click', function(e) {
-                    if (e.target === blackfridayPopup) {
-                        dismissPopup();
-                    }
-                });
-            }
-            
-            // Close on Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && blackfridayPopup && !blackfridayPopup.classList.contains('hidden')) {
-                    dismissPopup();
-                }
-            });
-        });
 
     </script>
     
