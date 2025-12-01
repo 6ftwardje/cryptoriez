@@ -140,13 +140,19 @@
             width: 100%;
             overflow: hidden;
             aspect-ratio: 16 / 9;
+            touch-action: pan-y pinch-zoom;
         }
         
         .carousel-track {
             display: flex;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
             height: 100%;
+            touch-action: pan-y;
+        }
+        
+        .carousel-track.dragging {
+            transition: none;
         }
         
         .carousel-slide {
@@ -156,6 +162,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            touch-action: pan-y;
         }
         
         .carousel-slide img {
@@ -165,6 +172,8 @@
             object-fit: contain;
             object-position: center;
             background: #1a1a1a;
+            user-select: none;
+            -webkit-user-drag: none;
         }
         
         /* Testimonials Grid */
@@ -379,31 +388,88 @@
         }
         
         @media (max-width: 640px) {
+            .carousel-viewport {
+                aspect-ratio: 4 / 3;
+                border-radius: 8px;
+            }
+            
             .carousel-prev,
             .carousel-next {
-                width: 40px;
-                height: 40px;
-                font-size: 14px;
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+                background: rgba(94, 107, 255, 0.5);
+                backdrop-filter: blur(12px);
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+            
+            .carousel-prev:active,
+            .carousel-next:active {
+                transform: translateY(-50%) scale(0.95);
+                background: rgba(94, 107, 255, 0.7);
             }
             
             .carousel-prev {
-                left: 10px;
+                left: 8px;
             }
             
             .carousel-next {
-                right: 10px;
+                right: 8px;
             }
             
             .carousel-caption {
-                padding: 16px;
+                padding: 12px 16px;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent);
             }
             
             .carousel-caption h3 {
-                font-size: 1.25rem;
+                font-size: 1.1rem;
+                margin-bottom: 4px;
             }
             
             .carousel-caption p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+            
+            .carousel-indicators {
+                margin-top: 16px;
+                gap: 8px;
+            }
+            
+            .carousel-indicator {
+                width: 8px;
+                height: 8px;
+            }
+            
+            .carousel-indicator.active {
+                width: 24px;
+            }
+            
+            .image-carousel {
+                border-radius: 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-viewport {
+                aspect-ratio: 1 / 1;
+            }
+            
+            .carousel-prev,
+            .carousel-next {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+            
+            .carousel-prev {
+                left: 6px;
+            }
+            
+            .carousel-next {
+                right: 6px;
             }
         }
         
@@ -950,6 +1016,11 @@
             let currentIndex = 0;
             let autoplayTimer = null;
             let isPaused = false;
+            let startX = 0;
+            let startY = 0;
+            let currentX = 0;
+            let isDragging = false;
+            let dragOffset = 0;
             
             // Image error handling
             slides.forEach(slide => {
@@ -965,7 +1036,7 @@
                 }
             });
             
-            function goToSlide(index) {
+            function goToSlide(index, smooth = true) {
                 if (index < 0) {
                     index = config.infiniteLoop ? slides.length - 1 : 0;
                 } else if (index >= slides.length) {
@@ -973,6 +1044,11 @@
                 }
                 
                 currentIndex = index;
+                
+                if (smooth) {
+                    track.classList.remove('dragging');
+                }
+                
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
                 // Update ARIA attributes
@@ -1056,12 +1132,30 @@
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
                 isDragging = true;
+                dragOffset = 0;
+                track.classList.add('dragging');
                 pauseAutoplay();
             }, { passive: true });
             
             carousel.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
-                e.preventDefault();
+                
+                currentX = e.touches[0].clientX;
+                const diffX = startX - currentX;
+                const diffY = Math.abs(e.touches[0].clientY - startY);
+                
+                // Only allow horizontal swiping if horizontal movement is greater
+                if (Math.abs(diffX) > diffY && Math.abs(diffX) > 10) {
+                    e.preventDefault();
+                    dragOffset = diffX;
+                    
+                    // Calculate the offset percentage (max 30% of slide width for resistance)
+                    const maxOffset = track.offsetWidth * 0.3;
+                    const offset = Math.max(-maxOffset, Math.min(maxOffset, dragOffset));
+                    const percentage = (currentIndex * 100) - (offset / track.offsetWidth * 100);
+                    
+                    track.style.transform = `translateX(-${percentage}%)`;
+                }
             }, { passive: false });
             
             carousel.addEventListener('touchend', (e) => {
@@ -1070,19 +1164,35 @@
                 const endX = e.changedTouches[0].clientX;
                 const endY = e.changedTouches[0].clientY;
                 const diffX = startX - endX;
-                const diffY = startY - endY;
+                const diffY = Math.abs(startY - endY);
+                
+                track.classList.remove('dragging');
                 
                 // Only trigger swipe if horizontal movement is greater than vertical
-                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > config.swipeThreshold) {
+                if (Math.abs(diffX) > diffY && Math.abs(diffX) > config.swipeThreshold) {
                     if (diffX > 0) {
                         goToNext();
                     } else {
                         goToPrev();
                     }
+                } else {
+                    // Snap back to current slide
+                    goToSlide(currentIndex);
                 }
                 
                 isDragging = false;
+                dragOffset = 0;
                 restartAutoplay();
+            }, { passive: true });
+            
+            carousel.addEventListener('touchcancel', () => {
+                if (isDragging) {
+                    track.classList.remove('dragging');
+                    goToSlide(currentIndex);
+                    isDragging = false;
+                    dragOffset = 0;
+                    restartAutoplay();
+                }
             }, { passive: true });
             
             // Autoplay functions
