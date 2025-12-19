@@ -7,7 +7,7 @@
     <!-- Primary Meta Tags -->
     <title>Het Trade Platform - Cryptoriez</title>
     <meta name="title" content="Het Trade Platform - Cryptoriez">
-    <meta name="description" content="De complete leeromgeving voor traders die technisch willen excelleren. Lifetime toegang voor €1999.">
+    <meta name="description" content="De complete leeromgeving voor iedereen die technisch wil leren traden. Maak een gratis account en start met de eerste modules.">
     
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" href="cryptoriez.png">
@@ -174,121 +174,6 @@
             background: #1a1a1a;
             user-select: none;
             -webkit-user-drag: none;
-        }
-        
-        /* Testimonials Grid */
-        .testimonial-item {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
-        }
-        
-        .testimonial-item:hover {
-            transform: translateY(-4px);
-        }
-        
-        .testimonial-item img {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
-            display: block;
-            object-fit: contain;
-            object-position: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .testimonial-item img:hover {
-            transform: scale(1.02);
-        }
-        
-        /* Lightbox Modal */
-        .lightbox-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .lightbox-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90vh;
-            margin: auto;
-            animation: zoomIn 0.3s ease;
-        }
-        
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 32px;
-            font-weight: 300;
-            cursor: pointer;
-            line-height: 1;
-            transition: opacity 0.2s ease;
-            z-index: 10;
-        }
-        
-        .lightbox-close:hover {
-            opacity: 0.7;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .lightbox-content {
-                max-width: 95%;
-            }
-            
-            .lightbox-close {
-                top: 10px;
-                right: 10px;
-                font-size: 28px;
-            }
         }
         
         .carousel-caption {
@@ -562,8 +447,14 @@
         <div class="relative w-full bg-gradient-to-br from-tp-navy via-tp-indigo/50 to-tp-navy py-16 sm:py-20 lg:py-24">
             <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <img src="fotos/logo_text.png" alt="Het Trade Platform" class="h-16 sm:h-20 lg:h-24 w-auto mx-auto mb-4 sm:mb-6" loading="eager">
-                <p class="text-xl sm:text-2xl lg:text-3xl text-tp-soft-blue font-medium leading-relaxed">
-                    De leeromgeving waar je technisch traden structureel opbouwt.
+                <p class="text-xl sm:text-2xl lg:text-3xl text-tp-soft-blue font-medium leading-relaxed mb-8 sm:mb-10">
+                    De leeromgeving waar je technisch traden stap voor stap onder de knie krijgt — volledig opgebouwd voor structuur, duidelijkheid en progressie.
+                </p>
+                <a href="https://hettradeplatform.be/register" class="inline-block bg-tp-blue hover:bg-tp-blue/90 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-lg font-semibold text-lg sm:text-xl transition-colors duration-200 tp-cta-glow">
+                    Maak een gratis account
+                </a>
+                <p class="text-white/70 text-sm sm:text-base mt-4">
+                    Upgraden kan later vanuit het platform.
                 </p>
             </div>
         </div>
@@ -574,7 +465,7 @@
                 <p class="text-white/90 text-lg sm:text-xl leading-relaxed max-w-4xl mx-auto text-center">
                     Het Trade Platform is een complete leeromgeving voor studenten die technisch willen leren traden. 
                     Je krijgt toegang tot gestructureerde modules met video's en opdrachten, praktische trading tools en dashboards, 
-                    en optionele begeleiding van ervaren mentors. Alles op één plek, zonder maandelijkse kosten.
+                    en optionele begeleiding van ervaren mentors. Alles op één plek.
                 </p>
             </div>
 
@@ -610,18 +501,18 @@
                     </p>
                 </div>
 
-                <!-- Card 3: Mentorship & lifetime toegang -->
+                <!-- Card 3: Mentorship & begeleiding -->
                 <div class="bg-tp-panel-start/50 rounded-lg p-6 sm:p-8 border border-white/5">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-tp-blue/20 flex items-center justify-center">
                             <i class="fas fa-users text-tp-blue text-xl"></i>
                         </div>
                         <h3 class="text-xl sm:text-2xl font-semibold text-white">
-                            Mentorship & lifetime toegang
+                            Mentorship & begeleiding
                         </h3>
                     </div>
                     <p class="text-white/70 text-base leading-relaxed">
-                        Begeleiding van ervaren traders wanneer je het nodig hebt. Geen abonnement, alle toekomstige updates inbegrepen.
+                        Begeleiding van ervaren traders wanneer je het nodig hebt. Je kunt later upgraden vanuit het platform wanneer je toegang wilt tot alle lessen, opdrachten en mentorship.
                     </p>
                 </div>
             </div>
@@ -691,6 +582,169 @@
                 </div>
             </div>
 
+            <!-- SECTION: Voor Wie Is Dit (expandable) -->
+            <div class="mb-12 sm:mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+                        Voor wie is dit?
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1: Beginner -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <i class="fas fa-seedling text-tp-blue text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Beginner die structuur zoekt</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Je wilt technisch traden leren maar zoekt een duidelijke structuur om stap voor stap te beginnen.
+                        </p>
+                    </div>
+                    
+                    <!-- Card 2: Trader met basiskennis -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <i class="fas fa-chart-line text-tp-blue text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Trader met basiskennis die wil verdiepen</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Je hebt al wat ervaring maar wilt je technische vaardigheden verder ontwikkelen met gestructureerde content.
+                        </p>
+                    </div>
+                    
+                    <!-- Card 3: Consistentie -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <i class="fas fa-target text-tp-blue text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Trader die consistentie wil opbouwen</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Je wilt een solide fundament opbouwen en systematisch werken aan je trading performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: Hoe Werkt Het (expandable) -->
+            <div class="mb-12 sm:mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+                        Hoe werkt het?
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Stap 1 -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <span class="text-tp-blue text-lg font-bold">1</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Maak gratis een account aan</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Ontdek de structuur en eerste content zonder verplichtingen.
+                        </p>
+                    </div>
+                    
+                    <!-- Stap 2 -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <span class="text-tp-blue text-lg font-bold">2</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Volg de modules in je eigen tempo</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Video's, opdrachten, dashboards — leer wanneer het jou uitkomt.
+                        </p>
+                    </div>
+                    
+                    <!-- Stap 3 -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <span class="text-tp-blue text-lg font-bold">3</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Upgrade wanneer jij klaar bent</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Geen verplichting, geen tijdsdruk — upgrade vanuit het platform wanneer je meer content wilt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: Gratis Functionaliteiten (expandable) -->
+            <div class="mb-12 sm:mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
+                        Wat kun je gratis doen?
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1: Eerste module preview -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <i class="fas fa-play-circle text-tp-blue text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Eerste module(s) preview</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Bekijk de eerste lessen en ontdek de structuur van het leerpad.
+                        </p>
+                    </div>
+                    
+                    <!-- Card 2: Dashboard & leerpad -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <i class="fas fa-tachometer-alt text-tp-blue text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Toegang tot dashboard & leerpad</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Verken het platform en zie hoe je voortgang wordt bijgehouden.
+                        </p>
+                    </div>
+                    
+                    <!-- Card 3: Tools-overzicht -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <i class="fas fa-tools text-tp-blue text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Tools-overzicht</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Ontdek welke praktische tools beschikbaar zijn voor je trading workflow.
+                        </p>
+                    </div>
+                    
+                    <!-- Card 4: Account instellen -->
+                    <div class="tp-glass-panel rounded-lg p-6 tp-glow-border">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-tp-blue/20 flex items-center justify-center">
+                                <i class="fas fa-user-cog text-tp-blue text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white">Je account & leeromgeving instellen</h3>
+                        </div>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Maak je profiel compleet en personaliseer je leerervaring.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <!-- Extra Details Section -->
             <div class="mb-12 sm:mb-16">
                 <div class="text-center mb-8">
@@ -742,171 +796,16 @@
                 </div>
             </div>
 
-            <!-- Testimonials Section -->
-            <div class="mb-12 sm:mb-16">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
-                        Wat zeggen onze studenten?
-                    </h2>
-                    <p class="text-white/70 text-base sm:text-lg max-w-2xl mx-auto">
-                        Echte feedback van studenten die Het Trade Platform gebruiken
-                    </p>
-                </div>
-                
-                <!-- Testimonials Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Testimonial 1 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/5e85bd63-c2ec-41c1-9f2f-82527fca34ed.JPG" 
-                            alt="Testimonial 1" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_0114.jpg" 
-                            alt="Testimonial 2" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_0220.jpg" 
-                            alt="Testimonial 3" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 4 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_0291.jpg" 
-                            alt="Testimonial 4" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 5 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_0292.jpg" 
-                            alt="Testimonial 5" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 6 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_0305.jpg" 
-                            alt="Testimonial 6" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 7 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_0305.jpg" 
-                            alt="Testimonial 7" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 8 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_1958.jpg" 
-                            alt="Testimonial 8" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 9 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_1961.jpg" 
-                            alt="Testimonial 9" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 10 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_3515.jpg" 
-                            alt="Testimonial 10" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 11 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_8939.jpg" 
-                            alt="Testimonial 11" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                    
-                    <!-- Testimonial 12 -->
-                    <div class="tp-glass-panel rounded-lg p-4 sm:p-6 tp-glow-border testimonial-item">
-                        <img 
-                            src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/black%20friday/IMG_9280.jpg" 
-                            alt="Testimonial 12" 
-                            class="rounded-lg testimonial-image"
-                            loading="lazy"
-                            data-lightbox="testimonials"
-                        >
-                    </div>
-                </div>
-                
-                <!-- Lightbox Modal -->
-                <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Uitvergrootte testimonial">
-                    <div class="lightbox-content">
-                        <span class="lightbox-close" aria-label="Sluit lightbox">&times;</span>
-                        <img id="lightbox-image" src="" alt="Uitvergrootte testimonial">
-                    </div>
-                </div>
-            </div>
-
             <!-- CTA-blok -->
             <div class="text-center">
                 <p class="text-white/90 text-lg sm:text-xl mb-6 max-w-3xl mx-auto leading-relaxed">
-                    Start vandaag met Het Trade Platform en bouw je technische trading skills structureel op.
+                    Maak vandaag je gratis account aan en ontdek de eerste modules, tools en dashboards.
                 </p>
-                <a id="bottom-cta-button" href="https://buy.stripe.com/28E8wPfUmg0teVb3Ns4ko0h" class="inline-block bg-tp-blue hover:bg-tp-blue/90 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-lg font-semibold text-lg sm:text-xl transition-colors duration-200 tp-cta-glow">
-                    Start vandaag — €1999
+                <a href="https://hettradeplatform.be/register" class="inline-block bg-tp-blue hover:bg-tp-blue/90 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-lg font-semibold text-lg sm:text-xl transition-colors duration-200 tp-cta-glow">
+                    Maak een gratis account
                 </a>
                 <p class="text-white/70 text-sm sm:text-base mt-4">
-                    Direct toegang na betaling.
+                    Upgraden kan later vanuit het platform wanneer jij er klaar voor bent.
                 </p>
             </div>
         </div>
@@ -917,17 +816,6 @@
 
     <!-- Scripts -->
     <script>
-        // Stripe checkout URL
-        const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/28E8wPfUmg0teVb3Ns4ko0h';
-        
-        // Set Stripe URL for CTA buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const bottomCtaButton = document.getElementById('bottom-cta-button');
-            
-            if (bottomCtaButton) {
-                bottomCtaButton.href = STRIPE_CHECKOUT_URL;
-            }
-        });
         
         // Modern Pancake Mobile Menu Functionality
         document.addEventListener('DOMContentLoaded', function() {
@@ -1124,10 +1012,6 @@
             });
             
             // Touch/swipe support
-            let startX = 0;
-            let startY = 0;
-            let isDragging = false;
-            
             carousel.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
@@ -1258,49 +1142,6 @@
                 infiniteLoop: true,
                 swipeThreshold: 50
             });
-            
-            // Lightbox functionality for testimonials
-            const lightboxModal = document.getElementById('lightbox-modal');
-            const lightboxImage = document.getElementById('lightbox-image');
-            const lightboxClose = document.querySelector('.lightbox-close');
-            const testimonialImages = document.querySelectorAll('.testimonial-image');
-            
-            if (lightboxModal && lightboxImage && testimonialImages.length > 0) {
-                // Open lightbox on image click
-                testimonialImages.forEach(img => {
-                    img.addEventListener('click', function() {
-                        lightboxImage.src = this.src;
-                        lightboxImage.alt = this.alt;
-                        lightboxModal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                    });
-                });
-                
-                // Close lightbox
-                function closeLightbox() {
-                    lightboxModal.classList.remove('active');
-                    document.body.style.overflow = ''; // Restore scrolling
-                }
-                
-                // Close button
-                if (lightboxClose) {
-                    lightboxClose.addEventListener('click', closeLightbox);
-                }
-                
-                // Close on background click
-                lightboxModal.addEventListener('click', function(e) {
-                    if (e.target === lightboxModal) {
-                        closeLightbox();
-                    }
-                });
-                
-                // Close on Escape key
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
-                        closeLightbox();
-                    }
-                });
-            }
         });
         
         // Load footer component
