@@ -19,9 +19,10 @@
     <meta property="og:url" content="https://cryptoriez.be/">
     <meta property="og:title" content="Cryptoriez - Leer zelfstandig traden in 12 weken">
     <meta property="og:description" content="Leer correct investeren in crypto en zelfstandig traden met professionele begeleiding. Fysieke opleidingen in Brugge en Gent.">
-    <meta property="og:image" content="https://cryptoriez.be/fysieke_opleiding_hero.jpg">
+    <meta property="og:image" content="https://YOUR_SUPABASE_PROJECT.supabase.co/storage/v1/object/public/images/social/fysieke_opleiding_hero.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/webp">
     <meta property="og:site_name" content="Cryptoriez">
     <meta property="og:locale" content="nl_BE">
     
@@ -30,7 +31,7 @@
     <meta property="twitter:url" content="https://cryptoriez.be/">
     <meta property="twitter:title" content="Cryptoriez - Leer zelfstandig traden in 12 weken">
     <meta property="twitter:description" content="Leer correct investeren in crypto en zelfstandig traden met professionele begeleiding. Fysieke opleidingen in Brugge en Gent.">
-    <meta property="twitter:image" content="https://cryptoriez.be/fysieke_opleiding_hero.jpg">
+    <meta property="twitter:image" content="https://YOUR_SUPABASE_PROJECT.supabase.co/storage/v1/object/public/images/social/fysieke_opleiding_hero.webp">
     
     <!-- Additional SEO Meta Tags -->
     <meta name="geo.region" content="BE">
@@ -42,8 +43,8 @@
     <link rel="canonical" href="https://cryptoriez.be/">
     
     <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/png" href="cryptoriez.png">
-    <link rel="apple-touch-icon" href="cryptoriez.png">
+    <link rel="icon" type="image/webp" href="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/cryptoriez.webp">
+    <link rel="apple-touch-icon" href="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/cryptoriez.webp">
     <link rel="manifest" href="/manifest.json">
     
     <!-- Google tag (gtag.js) -->
@@ -77,7 +78,7 @@
       "name": "Cryptoriez",
       "description": "Leer zelfstandig traden in crypto en forex met fysieke opleidingen in België",
       "url": "https://cryptoriez.be",
-      "logo": "https://cryptoriez.be/cryptoriez.png",
+      "logo": "https://YOUR_SUPABASE_PROJECT.supabase.co/storage/v1/object/public/images/logos/cryptoriez.webp",
       "sameAs": [
         "https://www.instagram.com/cryptoriez/",
         "https://www.linkedin.com/company/cryptoriez/",
@@ -115,7 +116,7 @@
     
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="hero.png" as="image">
+    <link rel="preload" href="https://YOUR_SUPABASE_PROJECT.supabase.co/storage/v1/object/public/images/hero/hero.webp" as="image" type="image/webp">
     <link rel="preload" href="herovideo.mp4" as="video" type="video/mp4">
     
     <!-- Stylesheets -->
@@ -265,7 +266,10 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
                     <a href="index.html" aria-label="Ga naar homepage">
-                        <img src="cryptoriez.png" alt="Cryptoriez Logo - Ga naar homepage" class="h-8 w-auto" fetchpriority="high">
+                        <picture>
+                            <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/cryptoriez.webp" type="image/webp">
+                            <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/cryptoriez.webp" alt="Cryptoriez Logo - Ga naar homepage" class="h-8 w-auto" fetchpriority="high" width="160" height="40">
+                        </picture>
                     </a>
                 </div>
                 
@@ -306,7 +310,10 @@
         <div class="relative h-full flex flex-col p-6">
             <!-- Logo at top -->
             <div class="mb-8 fade-in-menu">
-                <img src="cryptoriez.png" alt="Cryptoriez Logo" class="h-10 w-auto" fetchpriority="high">
+                <picture>
+                    <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/cryptoriez.webp" type="image/webp">
+                    <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/cryptoriez.webp" alt="Cryptoriez Logo" class="h-10 w-auto" fetchpriority="high" width="160" height="40">
+                </picture>
             </div>
             
             <!-- Navigation Links -->
@@ -342,11 +349,21 @@
     <main>
         <section class="min-h-screen flex items-center justify-center pt-32 sm:pt-36 relative overflow-hidden" aria-labelledby="hero-heading">
         <!-- Desktop Background Image (hidden on mobile) -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center bg-right parallax-bg hidden md:block" style="background-image: url('hero.png');" role="img" aria-label="Hero achtergrond afbeelding van Cryptoriez"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center bg-right parallax-bg hidden md:block" role="img" aria-label="Hero achtergrond afbeelding van Cryptoriez">
+            <picture class="absolute inset-0 w-full h-full">
+                <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/hero.webp" type="image/webp">
+                <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/hero.webp" alt="" class="w-full h-full object-cover" loading="eager" fetchpriority="high" aria-hidden="true">
+            </picture>
+        </div>
         <!-- Mobile Background Video (hidden on desktop) -->
         <video id="heroVideo" class="absolute inset-0 w-full h-full object-cover md:hidden" autoplay muted loop playsinline aria-label="Hero video van Cryptoriez trading opleidingen">
             <source src="herovideo.mp4" type="video/mp4">
-            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('hero.png');" role="img" aria-label="Hero achtergrond afbeelding van Cryptoriez"></div>
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" role="img" aria-label="Hero achtergrond afbeelding van Cryptoriez">
+                <picture class="absolute inset-0 w-full h-full">
+                    <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/hero.webp" type="image/webp">
+                    <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/hero.webp" alt="" class="w-full h-full object-cover" loading="eager" aria-hidden="true">
+                </picture>
+            </div>
         </video>
         <!-- Overlay for better text readability -->
         <div class="absolute inset-0 bg-black/50"></div>
@@ -549,7 +566,10 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-in">
                     <div class="bg-gradient-to-br from-crypto-orange/20 to-crypto-blue/20 rounded-2xl h-64 overflow-hidden">
-                        <img src="illustratie.jpg" alt="Illustratie van Cryptoriez crypto en trading opleiding" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/illustratie.webp" type="image/webp">
+                            <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/illustratie.webp" alt="Illustratie van Cryptoriez crypto en trading opleiding" class="w-full h-full object-cover" loading="lazy" width="1200" height="800">
+                        </picture>
                     </div>
                 </div>
                 <div class="fade-in">
@@ -775,7 +795,10 @@
                 <div class="fade-in relative rounded-3xl overflow-hidden group">
                     <!-- Background Image -->
                     <div class="relative h-96 md:h-[500px] w-full">
-                        <img src="glen.jpg" alt="Glen - Student van Cryptoriez fysieke opleiding" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/glenn.webp" type="image/webp">
+                            <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/glenn.webp" alt="Glen - Student van Cryptoriez fysieke opleiding" class="w-full h-full object-cover" loading="lazy" width="1920" height="1080">
+                        </picture>
                         <!-- Gradient Overlay for better text readability -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                         
@@ -784,7 +807,10 @@
                             <div class="bg-black/40 backdrop-blur-md rounded-2xl p-4 md:p-6 border border-white/20 max-w-2xl mx-auto">
                                 <div class="flex items-center mb-3">
                                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-crypto-orange mr-3">
-                                        <img src="glen_profile.png" alt="Glen profielfoto - Cryptoriez student" class="w-full h-full object-cover">
+                                        <picture>
+                                            <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/glen_profile.webp" type="image/webp">
+                                            <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/glen_profile.webp" alt="Glen profielfoto - Cryptoriez student" class="w-full h-full object-cover" loading="lazy" width="200" height="200">
+                                        </picture>
                                     </div>
                                     <div>
                                         <h3 class="text-base md:text-lg font-semibold text-white">Glen</h3>
@@ -1015,7 +1041,10 @@
             <div class="flex items-center justify-center mb-8">
                 <div class="flex items-center space-x-4">
                     <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-crypto-orange flex-shrink-0" style="aspect-ratio: 1/1;">
-                        <img src="Rousso.jpg" alt="Rousso - Cryptoriez expert en begeleider" class="w-full h-full object-cover" style="aspect-ratio: 1/1;">
+                        <picture>
+                            <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/rousso.webp" type="image/webp">
+                            <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/rousso.webp" alt="Rousso - Cryptoriez expert en begeleider" class="w-full h-full object-cover" style="aspect-ratio: 1/1;" loading="lazy" width="200" height="200">
+                        </picture>
                     </div>
                     <div class="text-center">
                         <h3 class="text-xl font-semibold text-white">Plan een gratis kennismakingsgesprek in met Arno</h3>
@@ -1163,7 +1192,10 @@
                 <i class="fab fa-youtube text-xl" aria-hidden="true"></i>
               </a>
             </div>
-            <img src="cryptoriez.png" alt="Cryptoriez Logo - Ga naar homepage" class="h-10 w-auto" fetchpriority="high" />
+            <picture>
+                <source srcset="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/cryptoriez.webp" type="image/webp">
+                <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/cryptoriez.webp" alt="Cryptoriez Logo - Ga naar homepage" class="h-10 w-auto" fetchpriority="high" width="160" height="40" />
+            </picture>
           </div>
         </div>
 
