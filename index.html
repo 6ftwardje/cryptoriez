@@ -237,6 +237,37 @@
             transform: rotate(90deg);
         }
         
+        /* Bento Grid Styles */
+        .bento-grid {
+            grid-auto-rows: 16rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-rows: repeat(2, minmax(16rem, 1fr));
+            }
+        }
+        
+        .bento-card {
+            position: relative;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bento-card:hover {
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2), 0 16px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Mobile adjustments for Bento Grid */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-auto-rows: 14rem;
+            }
+            
+            .bento-card {
+                min-height: 14rem;
+            }
+        }
+        
     </style>
     
     <script>
@@ -276,7 +307,6 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
                     <a href="fysieke-opleidingen.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Bekijk onze fysieke opleidingen">Opleidingen</a>
-                    <a href="trade-platform.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Bekijk Het Trade Platform">Trade Platform</a>
                     <a href="testimonials.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Bekijk student testimonials">Testimonials</a>
                     <a href="discord.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Leer meer over onze Discord community">Discord</a>
                     <a href="team.html" class="text-gray-300 hover:text-white transition-colors duration-200" aria-label="Ontmoet ons team">Team</a>
@@ -320,9 +350,6 @@
             <nav class="flex-1 space-y-2">
                 <a href="fysieke-opleidingen.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk onze fysieke opleidingen">
                     <span class="text-lg font-medium">Opleidingen</span>
-                </a>
-                <a href="trade-platform.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk Het Trade Platform">
-                    <span class="text-lg font-medium">Trade Platform</span>
                 </a>
                 <a href="testimonials.html" class="group block px-4 py-3 rounded-lg text-white/90 hover:text-crypto-orange transition-all duration-300 border border-transparent hover:border-crypto-orange/50 hover:bg-crypto-orange/5" aria-label="Bekijk student testimonials">
                     <span class="text-lg font-medium">Testimonials</span>
@@ -459,7 +486,7 @@
         </div>
     </section>
 
-    <!-- Navigatie naar alle pagina's -->
+    <!-- Navigatie naar alle pagina's - Bento Grid -->
     <section class="py-20 bg-gray-900/50" aria-labelledby="navigatie-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
@@ -471,89 +498,208 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
-                <!-- Fysieke Opleidingen -->
-                <div class="group relative" role="listitem">
-                    <div class="absolute inset-0 bg-gradient-to-br from-crypto-orange/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                    <div class="relative bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-crypto-orange/30 transition-all duration-300 group-hover:scale-105">
-                        <div class="w-16 h-16 bg-gradient-to-br from-crypto-orange to-crypto-orange/80 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Bento Grid -->
+            <div class="bento-grid grid w-full auto-rows-[16rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" role="list">
+                <!-- Fysieke Opleidingen - Large card spanning 2 columns and 2 rows on desktop -->
+                <div class="bento-card group relative col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col justify-between overflow-hidden rounded-xl bg-gray-800/50 border border-gray-700/50 hover:border-crypto-orange/30 transition-all duration-300" role="listitem">
+                    <!-- Background image (visible on hover) -->
+                    <div class="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-0" style="background-image: url('https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/Cryptoriez%20Landingspage/illustratie.webp');"></div>
+                    
+                    <!-- Background gradient -->
+                    <div class="absolute right-0 bottom-0 flex flex-wrap bg-gradient-to-br from-crypto-orange/10 via-crypto-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[1]"></div>
+                    
+                    <!-- Background image/pattern -->
+                    <div class="absolute -right-20 -top-20 opacity-20 group-hover:opacity-30 transition-opacity duration-300 z-[1]">
+                        <div class="w-64 h-64 bg-gradient-to-br from-crypto-orange/30 to-crypto-blue/30 rounded-full blur-3xl"></div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="pointer-events-none z-10 flex transform-gpu flex-col gap-3 p-5">
+                        <div class="w-12 h-12 bg-gradient-to-br from-crypto-orange to-crypto-orange/80 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 group-hover:text-crypto-orange transition-colors duration-300">Fysieke Opleidingen</h3>
-                        <p class="text-gray-300 mb-4 text-sm">Leer correct investeren in crypto en zelfstandig traden met professionele begeleiding.</p>
-                        <a href="fysieke-opleidingen.html" class="inline-flex items-center text-crypto-orange hover:text-crypto-orange/80 font-medium text-sm transition-colors duration-200" aria-label="Ontdek meer over onze fysieke opleidingen">
+                        <h3 class="text-xl font-semibold text-white">
+                            Fysieke Opleidingen
+                        </h3>
+                        <p class="text-gray-300 text-sm">
+                            Leer correct investeren in crypto en zelfstandig traden met professionele begeleiding.
+                        </p>
+                    </div>
+
+                    <!-- CTA Button (appears on hover) -->
+                    <div class="pointer-events-none absolute bottom-0 flex w-full translate-y-8 transform-gpu flex-row items-center p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 z-10">
+                        <a href="fysieke-opleidingen.html" class="pointer-events-auto inline-flex items-center bg-crypto-orange/10 hover:bg-crypto-orange/20 text-crypto-orange px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 border border-crypto-orange/30" aria-label="Ontdek meer over onze fysieke opleidingen">
                             Ontdek meer
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="ml-2 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
                     </div>
+                    
+                    <!-- Hover overlay -->
+                    <div class="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-crypto-orange/[.03] z-[2]"></div>
                 </div>
 
-                <!-- Trade Platform -->
-                <div class="group relative" role="listitem">
-                    <div class="absolute inset-0 bg-gradient-to-br from-tp-blue/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                    <div class="relative bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-tp-blue/30 transition-all duration-300 group-hover:scale-105">
-                        <div class="w-16 h-16 bg-gradient-to-br from-tp-blue to-tp-blue/80 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                            </svg>
+                <!-- Trade Platform - Medium card -->
+                <div class="bento-card group relative col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-1 flex flex-col justify-between overflow-hidden rounded-xl bg-gray-800/50 border border-gray-700/50 hover:border-tp-blue/30 transition-all duration-300" role="listitem">
+                    <!-- Background gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-tp-blue/10 via-tp-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <!-- Background image/pattern -->
+                    <div class="absolute -right-20 -top-20 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                        <div class="w-48 h-48 bg-gradient-to-br from-tp-blue/30 to-crypto-blue/30 rounded-full blur-3xl"></div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-5">
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center overflow-hidden">
+                            <img src="https://trogwrgxxhsvixzglzpn.supabase.co/storage/v1/object/public/HTP/The%20Trade%20Platform-01.png" alt="Trade Platform icon" class="w-full h-full object-contain p-1" loading="lazy">
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 group-hover:text-tp-blue transition-colors duration-300">Het Trade Platform</h3>
-                        <p class="text-gray-300 mb-4 text-sm">De complete leeromgeving voor traders die technisch willen excelleren. Lifetime toegang voor €1999.</p>
-                        <a href="trade-platform.html" class="inline-flex items-center text-tp-blue hover:text-tp-blue/80 font-medium text-sm transition-colors duration-200" aria-label="Ontdek Het Trade Platform">
+                        <h3 class="text-lg font-semibold text-white">
+                            Het Trade Platform
+                        </h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            De complete leeromgeving voor traders die technisch willen excelleren. Maak een gratis account.
+                        </p>
+                    </div>
+
+                    <!-- CTA Button (appears on hover) -->
+                    <div class="pointer-events-none absolute bottom-0 flex w-full translate-y-8 transform-gpu flex-row items-center p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <a href="https://hettradeplatform.be/" class="pointer-events-auto inline-flex items-center bg-tp-blue/10 hover:bg-tp-blue/20 text-tp-blue px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 border border-tp-blue/30" aria-label="Ontdek Het Trade Platform" target="_blank" rel="noopener noreferrer">
                             Ontdek meer
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="ml-2 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
                     </div>
+                    
+                    <!-- Hover overlay -->
+                    <div class="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-tp-blue/[.03]"></div>
                 </div>
 
-                <!-- Discord Community -->
-                <div class="group relative" role="listitem">
-                    <div class="absolute inset-0 bg-gradient-to-br from-crypto-blue/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                    <div class="relative bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-crypto-blue/30 transition-all duration-300 group-hover:scale-105">
-                        <div class="w-16 h-16 bg-gradient-to-br from-crypto-blue to-crypto-blue/80 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <!-- Discord Community - Medium card -->
+                <div class="bento-card group relative col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-1 flex flex-col justify-between overflow-hidden rounded-xl bg-gray-800/50 border border-gray-700/50 hover:border-crypto-blue/30 transition-all duration-300" role="listitem">
+                    <!-- Background gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-crypto-blue/10 via-crypto-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <!-- Background image/pattern -->
+                    <div class="absolute -right-20 -top-20 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                        <div class="w-48 h-48 bg-gradient-to-br from-crypto-blue/30 to-tp-blue/30 rounded-full blur-3xl"></div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-5">
+                        <div class="w-10 h-10 bg-gradient-to-br from-crypto-blue to-crypto-blue/80 rounded-xl flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 group-hover:text-crypto-blue transition-colors duration-300">Discord Community</h3>
-                        <p class="text-gray-300 mb-4 text-sm">24/7 live begeleiding, real-time signalen en connectie met 200+ like-minded mensen.</p>
-                        <a href="https://mee6.xyz/en/m/1068939256682270801" class="inline-flex items-center text-crypto-blue hover:text-crypto-blue/80 font-medium text-sm transition-colors duration-200" target="_blank" rel="noopener noreferrer" aria-label="Start vandaag met de Cryptoriez Discord community">
+                        <h3 class="text-lg font-semibold text-white">
+                            Discord Community
+                        </h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            24/7 live begeleiding, real-time signalen en connectie met 200+ like-minded mensen.
+                        </p>
+                    </div>
+
+                    <!-- CTA Button (appears on hover) -->
+                    <div class="pointer-events-none absolute bottom-0 flex w-full translate-y-8 transform-gpu flex-row items-center p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <a href="discord.html#wordlid" class="pointer-events-auto inline-flex items-center bg-crypto-blue/10 hover:bg-crypto-blue/20 text-crypto-blue px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 border border-crypto-blue/30" aria-label="Start vandaag met de Cryptoriez Discord community">
                             Start vandaag
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="ml-2 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
                     </div>
+                    
+                    <!-- Hover overlay -->
+                    <div class="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-crypto-blue/[.03]"></div>
                 </div>
 
-                <!-- Team -->
-                <div class="group relative" role="listitem">
-                    <div class="absolute inset-0 bg-gradient-to-br from-crypto-orange/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                    <div class="relative bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-crypto-orange/30 transition-all duration-300 group-hover:scale-105">
-                        <div class="w-16 h-16 bg-gradient-to-br from-crypto-orange to-crypto-orange/80 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                <!-- Team - Medium card -->
+                <div class="bento-card group relative col-span-1 md:col-span-2 lg:col-span-1 lg:row-span-1 flex flex-col justify-between overflow-hidden rounded-xl bg-gray-800/50 border border-gray-700/50 hover:border-crypto-orange/30 transition-all duration-300" role="listitem">
+                    <!-- Background gradient -->
+                    <div class="absolute right-0 bottom-0 flex flex-wrap bg-gradient-to-br from-crypto-orange/10 via-crypto-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <!-- Background image/pattern -->
+                    <div class="absolute -right-20 -top-20 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                        <div class="w-48 h-48 bg-gradient-to-br from-crypto-orange/30 to-crypto-blue/30 rounded-full blur-3xl"></div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-5">
+                        <div class="w-10 h-10 bg-gradient-to-br from-crypto-orange to-crypto-orange/80 rounded-xl flex items-center justify-center overflow-hidden p-1">
+                            <svg class="w-5 h-5 text-white" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M256.495,96.434c26.632,0,48.213-21.597,48.213-48.205C304.708,21.58,283.128,0,256.495,0 c-26.65,0-48.222,21.58-48.222,48.229C208.274,74.837,229.846,96.434,256.495,96.434z"></path>
+                                <path d="M298.267,119.279h-42.271h-42.271c-23.362,0-48.779,25.418-48.779,48.788v162.058 c0,11.685,9.463,21.156,21.148,21.156c5.743,0,0,0,14.756,0l8.048,138.206c0,12.434,10.078,22.513,22.513,22.513 c5.244,0,14.923,0,24.585,0c9.671,0,19.35,0,24.593,0c12.434,0,22.513-10.078,22.513-22.513l8.04-138.206 c14.764,0,9.013,0,14.764,0c11.676,0,21.148-9.471,21.148-21.156V168.067C347.054,144.697,321.636,119.279,298.267,119.279z"></path>
+                                <path d="M104.141,149.083c23.262,0,42.105-18.85,42.105-42.104c0-23.262-18.843-42.112-42.105-42.112 c-23.27,0-42.104,18.851-42.104,42.112C62.037,130.232,80.871,149.083,104.141,149.083z"></path>
+                                <path d="M408.716,149.083c23.27,0,42.104-18.85,42.104-42.104c0-23.262-18.834-42.112-42.104-42.112 c-23.253,0-42.104,18.851-42.104,42.112C366.612,130.232,385.463,149.083,408.716,149.083z"></path>
+                                <path d="M137.257,169.024h-33.548h-36.92c-20.398,0-42.595,22.213-42.595,42.612v141.526 c0,10.212,8.264,18.476,18.468,18.476c5.018,0,0,0,12.884,0l7.024,120.704c0,10.852,8.805,19.658,19.666,19.658 c4.577,0,13.024,0,21.473,0c8.439,0,16.895,0,21.472,0c10.861,0,19.666-8.805,19.666-19.658l7.016-120.704v-6.849 c-8.98-8.856-14.606-21.082-14.606-34.664V169.024z"></path>
+                                <path d="M445.211,169.024h-36.928h-33.54v161.101c0,13.582-5.626,25.808-14.615,34.664v6.849l7.017,120.704 c0,10.852,8.814,19.658,19.674,19.658c4.578,0,13.025,0,21.464,0c8.456,0,16.904,0,21.481,0c10.862,0,19.659-8.805,19.659-19.658 l7.032-120.704c12.883,0,7.865,0,12.883,0c10.204,0,18.468-8.265,18.468-18.476V211.636 C487.806,191.237,465.61,169.024,445.211,169.024z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 group-hover:text-crypto-orange transition-colors duration-300">Ons Team</h3>
-                        <p class="text-gray-300 mb-4 text-sm">Leer de mensen kennen achter Cryptoriez. Ontdek hun passie en drijfveren.
+                        <h3 class="text-lg font-semibold text-white">
+                            Ons Team
+                        </h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            Leer de mensen kennen achter Cryptoriez. Ontdek hun passie en drijfveren.
                         </p>
-                        <a href="team.html" class="inline-flex items-center text-crypto-orange hover:text-crypto-orange/80 font-medium text-sm transition-colors duration-200" aria-label="Ontmoet het Cryptoriez team">
+                    </div>
+
+                    <!-- CTA Button (appears on hover) -->
+                    <div class="pointer-events-none absolute bottom-0 flex w-full translate-y-8 transform-gpu flex-row items-center p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <a href="team.html" class="pointer-events-auto inline-flex items-center bg-crypto-orange/10 hover:bg-crypto-orange/20 text-crypto-orange px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 border border-crypto-orange/30" aria-label="Ontmoet het Cryptoriez team">
                             Ontmoet het team
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <svg class="ml-2" style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
                     </div>
+                    
+                    <!-- Hover overlay -->
+                    <div class="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-crypto-orange/[.03]"></div>
                 </div>
 
+                <!-- YouTube - Medium card -->
+                <div class="bento-card group relative col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-1 flex flex-col justify-between overflow-hidden rounded-xl bg-gray-800/50 border border-gray-700/50 hover:border-red-500/30 transition-all duration-300" role="listitem">
+                    <!-- Background gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 via-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <!-- Background image/pattern -->
+                    <div class="absolute -right-20 -top-20 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+                        <div class="w-48 h-48 bg-gradient-to-br from-red-500/30 to-red-600/30 rounded-full blur-3xl"></div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-5">
+                        <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white">
+                            YouTube Kanaal
+                        </h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            Bekijk onze video's en leer meer over crypto trading, strategieën en marktanalyses.
+                        </p>
+                    </div>
 
+                    <!-- CTA Button (appears on hover) -->
+                    <div class="pointer-events-none absolute bottom-0 flex w-full translate-y-8 transform-gpu flex-row items-center p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                        <a href="https://www.youtube.com/@Cryptoriez" class="pointer-events-auto inline-flex items-center bg-red-500/10 hover:bg-red-500/20 text-red-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 border border-red-500/30" target="_blank" rel="noopener noreferrer" aria-label="Bekijk het Cryptoriez YouTube kanaal">
+                            Bekijk kanaal
+                            <svg class="ml-2 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Hover overlay -->
+                    <div class="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-red-500/[.03]"></div>
+                </div>
             </div>
         </div>
     </section>
